@@ -1,0 +1,114 @@
+[
+  {
+    "id": "CON-001",
+    "topic": "Plan v3 : 15 ou 22 octobre?",
+    "factA": "Plan v3 du 12 septembre — E7/F7 : 15 octobre",
+    "factB": "Comité du 10 septembre — 22 octobre approuvé",
+    "resolution": "Approbation formelle du comité prime sur une cellule restée ancienne. Teams du 15 septembre confirme que le plan n’a pas été corrigé. Conserver le 15 comme historique.",
+    "resolutionBasis": "Autorité du contenu et date des faits, pas du fichier.",
+    "authorityReason": "Approbation formelle du comité prime sur une cellule restée ancienne. Teams du 15 septembre confirme que le plan n’a pas été corrigé. Conserver le 15 comme historique.",
+    "dateReason": "Voir les dates et repères des preuves.",
+    "currentFactId": "FACT-002",
+    "historicalFactIds": [
+      "FACT-001"
+    ],
+    "evidence": [
+      "CIT-035",
+      "CIT-004",
+      "CIT-036"
+    ]
+  },
+  {
+    "id": "CON-002",
+    "topic": "R-01 : connecteur encore ouvert?",
+    "factA": "Registre nommé 29 septembre — R-01 Ouvert; suivi au 9 septembre",
+    "factB": "INT-101 — validé et fermé le 17 septembre",
+    "resolution": "Validation par Marc et 120/120 recherches priment sur le suivi du 9 septembre copié dans le registre. La fermeture du problème ne change pas la date approuvée.",
+    "resolutionBasis": "Autorité du contenu et date des faits, pas du fichier.",
+    "authorityReason": "Validation par Marc et 120/120 recherches priment sur le suivi du 9 septembre copié dans le registre. La fermeture du problème ne change pas la date approuvée.",
+    "dateReason": "Voir les dates et repères des preuves.",
+    "currentFactId": "FACT-005",
+    "historicalFactIds": [
+      "FACT-004"
+    ],
+    "evidence": [
+      "CIT-037",
+      "CIT-008",
+      "CIT-009"
+    ]
+  },
+  {
+    "id": "CON-003",
+    "topic": "Sécurité au vert ou acceptation attendue?",
+    "factA": "Rapport du 21 septembre : VERT, correctif livré",
+    "factB": "Sophie le 26 septembre : EN VALIDATION, acceptation non donnée",
+    "resolution": "Le rapport agrège une livraison, pas une acceptation. Le ticket et le comité font autorité sur la validation sécurité; celle-ci reste requise.",
+    "resolutionBasis": "Autorité du contenu et date des faits, pas du fichier.",
+    "authorityReason": "Le rapport agrège une livraison, pas une acceptation. Le ticket et le comité font autorité sur la validation sécurité; celle-ci reste requise.",
+    "dateReason": "Voir les dates et repères des preuves.",
+    "currentFactId": "FACT-016",
+    "historicalFactIds": [],
+    "evidence": [
+      "CIT-038",
+      "CIT-027",
+      "CIT-006"
+    ]
+  },
+  {
+    "id": "CON-004",
+    "topic": "Accessibilité complète ou ACC-303 ouvert?",
+    "factA": "Rapport du 21 septembre : VERT, correctifs appliqués",
+    "factB": "ACC-303 et comité du 26 septembre : Enregistrer inaccessible au clavier",
+    "resolution": "Labels et contraste sont validés; cela ne ferme pas le scénario clavier distinct. Le commentaire de Mélissa et le comité confirment le blocage actuel.",
+    "resolutionBasis": "Autorité du contenu et date des faits, pas du fichier.",
+    "authorityReason": "Labels et contraste sont validés; cela ne ferme pas le scénario clavier distinct. Le commentaire de Mélissa et le comité confirment le blocage actuel.",
+    "dateReason": "Voir les dates et repères des preuves.",
+    "currentFactId": "FACT-019",
+    "historicalFactIds": [],
+    "evidence": [
+      "CIT-038",
+      "CIT-029",
+      "CIT-030",
+      "CIT-031",
+      "CIT-006"
+    ]
+  },
+  {
+    "id": "CON-005",
+    "topic": "East US ou Canada Central?",
+    "factA": "Architecture v1 : East US",
+    "factB": "ADR-007 et migration : Canada Central",
+    "resolution": "ADR accepté remplace explicitement v1; migration testée et vérifiée. Les pièces jointes ne sont pas des confirmations supplémentaires.",
+    "resolutionBasis": "Autorité du contenu et date des faits, pas du fichier.",
+    "authorityReason": "ADR accepté remplace explicitement v1; migration testée et vérifiée. Les pièces jointes ne sont pas des confirmations supplémentaires.",
+    "dateReason": "Voir les dates et repères des preuves.",
+    "currentFactId": "FACT-012",
+    "historicalFactIds": [
+      "FACT-013"
+    ],
+    "evidence": [
+      "CIT-022",
+      "CIT-021",
+      "CIT-024",
+      "CIT-025"
+    ]
+  },
+  {
+    "id": "CON-006",
+    "topic": "CR-04 facturé mais autorisé?",
+    "factA": "INV-003 comporte 18 000 $ de mobile avancé",
+    "factB": "CR-04 brouillon; décision de portée interdit dépense non approuvée",
+    "resolution": "Une facture n’autorise pas une dépense. Exclure CR-04 du plafond autorisé; traiter la ligne avec Finances.",
+    "resolutionBasis": "Autorité du contenu et date des faits, pas du fichier.",
+    "authorityReason": "Une facture n’autorise pas une dépense. Exclure CR-04 du plafond autorisé; traiter la ligne avec Finances.",
+    "dateReason": "Voir les dates et repères des preuves.",
+    "currentFactId": "FACT-010",
+    "historicalFactIds": [],
+    "evidence": [
+      "CIT-017",
+      "CIT-014",
+      "CIT-020",
+      "CIT-018"
+    ]
+  }
+]

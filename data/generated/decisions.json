@@ -1,0 +1,216 @@
+[
+  {
+    "id": "DEC-001",
+    "title": "Report de la mise en production",
+    "topic": "Échéancier",
+    "proposedAt": "2026-09-08T11:16:00-04:00",
+    "proposedBy": "Julien Moreau / Boréal",
+    "approvedAt": "2026-09-10T15:25:00-04:00",
+    "approvedBy": "Comité de direction; Élodie Caron prononce l’approbation",
+    "rationale": "Retard connecteur, stabilisation et tests sans compression.",
+    "implementationState": "Plan v3 non corrigé; communication clarifiée",
+    "validationState": "Trois conditions encore ouvertes",
+    "evidence": [
+      "CIT-005",
+      "CIT-003",
+      "CIT-004",
+      "CIT-035",
+      "CIT-006"
+    ],
+    "affectedFacts": [
+      "FACT-001",
+      "FACT-002",
+      "FACT-005",
+      "FACT-015"
+    ],
+    "affectedActions": [
+      "ACT-001",
+      "ACT-002",
+      "ACT-003",
+      "ACT-006"
+    ],
+    "phases": [
+      {
+        "label": "Cause",
+        "text": "Retard connecteur interne",
+        "evidence": [
+          "CIT-005"
+        ]
+      },
+      {
+        "label": "Proposition",
+        "text": "8 septembre 11:16 — Julien recommande le 22 octobre",
+        "evidence": [
+          "CIT-003"
+        ]
+      },
+      {
+        "label": "Discussion",
+        "text": "10 septembre — stabilisation, tests et exploitation",
+        "evidence": [
+          "CIT-005"
+        ]
+      },
+      {
+        "label": "Approbation",
+        "text": "10 septembre 15:25 — comité / Élodie",
+        "evidence": [
+          "CIT-004"
+        ]
+      },
+      {
+        "label": "Mise en œuvre",
+        "text": "Communications clarifiées; plan v3 encore au 15",
+        "evidence": [
+          "CIT-036",
+          "CIT-035"
+        ]
+      },
+      {
+        "label": "Validation",
+        "text": "Go-live encore conditionnel; aucune autorisation finale",
+        "evidence": [
+          "CIT-006"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "DEC-002",
+    "title": "Données au Canada — ADR-007",
+    "topic": "Architecture",
+    "proposedAt": "2026-07-22",
+    "proposedBy": "Sophie Lambert",
+    "approvedAt": "2026-07-23",
+    "approvedBy": "Atelier architecture / ADR accepté",
+    "rationale": "Exigence de résidence des données de production au Canada.",
+    "implementationState": "Migration terminée",
+    "validationState": "Vérifiée par architecture le 27 août",
+    "evidence": [
+      "CIT-021",
+      "CIT-024",
+      "CIT-025"
+    ],
+    "affectedFacts": [
+      "FACT-012",
+      "FACT-013"
+    ],
+    "affectedActions": [],
+    "phases": [
+      {
+        "label": "Cause",
+        "text": "Architecture initiale East US",
+        "evidence": [
+          "CIT-022"
+        ]
+      },
+      {
+        "label": "Approbation",
+        "text": "23 juillet — ADR-007 accepté",
+        "evidence": [
+          "CIT-021"
+        ]
+      },
+      {
+        "label": "Mise en œuvre",
+        "text": "26 août — migration et test de connectivité",
+        "evidence": [
+          "CIT-024"
+        ]
+      },
+      {
+        "label": "Validation",
+        "text": "27 août — équipe architecture vérifie",
+        "evidence": [
+          "CIT-025"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "DEC-003",
+    "title": "CR-01 — rapports avancés",
+    "topic": "Finances",
+    "proposedAt": null,
+    "proposedBy": null,
+    "approvedAt": "2026-08-14",
+    "approvedBy": "Comité de projet",
+    "rationale": "Ajout rapports avancés et export de synthèse.",
+    "implementationState": "Facturé dans INV-002",
+    "validationState": "Acceptation technique non établie par ces pièces",
+    "evidence": [
+      "CIT-013",
+      "CIT-016"
+    ],
+    "affectedFacts": [
+      "FACT-008",
+      "FACT-009"
+    ],
+    "affectedActions": [],
+    "phases": [
+      {
+        "label": "Approbation",
+        "text": "14 août — 24 000 $ autorisés",
+        "evidence": [
+          "CIT-013"
+        ]
+      },
+      {
+        "label": "Mise en œuvre",
+        "text": "Facturé et payé dans INV-002; validation technique à confirmer",
+        "evidence": [
+          "CIT-016"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "DEC-004",
+    "title": "CR-04 — report du mobile avancé",
+    "topic": "Portée",
+    "proposedAt": "2026-09-04",
+    "proposedBy": "Boréal",
+    "approvedAt": null,
+    "approvedBy": null,
+    "rationale": "Hors phase 1 approuvée; report en phase 2 du 24 septembre.",
+    "implementationState": "Dépense non approuvée",
+    "validationState": "Sans objet — aucun engagement financier approuvé",
+    "evidence": [
+      "CIT-014",
+      "CIT-019",
+      "CIT-020"
+    ],
+    "affectedFacts": [
+      "FACT-010",
+      "FACT-011"
+    ],
+    "affectedActions": [
+      "ACT-004",
+      "ACT-005"
+    ],
+    "phases": [
+      {
+        "label": "Proposition",
+        "text": "4 septembre — estimation 18 000 $, brouillon",
+        "evidence": [
+          "CIT-014"
+        ]
+      },
+      {
+        "label": "Décision de portée",
+        "text": "24 septembre — report en phase 2; aucune dépense autorisée",
+        "evidence": [
+          "CIT-019",
+          "CIT-020"
+        ]
+      },
+      {
+        "label": "Approbation financière",
+        "text": "Non documentée; CR-04 reste non approuvé",
+        "evidence": [
+          "CIT-014"
+        ]
+      }
+    ]
+  }
+]

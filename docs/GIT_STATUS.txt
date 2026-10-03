@@ -1,0 +1,22 @@
+2026-10-03 — final uncommitted workspace status
+?? .env.example
+?? .gitignore
+?? README.md
+?? data/
+?? docs/
+?? eslint.config.mjs
+?? loto-quebec-nova-participants/
+?? messages/
+?? next-env.d.ts
+?? next.config.ts
+?? package-lock.json
+?? package.json
+?? playwright.config.ts
+?? prisma/
+?? requirements.txt
+?? scripts/
+?? src/
+?? tests/
+?? tsconfig.json
+
+Iteration 2 changed: src/, prisma/, messages/, scripts/, tests/, docs/, package.json/package-lock.json, Next/Playwright configuration and ignore/setup files. The pre-existing application and challenge package were already untracked; this status does not imply original evidence was modified. No commit/push performed.

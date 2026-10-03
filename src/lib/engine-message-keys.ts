@@ -1,0 +1,21 @@
+export const engineMessageKeys:Record<string,string>={
+  "Candidat non confirmé par le lecteur.": "reason0",
+  "Source, auteur et date du fait requis.": "reason1",
+  "Événement antérieur au baseline ou au fait courant : conserver comme historique, sans remplacement.": "reason2",
+  "Proposition conservée; aucune décision approuvée remplacée.": "reason3",
+  "Information insuffisante : aucun remplacement automatique.": "reason4",
+  "Une nouvelle livraison ne remplace pas une validation existante; documenter une régression explicitement si nécessaire.": "reason5",
+  "Une approbation documentée est nécessaire pour modifier cette décision.": "reason6",
+  "Le traitement financier ou paiement exige une confirmation explicite; réception ≠ paiement.": "reason7",
+  "Livraison ou implémentation conservée comme événement; acceptation par le validateur encore requise.": "reason8",
+  "La résidence des données exige décision ou mise en œuvre documentée.": "reason9",
+  "Nouveau fait non confirmé ou provenance/date insuffisante.": "reason10",
+  "Examiner le nouveau fait et documenter ses liens, son responsable et son échéance; aucune action existante fermée.": "reason11",
+  "Sujet inconnu : revue manuelle nécessaire.": "reason12",
+  "Plusieurs claims pour le même fait : résoudre manuellement.": "reason13",
+  "Soumettre la proposition à l’autorité compétente; conserver la décision actuelle.": "reason14",
+  "Obtenir la validation du responsable concerné; ne pas fermer les autres conditions.": "reason15",
+  "Classification et provenance confirmées par le lecteur; baseline conservé.": "reason16",
+  "Réévaluer les risques d’intégration; la date approuvée reste inchangée sans décision explicite.": "reason17",
+  "Replanifier les actions et communications; les trois validations restent indépendantes.": "reason18"
+};

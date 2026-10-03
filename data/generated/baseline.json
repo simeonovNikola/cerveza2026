@@ -1,0 +1,1254 @@
+{
+  "id": "BASELINE-20260930",
+  "asOf": "2026-09-30T09:00:00-04:00",
+  "timezone": "America/Montreal",
+  "immutable": true,
+  "facts": [
+    {
+      "id": "FACT-001",
+      "subject": "NOVA",
+      "predicate": "date cible",
+      "value": "15 octobre 2026",
+      "topic": "Échéancier",
+      "informationState": "historical",
+      "validFrom": "2026-07-07",
+      "validUntil": "2026-09-10T15:25:00-04:00",
+      "sourceIds": [
+        "MEETING-001",
+        "DOC-001"
+      ],
+      "locators": [
+        "CIT-001",
+        "CIT-002"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": "FACT-002",
+      "contradictions": [
+        "CON-001"
+      ],
+      "relatedDecisionIds": [
+        "DEC-001"
+      ],
+      "relatedActionIds": [],
+      "relatedQuestionIds": [
+        "Q01"
+      ],
+      "baselineValue": "15 octobre 2026"
+    },
+    {
+      "id": "FACT-002",
+      "subject": "NOVA",
+      "predicate": "date approuvée",
+      "value": "22 octobre 2026 — conditionnelle",
+      "topic": "Échéancier",
+      "informationState": "approved",
+      "validFrom": "2026-09-10T15:25:00-04:00",
+      "validUntil": null,
+      "sourceIds": [
+        "MEETING-004",
+        "EMAIL-009"
+      ],
+      "locators": [
+        "CIT-004",
+        "CIT-007"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": "FACT-001",
+      "supersededByFactId": null,
+      "contradictions": [
+        "CON-001"
+      ],
+      "relatedDecisionIds": [
+        "DEC-001"
+      ],
+      "relatedActionIds": [
+        "ACT-006"
+      ],
+      "relatedQuestionIds": [
+        "Q01",
+        "Q02",
+        "Q03"
+      ],
+      "baselineValue": "22 octobre 2026 — conditionnelle"
+    },
+    {
+      "id": "FACT-003",
+      "subject": "Boréal / Julien Moreau",
+      "predicate": "propose",
+      "value": "Report au 22 octobre",
+      "topic": "Échéancier",
+      "informationState": "proposed",
+      "validFrom": "2026-09-08T11:16:00-04:00",
+      "validUntil": null,
+      "sourceIds": [
+        "EMAIL-005"
+      ],
+      "locators": [
+        "CIT-003"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": null,
+      "contradictions": [],
+      "relatedDecisionIds": [],
+      "relatedActionIds": [],
+      "relatedQuestionIds": [
+        "Q03"
+      ],
+      "baselineValue": "Report au 22 octobre"
+    },
+    {
+      "id": "FACT-004",
+      "subject": "INT-101",
+      "predicate": "cause du retard",
+      "value": "Secret expiré et renouvellement du jeton; marge de stabilisation insuffisante",
+      "topic": "Intégration",
+      "informationState": "historical",
+      "validFrom": "2026-09-05",
+      "validUntil": "2026-09-17T16:10:00-04:00",
+      "sourceIds": [
+        "MEETING-004",
+        "TICKET-010"
+      ],
+      "locators": [
+        "CIT-005",
+        "CIT-008"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": "FACT-005",
+      "contradictions": [
+        "CON-002"
+      ],
+      "relatedDecisionIds": [],
+      "relatedActionIds": [],
+      "relatedQuestionIds": [
+        "Q02"
+      ],
+      "baselineValue": "Secret expiré et renouvellement du jeton; marge de stabilisation insuffisante"
+    },
+    {
+      "id": "FACT-005",
+      "subject": "INT-101",
+      "predicate": "état",
+      "value": "Validé et fermé — 120/120 recherches conformes",
+      "topic": "Intégration",
+      "informationState": "validated",
+      "validFrom": "2026-09-17T16:10:00-04:00",
+      "validUntil": null,
+      "sourceIds": [
+        "TICKET-010",
+        "EMAIL-012"
+      ],
+      "locators": [
+        "CIT-008",
+        "CIT-009"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": "FACT-004",
+      "supersededByFactId": null,
+      "contradictions": [
+        "CON-002"
+      ],
+      "relatedDecisionIds": [
+        "DEC-001"
+      ],
+      "relatedActionIds": [
+        "ACT-007"
+      ],
+      "relatedQuestionIds": [
+        "Q02"
+      ],
+      "baselineValue": "Validé et fermé — 120/120 recherches conformes"
+    },
+    {
+      "id": "FACT-006",
+      "subject": "NOVA",
+      "predicate": "responsable",
+      "value": "Nicolas Perron depuis le 16 septembre 2026",
+      "topic": "Gouvernance",
+      "informationState": "current",
+      "validFrom": "2026-09-16",
+      "validUntil": null,
+      "sourceIds": [
+        "EMAIL-006",
+        "DOC-002"
+      ],
+      "locators": [
+        "CIT-010",
+        "CIT-011"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": "FACT-007",
+      "supersededByFactId": null,
+      "contradictions": [],
+      "relatedDecisionIds": [],
+      "relatedActionIds": [],
+      "relatedQuestionIds": [
+        "Q04"
+      ],
+      "baselineValue": "Nicolas Perron depuis le 16 septembre 2026"
+    },
+    {
+      "id": "FACT-007",
+      "subject": "NOVA",
+      "predicate": "responsable initiale",
+      "value": "Élodie Caron",
+      "topic": "Gouvernance",
+      "informationState": "historical",
+      "validFrom": "2026-07-07",
+      "validUntil": "2026-09-16",
+      "sourceIds": [
+        "MEETING-001"
+      ],
+      "locators": [
+        "CIT-001"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": "FACT-006",
+      "contradictions": [],
+      "relatedDecisionIds": [],
+      "relatedActionIds": [],
+      "relatedQuestionIds": [
+        "Q04"
+      ],
+      "baselineValue": "Élodie Caron"
+    },
+    {
+      "id": "FACT-008",
+      "subject": "NOVA",
+      "predicate": "plafond autorisé",
+      "value": "204 000 $ CAD hors taxes",
+      "topic": "Finances",
+      "informationState": "approved",
+      "validFrom": "2026-08-14",
+      "validUntil": null,
+      "sourceIds": [
+        "FIN-001",
+        "FIN-002"
+      ],
+      "locators": [
+        "CIT-012",
+        "CIT-013"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": null,
+      "contradictions": [],
+      "relatedDecisionIds": [
+        "DEC-003"
+      ],
+      "relatedActionIds": [],
+      "relatedQuestionIds": [
+        "Q05"
+      ],
+      "baselineValue": "204 000 $ CAD hors taxes"
+    },
+    {
+      "id": "FACT-009",
+      "subject": "CR-01",
+      "predicate": "montant approuvé",
+      "value": "24 000 $ — rapports avancés et export de synthèse",
+      "topic": "Finances",
+      "informationState": "approved",
+      "validFrom": "2026-08-14",
+      "validUntil": null,
+      "sourceIds": [
+        "FIN-002"
+      ],
+      "locators": [
+        "CIT-013"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": null,
+      "contradictions": [],
+      "relatedDecisionIds": [
+        "DEC-003"
+      ],
+      "relatedActionIds": [],
+      "relatedQuestionIds": [
+        "Q05"
+      ],
+      "baselineValue": "24 000 $ — rapports avancés et export de synthèse"
+    },
+    {
+      "id": "FACT-010",
+      "subject": "CR-04",
+      "predicate": "état",
+      "value": "18 000 $ estimés, non approuvés; optimisation avancée en phase 2",
+      "topic": "Portée",
+      "informationState": "proposed",
+      "validFrom": "2026-09-24",
+      "validUntil": null,
+      "sourceIds": [
+        "FIN-003",
+        "ARCH-004",
+        "EMAIL-010"
+      ],
+      "locators": [
+        "CIT-014",
+        "CIT-019",
+        "CIT-020"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": null,
+      "contradictions": [
+        "CON-006"
+      ],
+      "relatedDecisionIds": [
+        "DEC-004"
+      ],
+      "relatedActionIds": [],
+      "relatedQuestionIds": [
+        "Q05",
+        "Q06"
+      ],
+      "baselineValue": "18 000 $ estimés, non approuvés; optimisation avancée en phase 2"
+    },
+    {
+      "id": "FACT-011",
+      "subject": "INV-003",
+      "predicate": "état",
+      "value": "54 000 $ en validation dont 18 000 $ CR-04 sans approbation",
+      "topic": "Finances",
+      "informationState": "pending",
+      "validFrom": "2026-09-23",
+      "validUntil": null,
+      "sourceIds": [
+        "FIN-006",
+        "EMAIL-007"
+      ],
+      "locators": [
+        "CIT-017",
+        "CIT-018"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": null,
+      "contradictions": [],
+      "relatedDecisionIds": [
+        "DEC-004"
+      ],
+      "relatedActionIds": [
+        "ACT-004",
+        "ACT-005"
+      ],
+      "relatedQuestionIds": [
+        "Q06"
+      ],
+      "baselineValue": "54 000 $ en validation dont 18 000 $ CR-04 sans approbation"
+    },
+    {
+      "id": "FACT-012",
+      "subject": "Données production",
+      "predicate": "hébergement",
+      "value": "Canada Central — Canada",
+      "topic": "Architecture",
+      "informationState": "implemented",
+      "validFrom": "2026-08-27",
+      "validUntil": null,
+      "sourceIds": [
+        "ARCH-001",
+        "EMAIL-003",
+        "MEETING-003",
+        "ARCH-003"
+      ],
+      "locators": [
+        "CIT-021",
+        "CIT-024",
+        "CIT-025",
+        "CIT-023"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": "FACT-013",
+      "supersededByFactId": null,
+      "contradictions": [
+        "CON-005"
+      ],
+      "relatedDecisionIds": [
+        "DEC-002"
+      ],
+      "relatedActionIds": [],
+      "relatedQuestionIds": [
+        "Q07"
+      ],
+      "baselineValue": "Canada Central — Canada"
+    },
+    {
+      "id": "FACT-013",
+      "subject": "Données production",
+      "predicate": "région initiale",
+      "value": "East US",
+      "topic": "Architecture",
+      "informationState": "historical",
+      "validFrom": "2026-07-18",
+      "validUntil": "2026-07-23",
+      "sourceIds": [
+        "ARCH-002"
+      ],
+      "locators": [
+        "CIT-022"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": "FACT-012",
+      "contradictions": [
+        "CON-005"
+      ],
+      "relatedDecisionIds": [
+        "DEC-002"
+      ],
+      "relatedActionIds": [],
+      "relatedQuestionIds": [
+        "Q07"
+      ],
+      "baselineValue": "East US"
+    },
+    {
+      "id": "FACT-014",
+      "subject": "SEC-210",
+      "predicate": "correctif",
+      "value": "Livré en environnement de validation le 19 septembre",
+      "topic": "Sécurité",
+      "informationState": "delivered",
+      "validFrom": "2026-09-19",
+      "validUntil": null,
+      "sourceIds": [
+        "EMAIL-008"
+      ],
+      "locators": [
+        "CIT-026"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": null,
+      "contradictions": [],
+      "relatedDecisionIds": [],
+      "relatedActionIds": [],
+      "relatedQuestionIds": [
+        "Q08"
+      ],
+      "baselineValue": "Livré en environnement de validation le 19 septembre"
+    },
+    {
+      "id": "FACT-015",
+      "subject": "NOVA",
+      "predicate": "go-live",
+      "value": "SEC-210 validé; ACC-303 fermé; runbook approuvé incluant rollback",
+      "topic": "Go-live",
+      "informationState": "pending",
+      "validFrom": "2026-09-26",
+      "validUntil": null,
+      "sourceIds": [
+        "MEETING-006"
+      ],
+      "locators": [
+        "CIT-006"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": null,
+      "contradictions": [],
+      "relatedDecisionIds": [
+        "DEC-001"
+      ],
+      "relatedActionIds": [],
+      "relatedQuestionIds": [
+        "Q01",
+        "Q10"
+      ],
+      "baselineValue": "SEC-210 validé; ACC-303 fermé; runbook approuvé incluant rollback"
+    },
+    {
+      "id": "FACT-016",
+      "subject": "SEC-210",
+      "predicate": "acceptation",
+      "value": "Non acceptée — re-test sécurité requis",
+      "topic": "Sécurité",
+      "informationState": "pending",
+      "validFrom": "2026-09-26",
+      "validUntil": null,
+      "sourceIds": [
+        "TICKET-017",
+        "MEETING-006"
+      ],
+      "locators": [
+        "CIT-027",
+        "CIT-006"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": null,
+      "contradictions": [
+        "CON-003"
+      ],
+      "relatedDecisionIds": [],
+      "relatedActionIds": [
+        "ACT-001"
+      ],
+      "relatedQuestionIds": [
+        "Q08",
+        "Q10"
+      ],
+      "baselineValue": "Non acceptée — re-test sécurité requis"
+    },
+    {
+      "id": "FACT-017",
+      "subject": "ACC-301",
+      "predicate": "labels",
+      "value": "Validés NVDA/VoiceOver; ticket fermé",
+      "topic": "Accessibilité",
+      "informationState": "validated",
+      "validFrom": "2026-08-15",
+      "validUntil": null,
+      "sourceIds": [
+        "TICKET-001"
+      ],
+      "locators": [
+        "CIT-029"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": null,
+      "contradictions": [],
+      "relatedDecisionIds": [],
+      "relatedActionIds": [],
+      "relatedQuestionIds": [
+        "Q09"
+      ],
+      "baselineValue": "Validés NVDA/VoiceOver; ticket fermé"
+    },
+    {
+      "id": "FACT-018",
+      "subject": "ACC-302",
+      "predicate": "contraste",
+      "value": "Validé 5,3:1; ticket fermé",
+      "topic": "Accessibilité",
+      "informationState": "validated",
+      "validFrom": "2026-08-20",
+      "validUntil": null,
+      "sourceIds": [
+        "TICKET-003"
+      ],
+      "locators": [
+        "CIT-030"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": null,
+      "contradictions": [],
+      "relatedDecisionIds": [],
+      "relatedActionIds": [],
+      "relatedQuestionIds": [
+        "Q09"
+      ],
+      "baselineValue": "Validé 5,3:1; ticket fermé"
+    },
+    {
+      "id": "FACT-019",
+      "subject": "ACC-303",
+      "predicate": "clavier",
+      "value": "Ouvert — Enregistrer inaccessible au clavier dans la modale",
+      "topic": "Accessibilité",
+      "informationState": "pending",
+      "validFrom": "2026-09-26",
+      "validUntil": null,
+      "sourceIds": [
+        "TICKET-005",
+        "MEETING-006"
+      ],
+      "locators": [
+        "CIT-031",
+        "CIT-006"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": null,
+      "contradictions": [
+        "CON-004"
+      ],
+      "relatedDecisionIds": [],
+      "relatedActionIds": [
+        "ACT-002"
+      ],
+      "relatedQuestionIds": [
+        "Q09",
+        "Q10"
+      ],
+      "baselineValue": "Ouvert — Enregistrer inaccessible au clavier dans la modale"
+    },
+    {
+      "id": "FACT-020",
+      "subject": "OPS-601",
+      "predicate": "runbook",
+      "value": "Incomplet : rollback + validation fonctionnelle post-déploiement",
+      "topic": "Exploitation",
+      "informationState": "pending",
+      "validFrom": "2026-09-29",
+      "validUntil": null,
+      "sourceIds": [
+        "TICKET-013",
+        "TICKET-014"
+      ],
+      "locators": [
+        "CIT-033",
+        "CIT-034"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": null,
+      "contradictions": [],
+      "relatedDecisionIds": [],
+      "relatedActionIds": [
+        "ACT-003"
+      ],
+      "relatedQuestionIds": [
+        "Q10"
+      ],
+      "baselineValue": "Incomplet : rollback + validation fonctionnelle post-déploiement"
+    },
+    {
+      "id": "FACT-021",
+      "subject": "INV-001 + INV-002",
+      "predicate": "payé",
+      "value": "132 000 $ = 60 000 $ + 72 000 $",
+      "topic": "Finances",
+      "informationState": "validated",
+      "validFrom": "2026-08-31",
+      "validUntil": null,
+      "sourceIds": [
+        "FIN-004",
+        "FIN-005"
+      ],
+      "locators": [
+        "CIT-015",
+        "CIT-016"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": null,
+      "contradictions": [],
+      "relatedDecisionIds": [],
+      "relatedActionIds": [],
+      "relatedQuestionIds": [],
+      "baselineValue": "132 000 $ = 60 000 $ + 72 000 $"
+    },
+    {
+      "id": "FACT-022",
+      "subject": "NOVA",
+      "predicate": "facturé",
+      "value": "186 000 $ = 60 000 $ + 72 000 $ + 54 000 $ (inclut 18 000 $ non autorisés)",
+      "topic": "Finances",
+      "informationState": "current",
+      "validFrom": "2026-09-22",
+      "validUntil": null,
+      "sourceIds": [
+        "FIN-004",
+        "FIN-005",
+        "FIN-006"
+      ],
+      "locators": [
+        "CIT-015",
+        "CIT-016",
+        "CIT-017"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": null,
+      "contradictions": [],
+      "relatedDecisionIds": [],
+      "relatedActionIds": [],
+      "relatedQuestionIds": [],
+      "baselineValue": "186 000 $ = 60 000 $ + 72 000 $ + 54 000 $ (inclut 18 000 $ non autorisés)"
+    },
+    {
+      "id": "FACT-023",
+      "subject": "DATA-401",
+      "predicate": "migration",
+      "value": "Idempotence corrigée; 15 000 événements sans doublon; fermé",
+      "topic": "Données",
+      "informationState": "validated",
+      "validFrom": "2026-09-09",
+      "validUntil": null,
+      "sourceIds": [
+        "TICKET-007"
+      ],
+      "locators": [
+        "CIT-039"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": null,
+      "contradictions": [],
+      "relatedDecisionIds": [],
+      "relatedActionIds": [],
+      "relatedQuestionIds": [],
+      "baselineValue": "Idempotence corrigée; 15 000 événements sans doublon; fermé"
+    },
+    {
+      "id": "FACT-024",
+      "subject": "PERF-501",
+      "predicate": "performance",
+      "value": "620 ms en moyenne sur 50 essais; fermé",
+      "topic": "Performance",
+      "informationState": "validated",
+      "validFrom": "2026-09-07",
+      "validUntil": null,
+      "sourceIds": [
+        "TICKET-015"
+      ],
+      "locators": [
+        "CIT-040"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": null,
+      "contradictions": [],
+      "relatedDecisionIds": [],
+      "relatedActionIds": [],
+      "relatedQuestionIds": [],
+      "baselineValue": "620 ms en moyenne sur 50 essais; fermé"
+    },
+    {
+      "id": "FACT-025",
+      "subject": "NOVA",
+      "predicate": "portée phase 1",
+      "value": "SSO, demandes, pièces jointes, workflow, tableau de suivi, rapports standards + rapports avancés CR-01",
+      "topic": "Portée",
+      "informationState": "approved",
+      "validFrom": "2026-08-14",
+      "validUntil": null,
+      "sourceIds": [
+        "DOC-001",
+        "FIN-001",
+        "FIN-002"
+      ],
+      "locators": [
+        "CIT-002",
+        "CIT-012",
+        "CIT-013"
+      ],
+      "authority": "Autorité explicite du contenu; voir preuves",
+      "confidence": "strong",
+      "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+      "supersedesFactId": null,
+      "supersededByFactId": null,
+      "contradictions": [],
+      "relatedDecisionIds": [],
+      "relatedActionIds": [],
+      "relatedQuestionIds": [],
+      "baselineValue": "SSO, demandes, pièces jointes, workflow, tableau de suivi, rapports standards + rapports avancés CR-01"
+    }
+  ],
+  "actions": [
+    {
+      "id": "ACT-001",
+      "title": "Re-tester et accepter SEC-210",
+      "description": "Rejouer le scénario export; vérifier objet et résultat; documenter l’acceptation sécurité.",
+      "owner": "Sophie Lambert",
+      "ownerType": "confirmed",
+      "dueDate": null,
+      "dueDateStatus": "to_confirm",
+      "deadlineConstraint": "Avant go-live",
+      "status": "validation_required",
+      "relatedGoLiveCondition": "security",
+      "sourceEvidence": [
+        "CIT-027",
+        "CIT-006"
+      ],
+      "relatedFactIds": [
+        "FACT-016"
+      ],
+      "recommendationOrCommitment": "documented_commitment"
+    },
+    {
+      "id": "ACT-002",
+      "title": "Corriger puis valider ACC-303",
+      "description": "Corriger la liste de focusables; atteindre Enregistrer au clavier sur Chrome/Edge; Mélissa confirme la fermeture.",
+      "owner": "Boréal (correctif) / Mélissa Gagnon (validation)",
+      "ownerType": "confirmed",
+      "dueDate": null,
+      "dueDateStatus": "to_confirm",
+      "deadlineConstraint": "Avant go-live",
+      "status": "open",
+      "relatedGoLiveCondition": "accessibility",
+      "sourceEvidence": [
+        "CIT-031",
+        "CIT-006"
+      ],
+      "relatedFactIds": [
+        "FACT-019"
+      ],
+      "recommendationOrCommitment": "documented_commitment"
+    },
+    {
+      "id": "ACT-003",
+      "title": "Finaliser et approuver le runbook",
+      "description": "Fournir rollback exécutable et validation fonctionnelle post-déploiement; obtenir le go exploitation.",
+      "owner": "Boréal (rédaction) / Olivier Côté (approbation)",
+      "ownerType": "confirmed",
+      "dueDate": null,
+      "dueDateStatus": "to_confirm",
+      "deadlineConstraint": "Avant go-live",
+      "status": "open",
+      "relatedGoLiveCondition": "operations",
+      "sourceEvidence": [
+        "CIT-033",
+        "CIT-034",
+        "CIT-006"
+      ],
+      "relatedFactIds": [
+        "FACT-020"
+      ],
+      "recommendationOrCommitment": "documented_commitment"
+    },
+    {
+      "id": "ACT-004",
+      "title": "Traiter la ligne CR-04 de INV-003",
+      "description": "Obtenir la justification demandée par Finances; ne pas libérer une dépense CR-04 sans approbation.",
+      "owner": "Nicolas Perron / Amélie Fortin",
+      "ownerType": "confirmed",
+      "dueDate": null,
+      "dueDateStatus": "to_confirm",
+      "deadlineConstraint": "À confirmer",
+      "status": "open",
+      "relatedGoLiveCondition": null,
+      "sourceEvidence": [
+        "CIT-018",
+        "CIT-020"
+      ],
+      "relatedFactIds": [
+        "FACT-011"
+      ],
+      "recommendationOrCommitment": "documented_commitment"
+    },
+    {
+      "id": "ACT-005",
+      "title": "Demander facture corrigée ou crédit",
+      "description": "Isoler/contester les 18 000 $ non approuvés; faire valider le reliquat de 36 000 $. Le corpus ne prescrit pas encore le mécanisme comptable.",
+      "owner": "Amélie Fortin / Nicolas Perron",
+      "ownerType": "proposed_by_team",
+      "dueDate": null,
+      "dueDateStatus": "to_confirm",
+      "deadlineConstraint": "À confirmer",
+      "status": "recommended",
+      "relatedGoLiveCondition": null,
+      "sourceEvidence": [
+        "CIT-017",
+        "CIT-018",
+        "CIT-019"
+      ],
+      "relatedFactIds": [
+        "FACT-011"
+      ],
+      "recommendationOrCommitment": "team_recommendation"
+    },
+    {
+      "id": "ACT-006",
+      "title": "Corriger les plans et communications",
+      "description": "Remplacer le 15 octobre par le 22 octobre conditionnel dans les plans.",
+      "owner": "Nicolas Perron",
+      "ownerType": "proposed_by_team",
+      "dueDate": null,
+      "dueDateStatus": "to_confirm",
+      "deadlineConstraint": "À confirmer",
+      "status": "recommended",
+      "relatedGoLiveCondition": null,
+      "sourceEvidence": [
+        "CIT-004",
+        "CIT-035",
+        "CIT-036"
+      ],
+      "relatedFactIds": [
+        "FACT-002"
+      ],
+      "recommendationOrCommitment": "team_recommendation"
+    },
+    {
+      "id": "ACT-007",
+      "title": "Actualiser R-01 dans le registre",
+      "description": "Conserver l’historique du retard mais refléter la validation INT-101 du 17 septembre.",
+      "owner": "Marc Gervais",
+      "ownerType": "proposed_by_team",
+      "dueDate": null,
+      "dueDateStatus": "to_confirm",
+      "deadlineConstraint": "À confirmer",
+      "status": "recommended",
+      "relatedGoLiveCondition": null,
+      "sourceEvidence": [
+        "CIT-037",
+        "CIT-008"
+      ],
+      "relatedFactIds": [
+        "FACT-005"
+      ],
+      "recommendationOrCommitment": "team_recommendation"
+    }
+  ],
+  "conditions": [
+    {
+      "id": "security",
+      "title": "Acceptation sécurité SEC-210",
+      "owner": "Sophie Lambert",
+      "status": "pending",
+      "factId": "FACT-016",
+      "actionId": "ACT-001",
+      "evidence": [
+        "CIT-006"
+      ]
+    },
+    {
+      "id": "accessibility",
+      "title": "Fermeture accessibilité ACC-303",
+      "owner": "Mélissa Gagnon",
+      "status": "pending",
+      "factId": "FACT-019",
+      "actionId": "ACT-002",
+      "evidence": [
+        "CIT-006"
+      ]
+    },
+    {
+      "id": "operations",
+      "title": "Approbation runbook + rollback",
+      "owner": "Olivier Côté",
+      "status": "pending",
+      "factId": "FACT-020",
+      "actionId": "ACT-003",
+      "evidence": [
+        "CIT-006"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q01",
+      "question": "Quelle est la date de mise en production approuvée, et avec quelle réserve?",
+      "answer": "22 octobre 2026, sous réserve des trois conditions de go-live.",
+      "nuance": "Validation sécurité de SEC-210, fermeture de ACC-303 et approbation du runbook incluant rollback. La date est approuvée; le lancement n’est pas garanti.",
+      "status": "approved",
+      "confidence": "strong",
+      "confidenceReason": "Preuves directes et repères examinés; distinction entre autorité, livraison et validation.",
+      "evidence": [
+        "CIT-004",
+        "CIT-006",
+        "CIT-007"
+      ],
+      "relatedFactIds": [
+        "FACT-002",
+        "FACT-015"
+      ],
+      "crossSourceConfirmation": "Sources distinctes; copies MIME et archive exclues du décompte indépendant.",
+      "uncertainty": "Aucune incertitude sur la réponse; état établi au baseline."
+    },
+    {
+      "id": "Q02",
+      "question": "Pourquoi la date a-t-elle changé, et quel est l’état de la cause initiale?",
+      "answer": "Le retard du connecteur interne a motivé le report; INT-101 est validé et fermé depuis le 17 septembre.",
+      "nuance": "Rotation du secret et correction du renouvellement du jeton; 120/120 recherches conformes. Sa résolution ne rétablit pas le 15 octobre. Le registre R-01 conserve un suivi ancien.",
+      "status": "validated",
+      "confidence": "strong",
+      "confidenceReason": "Preuves directes et repères examinés; distinction entre autorité, livraison et validation.",
+      "evidence": [
+        "CIT-005",
+        "CIT-008",
+        "CIT-009",
+        "CIT-037"
+      ],
+      "relatedFactIds": [
+        "FACT-004",
+        "FACT-005"
+      ],
+      "crossSourceConfirmation": "Sources distinctes; copies MIME et archive exclues du décompte indépendant.",
+      "uncertainty": "Aucune incertitude sur la réponse; état établi au baseline."
+    },
+    {
+      "id": "Q03",
+      "question": "Qui a approuvé le changement et quand?",
+      "answer": "Le comité de direction du 10 septembre 2026; Élodie Caron prononce l’approbation à 15:25.",
+      "nuance": "Julien Moreau / Boréal avait proposé le 22 octobre le 8 septembre à 11:16. Le comité approuve après formulation à 15:22 et absence d’opposition; Nicolas accepte à 15:24. Proposition ≠ approbation.",
+      "status": "approved",
+      "confidence": "strong",
+      "confidenceReason": "Preuves directes et repères examinés; distinction entre autorité, livraison et validation.",
+      "evidence": [
+        "CIT-003",
+        "CIT-004"
+      ],
+      "relatedFactIds": [
+        "FACT-003",
+        "FACT-002"
+      ],
+      "crossSourceConfirmation": "Sources distinctes; copies MIME et archive exclues du décompte indépendant.",
+      "uncertainty": "Aucune incertitude sur la réponse; état établi au baseline."
+    },
+    {
+      "id": "Q04",
+      "question": "Qui est responsable du projet et depuis quand?",
+      "answer": "Nicolas Perron, officiellement depuis le 16 septembre 2026.",
+      "nuance": "Il succède à Élodie Caron; sa disponibilité pendant le transfert ne maintient pas son ancien rôle de responsable.",
+      "status": "current",
+      "confidence": "strong",
+      "confidenceReason": "Preuves directes et repères examinés; distinction entre autorité, livraison et validation.",
+      "evidence": [
+        "CIT-010",
+        "CIT-011",
+        "CIT-001"
+      ],
+      "relatedFactIds": [
+        "FACT-006",
+        "FACT-007"
+      ],
+      "crossSourceConfirmation": "Sources distinctes; copies MIME et archive exclues du décompte indépendant.",
+      "uncertainty": "Aucune incertitude sur la réponse; état établi au baseline."
+    },
+    {
+      "id": "Q05",
+      "question": "Quel est le montant contractuel autorisé et comment se calcule-t-il?",
+      "answer": "204 000 $ CAD hors taxes = 180 000 $ initiaux + 24 000 $ de CR-01 approuvé.",
+      "nuance": "CR-01 approuvé le 14 août par le comité de projet. Exclure les 18 000 $ de CR-04, encore brouillon et reporté à la phase 2. Autorisé, facturé et payé sont des montants différents.",
+      "status": "approved",
+      "confidence": "strong",
+      "confidenceReason": "Preuves directes et repères examinés; distinction entre autorité, livraison et validation.",
+      "evidence": [
+        "CIT-012",
+        "CIT-013",
+        "CIT-014",
+        "CIT-019"
+      ],
+      "relatedFactIds": [
+        "FACT-008",
+        "FACT-009",
+        "FACT-010"
+      ],
+      "crossSourceConfirmation": "Sources distinctes; copies MIME et archive exclues du décompte indépendant.",
+      "uncertainty": "Aucune incertitude sur la réponse; état établi au baseline."
+    },
+    {
+      "id": "Q06",
+      "question": "Quel problème présente INV-003 et quel traitement prévoir?",
+      "answer": "INV-003 inclut 18 000 $ pour CR-04 non approuvé; la facture totale de 54 000 $ reste en validation.",
+      "nuance": "36 000 $ concernent le jalon 3; 18 000 $ l’optimisation mobile. Finances demande une approbation avant libération. Recommandation NOVA 360 : contester/isoler la ligne et demander une facture corrigée ou un crédit, puis faire valider le reliquat. Aucun paiement ni crédit émis n’est établi.",
+      "status": "pending",
+      "confidence": "strong",
+      "confidenceReason": "Preuves directes et repères examinés; distinction entre autorité, livraison et validation.",
+      "evidence": [
+        "CIT-017",
+        "CIT-018",
+        "CIT-014",
+        "CIT-020"
+      ],
+      "relatedFactIds": [
+        "FACT-011",
+        "FACT-010"
+      ],
+      "crossSourceConfirmation": "Sources distinctes; copies MIME et archive exclues du décompte indépendant.",
+      "uncertainty": "Le traitement comptable final et le paiement du reliquat ne sont pas documentés."
+    },
+    {
+      "id": "Q07",
+      "question": "Où héberger les données et quelle preuve confirme la mise en œuvre?",
+      "answer": "Au Canada, dans Canada Central. Migration déclarée terminée le 26 août et vérifiée par l’équipe architecture au comité du 27 août.",
+      "nuance": "ADR-007 accepté le 23 juillet remplace East US. Le schéma v2, le courriel de migration avec test de déploiement/connectivité et la vérification architecture établissent la mise en œuvre. Le schéma joint et le PDF séparé sont une même preuve.",
+      "status": "implemented",
+      "confidence": "strong",
+      "confidenceReason": "Preuves directes et repères examinés; distinction entre autorité, livraison et validation.",
+      "evidence": [
+        "CIT-021",
+        "CIT-024",
+        "CIT-025",
+        "CIT-023",
+        "CIT-022"
+      ],
+      "relatedFactIds": [
+        "FACT-012",
+        "FACT-013"
+      ],
+      "crossSourceConfirmation": "Sources distinctes; copies MIME et archive exclues du décompte indépendant.",
+      "uncertainty": "Aucune incertitude sur la réponse; état établi au baseline."
+    },
+    {
+      "id": "Q08",
+      "question": "La sécurité est-elle acceptée?",
+      "answer": "Non : SEC-210 demeure EN VALIDATION; acceptation sécurité non donnée.",
+      "nuance": "Correctif livré le 19 septembre dans l’environnement de validation et tests fournisseur réussis. Sophie exige son propre re-test, maintient le statut le 26 septembre. Le défaut est un EXPORT_CSV incomplet (objet/résultat manquants), pas l’absence totale d’une ligne d’export.",
+      "status": "pending",
+      "confidence": "strong",
+      "confidenceReason": "Preuves directes et repères examinés; distinction entre autorité, livraison et validation.",
+      "evidence": [
+        "CIT-026",
+        "CIT-027",
+        "CIT-006",
+        "CIT-028"
+      ],
+      "relatedFactIds": [
+        "FACT-014",
+        "FACT-016"
+      ],
+      "crossSourceConfirmation": "Sources distinctes; copies MIME et archive exclues du décompte indépendant.",
+      "uncertainty": "Date du re-test et acceptation finale à confirmer."
+    },
+    {
+      "id": "Q09",
+      "question": "L’accessibilité est-elle complétée et que reste-t-il?",
+      "answer": "Non : ACC-303 reste ouvert; le bouton Enregistrer de la modale est inaccessible au clavier.",
+      "nuance": "ACC-301 labels validé le 15 août et ACC-302 contraste validé le 20 août sont fermés; leurs captures sont historiques. ACC-303 est reproduit Chrome/Edge; liste de focus incomplète; correctif seulement annoncé pour une prochaine build.",
+      "status": "pending",
+      "confidence": "strong",
+      "confidenceReason": "Preuves directes et repères examinés; distinction entre autorité, livraison et validation.",
+      "evidence": [
+        "CIT-029",
+        "CIT-030",
+        "CIT-031",
+        "CIT-032",
+        "CIT-006"
+      ],
+      "relatedFactIds": [
+        "FACT-017",
+        "FACT-018",
+        "FACT-019"
+      ],
+      "crossSourceConfirmation": "Sources distinctes; copies MIME et archive exclues du décompte indépendant.",
+      "uncertainty": "Date de livraison et validation ACC-303 à confirmer."
+    },
+    {
+      "id": "Q10",
+      "question": "Quelles sont les trois conditions de go-live et les travaux du runbook?",
+      "answer": "1. Validation sécurité SEC-210. 2. Fermeture ACC-303. 3. Approbation du runbook incluant rollback.",
+      "nuance": "Capture du 25 septembre : étape 4 « Procédure de retour arrière » TODO; étape 5 « Validation fonctionnelle post-déploiement » À compléter. Le runbook final n’est toujours pas reçu le 29 septembre. Sophie, Mélissa et Olivier portent les validations; échéances précises à confirmer, avant go-live.",
+      "status": "pending",
+      "confidence": "strong",
+      "confidenceReason": "Preuves directes et repères examinés; distinction entre autorité, livraison et validation.",
+      "evidence": [
+        "CIT-006",
+        "CIT-033",
+        "CIT-034",
+        "CIT-027",
+        "CIT-031"
+      ],
+      "relatedFactIds": [
+        "FACT-015",
+        "FACT-020"
+      ],
+      "crossSourceConfirmation": "Sources distinctes; copies MIME et archive exclues du décompte indépendant.",
+      "uncertainty": "Échéances exactes et date d’approbation exploitation à confirmer."
+    }
+  ],
+  "sourceHashes": {
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/01_Courriels/E01_Lancement_NOVA.eml": "16d41dcca06f62c1542d694cd80f3146d64ba98d44d48bae1a168dc36117885e",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/01_Courriels/E02_Question_hebergement.eml": "de9da47af28142b5e033ef467c2bd932020f88d57112a724b5b822d98c4ef1a5",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/01_Courriels/E03_Confirmation_Canada_Central.eml": "0a35012f106e1bb673fbd1b674052038a86cf426f44817bd85ddff4a36dbde73",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/01_Courriels/E04_Corrections_accessibilite.eml": "87cee73a04d819808b90a985b4a4f7f43baac05fa17db73f9b3f5cbf7a4c154d",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/01_Courriels/E05_Retard_integration.eml": "633c8d1c96a5eedc154dcbaa73d4fef79fea99984f6e47c8563d7df02f6b3f39",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/01_Courriels/E06_Transition_charge_projet.eml": "ed6b53e0165bf6228370b54c37b12ea52649c2a29db530f89297c1038279747a",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/01_Courriels/E07_Facture_003_question.eml": "60b9a373d7c51fb44b6018518a52ba93d6f8fc9ed985182fae61f57d08328c93",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/01_Courriels/E08_Correctif_journalisation.eml": "84dbdb541a8411dbaafc0d47f1cb75cfe3075f16e5bf9c8abc97bfad52f7df87",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/01_Courriels/E09_Rappel_mise_en_production.eml": "fc41345262e7c6855a08a6843772102aa9572c3ac0ba1e6f66f1b63cf826021b",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/01_Courriels/E10_Fonction_mobile.eml": "b986e175dcba9d85386a5ee0498a1e2c49326ee93656fa2e6e39edcba27671f1",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/01_Courriels/E11_Communication_statut.eml": "972082b171043093e629265d5096119369bf0dcee9987fc6b1a9038cf9b508d6",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/01_Courriels/E12_Resolution_integration.eml": "cc160700b60236dd105f051ba1ab6aa16f222bdadb31d7f29f7ea7151edf1398",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/02_Reunions/M01_CR_Demarrage_07juillet.txt": "4474bf0189f6ba64b081c5ee9640186f9950497d37f0610bcdb3db74ae06c6ac",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/02_Reunions/M02_Transcript_Architecture_23juillet.txt": "ee3018d95bbd502a2d9fa5ddd66bd1b06bb0f5bb2cee9fdfa43a19ee4676977e",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/02_Reunions/M03_CR_Comite_27aout.txt": "bc8177355a020cc5fae7775349e8f7ceed7fde9d08b01c3d3127554f2a4daa60",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/02_Reunions/M04_Transcript_Comite_direction_10sept.txt": "31a14e3025d62998254ad23b59e34b7e70475425615f30b9f2bde2f6695788d7",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/02_Reunions/M05_CR_Suivi_18sept.txt": "132e8360b2e8c9964a9f40db2dc8376d726b55d4755b990d55868483769c5c8e",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/02_Reunions/M06_Transcript_Comite_26sept.txt": "09cdadc67eba6ef2bffdd8d7bf2c00b6108719135a622b69f6994bd030aa3165",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/03_Tickets/ACC-301.txt": "11bd40b7a7cf42342436dced3304752fcc0772314ea52bece07c77531698266b",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/03_Tickets/ACC-301_labels.png": "99c7b0fbb963388ed3f355dfde2582ff8101ce8c5936ab943d432569ffa72024",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/03_Tickets/ACC-302.txt": "9b4d3ae78df8626cb039837659b137f1d39b7bbae2c26934ef42c50b440c1cdd",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/03_Tickets/ACC-302_contraste.png": "f5120af24153a3f5214eb4e1125c7883781063964f950c75b17defe26c62359b",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/03_Tickets/ACC-303.txt": "b980eea7c7f8f1a199e91fa0a6cadcd54d9de2b06c558dec7a6a72999066e808",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/03_Tickets/ACC-303_focus.png": "f1826330adb78af6d715f3457744fc3f4fe279bbb7875f4a1bee9f9cdcbbc6c8",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/03_Tickets/DATA-401.txt": "c233516d6dbf47795b7cffb468bef848c04987ee1dceff559fc161d5e0f1918c",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/03_Tickets/DATA-401_doublons.png": "4846ea9ec37fd22432d455ddaa2d743aa22d760ffc80945ac41eb9da5aa68924",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/03_Tickets/DATA-401_echantillon.csv": "4ade73d37e16d176c6fe2f62314e0c0cfc86dc03b9ac6294a37b53fd379d3bbd",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/03_Tickets/INT-101.txt": "21e03dfe972989a4cf2deb60c110ddd9ad413afefd6d5ff3763b29be925dcf76",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/03_Tickets/INT-101_aucun_resultat.png": "6698505f8a823ced7845162355dbd194e219edb7ab5b8f0be09424529b08da95",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/03_Tickets/INT-101_extrait_logs.txt": "4ce14420b2774498343a04be5eb3b8ac2685ff21bec6cec506eb5b0a9b0f907a",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/03_Tickets/OPS-601.txt": "31023bfb2fb2e74359d41359de5a3fb36ad5109a17b7b578e5ce97b026d0a29d",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/03_Tickets/OPS-601_runbook.png": "b09373c9eeab8aea1e2828fe1a632596f2b031f2ad7258149d796cc6e3775400",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/03_Tickets/PERF-501.txt": "1d72e151a2dee710a358b89ab14101aa3ebd2e7a3dc71e97ddef79bbfdd5d29b",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/03_Tickets/PERF-501_lenteur.png": "532e550592df6ad0e4c693566039983d6befe40b5605d39efb4d1334ae74c58e",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/03_Tickets/SEC-210.txt": "1dceb92346fd7fa9f9b9ef1919da91d460f79d22088b7136bcbeb496265c7c47",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/03_Tickets/SEC-210_audit.png": "6698e1094331dadfd1c0920157913f213702be865a8752ef8ce47c6b2e963811",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/04_Documents_projet/Charte_Projet_NOVA_v1.txt": "fa4705d47bbee91dd8f675ead36aa8005bd6e9e63f281a24647fe052da5803d2",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/04_Documents_projet/Note_transition_Elodie_16sept.txt": "cf44c6b2a98737eabf50798f87a5b0b49b35384f10371f90fe5d7e00f05f36d5",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/04_Documents_projet/Plan_Projet_NOVA_v2.xlsx": "6f842390174d8603529a600ac80936d122eec00bf99f30c224cf2df1247faf9a",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/04_Documents_projet/Plan_Projet_NOVA_v3_12sept.xlsx": "ff7530fdda7bd922cbe7aeda86009a79e4857a6f6d3f9209aa19444096e92aa7",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/04_Documents_projet/Rapport_Statut_21sept.pdf": "78fe43e6769c4e8284620282526b5313da427e9f22c1b55aeaf7a31848651537",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/04_Documents_projet/Registre_Risques_29sept.xlsx": "aa9b4f76885fcd7911472e0dc9fb8b00f5b8f022820601341796a6ad3a525b97",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/05_Contrats_et_finances/CONTRAT_Boreal_NOVA.pdf": "3ea0027f44bd3c7e1dcc4d53fdcc2083359bb4e3b54af2929deb254e0632eab0",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/05_Contrats_et_finances/CR-01_Rapports_avances_APPROUVE.pdf": "c92dcd6d60ad73f2b2d376bbb15a2e52c2906e9637bd3c3c2d6c5415d61b8ebf",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/05_Contrats_et_finances/CR-04_Optimisation_mobile_BROUILLON.pdf": "190ebc7f862023592d80cfa4c3bb3ebebc2ea8e5613d2af26ea2fc412ee9d29d",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/05_Contrats_et_finances/INV-001.pdf": "972552f75b29af3059557b183eb689185923e5d3f6d443ce60e55bd12555f736",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/05_Contrats_et_finances/INV-002.pdf": "09a6fcdf88f3d29a798daf199a5e039ae473dcad09f30050b0bd2a90da7a91ed",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/05_Contrats_et_finances/INV-003.pdf": "cf664b7caf782ccfbfd1d84428a4a0df7212b9fadacc69caff0192e0ba053d05",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/06_Architecture_et_decisions/ADR-007_Localisation_donnees.md": "49df032a0f1ca7fbcf6e576c20b6f4ff1c5678d68d5f8bc7706192103518ca2e",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/06_Architecture_et_decisions/Architecture_NOVA_v1.pdf": "a7610ddc9b988a9f2c521deecc1583ce7193247b2956d491b8ae02c6eb1b5896",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/06_Architecture_et_decisions/Architecture_NOVA_v2.pdf": "ba22b0f3376d11cb538df93ca89138ae99f3a317d00d50d97c5261bd1998e801",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/06_Architecture_et_decisions/Decision_Portee_Phase2.md": "a40891b2324cbd8041d8f7cecc4cc3638d8b2ae3bae1c3ba791b106748b851b5",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/07_Conversations_Teams/Teams_15sept_ProjetNOVA.txt": "b2d3e858d099cb932eaaaa88822755515783307c6db0ab40326709dad1ab4308",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/07_Conversations_Teams/Teams_16sept_Transition.txt": "397803af2ef9cea12956556a44ad00e57dd619cf8b49baa95462ad01e567dbfe",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/07_Conversations_Teams/Teams_19sept_Securite.txt": "5eae0d5d720d452834bf31b480a6a6d017a04a39816764ca5c7b8a70f0323e31",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/07_Conversations_Teams/Teams_22sept_Mobile.txt": "0b8594a1ad14d50cc41405f9a742872a55e6a2db23ad489aed8f563705cbdafd",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/08_Archives_et_documents_connexes/Courriel_archive_17sept.eml": "cc160700b60236dd105f051ba1ab6aa16f222bdadb31d7f29f7ea7151edf1398",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/08_Archives_et_documents_connexes/INV-778_Projet_ORION.pdf": "5c8bee08bbd341c085fbbe76b4366276028c45ddba13516c2c07e97a501f7c60",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/08_Archives_et_documents_connexes/Invitation_Formation_Excel.txt": "3bbe5937cbf5fc191132b8285098488f4da1272212275cf801bc55c4a047da92",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/08_Archives_et_documents_connexes/Newsletter_Boreal_Septembre.txt": "78821603c570403ae5a20ee8ad624e445a60fe8617ee6fda8fb00b27802724b6",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/08_Archives_et_documents_connexes/Notes_personnelles_quelquun.txt": "15e3fefe673dac02c92a7ffcf53d06f1813c0833266c6e88b0b07ca197402ba6",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/08_Archives_et_documents_connexes/Plan_NOVA_preliminaire_juin.xlsx": "f7ab237ccc6278e291295634635a3fce9637cd6d0ccbe0dbe4d4914d9c236109",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/MANIFEST.csv": "ad3ed0709f2bd6eec1763afb6c63ca23e30c0005cb4551e7bebb3333ee697dce",
+    "loto-quebec-nova-participants/NOVA_ETUDIANTS/Projet360_NOVA_ETUDIANTS/README.txt": "034101b02eddd8a27ccf974ddc19948d503c1c5f5b37169ca08f37223d464a86"
+  }
+}

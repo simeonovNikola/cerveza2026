@@ -1,0 +1,161 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "sqlite"
+  url = "file:../data/runtime/nova.db"
+}
+model SourceDocument {
+  id String @id
+  path String @unique
+  category String
+  fileType String
+  checksum String
+  extractedText String
+  data Json
+  citations Citation[]
+}
+model Citation {
+  id String @id
+  sourceId String
+  source SourceDocument @relation(fields: [sourceId], references: [id])
+  locatorType String
+  locator String
+  data Json
+  en Json
+  questions QuestionEvidence[]
+  facts FactEvidence[]
+}
+model Fact {
+  id String @id
+  subject String
+  predicate String
+  value String
+  topic String
+  informationState String
+  validFrom String
+  validUntil String?
+  data Json
+  en Json
+  citations FactEvidence[]
+  questions QuestionFact[]
+}
+model FactEvidence {
+  factId String
+  citationId String
+  fact Fact @relation(fields: [factId], references: [id])
+  citation Citation @relation(fields: [citationId], references: [id])
+  @@id([factId, citationId])
+}
+model Question {
+  id String @id
+  questionFr String
+  questionEn String
+  answerFr String
+  answerEn String
+  nuanceFr String
+  nuanceEn String
+  status String
+  isOfficial Boolean @default(false)
+  active Boolean @default(true)
+  sortOrder Int
+  tags String @default("")
+  data Json
+  en Json
+  createdBy String @default("seed")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  citations QuestionEvidence[]
+  facts QuestionFact[]
+}
+model QuestionEvidence {
+  questionId String
+  citationId String
+  question Question @relation(fields: [questionId], references: [id])
+  citation Citation @relation(fields: [citationId], references: [id])
+  @@id([questionId, citationId])
+}
+model QuestionFact {
+  questionId String
+  factId String
+  question Question @relation(fields: [questionId], references: [id])
+  fact Fact @relation(fields: [factId], references: [id])
+  @@id([questionId, factId])
+}
+model Action {
+  id String @id
+  status String
+  owner String
+  recommendationType String
+  data Json
+  en Json
+}
+model Decision {
+  id String @id
+  approvedAt String?
+  data Json
+  en Json
+}
+model TimelineEvent {
+  id String @id
+  date String
+  eventType String
+  data Json
+  en Json
+}
+model Contradiction {
+  id String @id
+  currentFactId String
+  data Json
+  en Json
+}
+model Person {
+  id String @id
+  name String
+  data Json
+  en Json
+}
+model GoLiveCondition {
+  id String @id
+  factId String @unique
+  actionId String @unique
+  data Json
+  en Json
+}
+model ProjectSnapshot {
+  id String @id
+  timestamp String
+  kind String
+  immutable Boolean
+  checksum String
+  data Json
+}
+model ImpactEvent {
+  id String @id
+  sequence Int @unique
+  occurredAt String
+  locale String
+  data Json
+  createdAt DateTime @default(now())
+  changes ImpactChange[]
+}
+model ImpactChange {
+  id String @id
+  eventId String
+  event ImpactEvent @relation(fields: [eventId], references: [id])
+  factId String
+  changeType String
+  beforeValue String?
+  afterValue String
+  informationState String
+  rationale String
+}
+model AdminAudit {
+  id String @id
+  entityId String
+  operation String
+  before Json?
+  after Json
+  createdAt DateTime @default(now())
+  createdBy String @default("admin")
+}

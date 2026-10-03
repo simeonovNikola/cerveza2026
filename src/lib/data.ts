@@ -1,0 +1,13 @@
+export type Baseline = typeof import('../../data/generated/baseline.json');
+export type Fact = Baseline['facts'][number];
+export type Action = Baseline['actions'][number];
+export type Question = Baseline['questions'][number] & {isOfficial?:boolean;active?:boolean;sortOrder?:number;tags?:string;updatedAt?:string};
+export type Citation = typeof import('../../data/generated/citations.json')[number];
+export type Document = typeof import('../../data/generated/documents.json')[number];
+export type Decision = typeof import('../../data/generated/decisions.json')[number];
+export type Timeline = typeof import('../../data/generated/timeline.json')[number];
+export type Contradiction = typeof import('../../data/generated/contradictions.json')[number];
+export type Person = typeof import('../../data/generated/people.json')[number];
+export type Condition = Baseline['conditions'][number];
+export type ProjectData = {canonicalBaseline:Baseline;baseline:Omit<Baseline,'questions'> & {questions:Question[]};documents:Document[];citations:Citation[];decisions:Decision[];timeline:Timeline[];contradictions:Contradiction[];people:Person[]};
+export const normalize=(s:string)=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();

@@ -1,0 +1,789 @@
+[
+  {
+    "id": "FACT-001",
+    "subject": "NOVA",
+    "predicate": "date cible",
+    "value": "15 octobre 2026",
+    "topic": "Échéancier",
+    "informationState": "historical",
+    "validFrom": "2026-07-07",
+    "validUntil": "2026-09-10T15:25:00-04:00",
+    "sourceIds": [
+      "MEETING-001",
+      "DOC-001"
+    ],
+    "locators": [
+      "CIT-001",
+      "CIT-002"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": "FACT-002",
+    "contradictions": [
+      "CON-001"
+    ],
+    "relatedDecisionIds": [
+      "DEC-001"
+    ],
+    "relatedActionIds": [],
+    "relatedQuestionIds": [
+      "Q01"
+    ],
+    "baselineValue": "15 octobre 2026"
+  },
+  {
+    "id": "FACT-002",
+    "subject": "NOVA",
+    "predicate": "date approuvée",
+    "value": "22 octobre 2026 — conditionnelle",
+    "topic": "Échéancier",
+    "informationState": "approved",
+    "validFrom": "2026-09-10T15:25:00-04:00",
+    "validUntil": null,
+    "sourceIds": [
+      "MEETING-004",
+      "EMAIL-009"
+    ],
+    "locators": [
+      "CIT-004",
+      "CIT-007"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": "FACT-001",
+    "supersededByFactId": null,
+    "contradictions": [
+      "CON-001"
+    ],
+    "relatedDecisionIds": [
+      "DEC-001"
+    ],
+    "relatedActionIds": [
+      "ACT-006"
+    ],
+    "relatedQuestionIds": [
+      "Q01",
+      "Q02",
+      "Q03"
+    ],
+    "baselineValue": "22 octobre 2026 — conditionnelle"
+  },
+  {
+    "id": "FACT-003",
+    "subject": "Boréal / Julien Moreau",
+    "predicate": "propose",
+    "value": "Report au 22 octobre",
+    "topic": "Échéancier",
+    "informationState": "proposed",
+    "validFrom": "2026-09-08T11:16:00-04:00",
+    "validUntil": null,
+    "sourceIds": [
+      "EMAIL-005"
+    ],
+    "locators": [
+      "CIT-003"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": null,
+    "contradictions": [],
+    "relatedDecisionIds": [],
+    "relatedActionIds": [],
+    "relatedQuestionIds": [
+      "Q03"
+    ],
+    "baselineValue": "Report au 22 octobre"
+  },
+  {
+    "id": "FACT-004",
+    "subject": "INT-101",
+    "predicate": "cause du retard",
+    "value": "Secret expiré et renouvellement du jeton; marge de stabilisation insuffisante",
+    "topic": "Intégration",
+    "informationState": "historical",
+    "validFrom": "2026-09-05",
+    "validUntil": "2026-09-17T16:10:00-04:00",
+    "sourceIds": [
+      "MEETING-004",
+      "TICKET-010"
+    ],
+    "locators": [
+      "CIT-005",
+      "CIT-008"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": "FACT-005",
+    "contradictions": [
+      "CON-002"
+    ],
+    "relatedDecisionIds": [],
+    "relatedActionIds": [],
+    "relatedQuestionIds": [
+      "Q02"
+    ],
+    "baselineValue": "Secret expiré et renouvellement du jeton; marge de stabilisation insuffisante"
+  },
+  {
+    "id": "FACT-005",
+    "subject": "INT-101",
+    "predicate": "état",
+    "value": "Validé et fermé — 120/120 recherches conformes",
+    "topic": "Intégration",
+    "informationState": "validated",
+    "validFrom": "2026-09-17T16:10:00-04:00",
+    "validUntil": null,
+    "sourceIds": [
+      "TICKET-010",
+      "EMAIL-012"
+    ],
+    "locators": [
+      "CIT-008",
+      "CIT-009"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": "FACT-004",
+    "supersededByFactId": null,
+    "contradictions": [
+      "CON-002"
+    ],
+    "relatedDecisionIds": [
+      "DEC-001"
+    ],
+    "relatedActionIds": [
+      "ACT-007"
+    ],
+    "relatedQuestionIds": [
+      "Q02"
+    ],
+    "baselineValue": "Validé et fermé — 120/120 recherches conformes"
+  },
+  {
+    "id": "FACT-006",
+    "subject": "NOVA",
+    "predicate": "responsable",
+    "value": "Nicolas Perron depuis le 16 septembre 2026",
+    "topic": "Gouvernance",
+    "informationState": "current",
+    "validFrom": "2026-09-16",
+    "validUntil": null,
+    "sourceIds": [
+      "EMAIL-006",
+      "DOC-002"
+    ],
+    "locators": [
+      "CIT-010",
+      "CIT-011"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": "FACT-007",
+    "supersededByFactId": null,
+    "contradictions": [],
+    "relatedDecisionIds": [],
+    "relatedActionIds": [],
+    "relatedQuestionIds": [
+      "Q04"
+    ],
+    "baselineValue": "Nicolas Perron depuis le 16 septembre 2026"
+  },
+  {
+    "id": "FACT-007",
+    "subject": "NOVA",
+    "predicate": "responsable initiale",
+    "value": "Élodie Caron",
+    "topic": "Gouvernance",
+    "informationState": "historical",
+    "validFrom": "2026-07-07",
+    "validUntil": "2026-09-16",
+    "sourceIds": [
+      "MEETING-001"
+    ],
+    "locators": [
+      "CIT-001"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": "FACT-006",
+    "contradictions": [],
+    "relatedDecisionIds": [],
+    "relatedActionIds": [],
+    "relatedQuestionIds": [
+      "Q04"
+    ],
+    "baselineValue": "Élodie Caron"
+  },
+  {
+    "id": "FACT-008",
+    "subject": "NOVA",
+    "predicate": "plafond autorisé",
+    "value": "204 000 $ CAD hors taxes",
+    "topic": "Finances",
+    "informationState": "approved",
+    "validFrom": "2026-08-14",
+    "validUntil": null,
+    "sourceIds": [
+      "FIN-001",
+      "FIN-002"
+    ],
+    "locators": [
+      "CIT-012",
+      "CIT-013"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": null,
+    "contradictions": [],
+    "relatedDecisionIds": [
+      "DEC-003"
+    ],
+    "relatedActionIds": [],
+    "relatedQuestionIds": [
+      "Q05"
+    ],
+    "baselineValue": "204 000 $ CAD hors taxes"
+  },
+  {
+    "id": "FACT-009",
+    "subject": "CR-01",
+    "predicate": "montant approuvé",
+    "value": "24 000 $ — rapports avancés et export de synthèse",
+    "topic": "Finances",
+    "informationState": "approved",
+    "validFrom": "2026-08-14",
+    "validUntil": null,
+    "sourceIds": [
+      "FIN-002"
+    ],
+    "locators": [
+      "CIT-013"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": null,
+    "contradictions": [],
+    "relatedDecisionIds": [
+      "DEC-003"
+    ],
+    "relatedActionIds": [],
+    "relatedQuestionIds": [
+      "Q05"
+    ],
+    "baselineValue": "24 000 $ — rapports avancés et export de synthèse"
+  },
+  {
+    "id": "FACT-010",
+    "subject": "CR-04",
+    "predicate": "état",
+    "value": "18 000 $ estimés, non approuvés; optimisation avancée en phase 2",
+    "topic": "Portée",
+    "informationState": "proposed",
+    "validFrom": "2026-09-24",
+    "validUntil": null,
+    "sourceIds": [
+      "FIN-003",
+      "ARCH-004",
+      "EMAIL-010"
+    ],
+    "locators": [
+      "CIT-014",
+      "CIT-019",
+      "CIT-020"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": null,
+    "contradictions": [
+      "CON-006"
+    ],
+    "relatedDecisionIds": [
+      "DEC-004"
+    ],
+    "relatedActionIds": [],
+    "relatedQuestionIds": [
+      "Q05",
+      "Q06"
+    ],
+    "baselineValue": "18 000 $ estimés, non approuvés; optimisation avancée en phase 2"
+  },
+  {
+    "id": "FACT-011",
+    "subject": "INV-003",
+    "predicate": "état",
+    "value": "54 000 $ en validation dont 18 000 $ CR-04 sans approbation",
+    "topic": "Finances",
+    "informationState": "pending",
+    "validFrom": "2026-09-23",
+    "validUntil": null,
+    "sourceIds": [
+      "FIN-006",
+      "EMAIL-007"
+    ],
+    "locators": [
+      "CIT-017",
+      "CIT-018"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": null,
+    "contradictions": [],
+    "relatedDecisionIds": [
+      "DEC-004"
+    ],
+    "relatedActionIds": [
+      "ACT-004",
+      "ACT-005"
+    ],
+    "relatedQuestionIds": [
+      "Q06"
+    ],
+    "baselineValue": "54 000 $ en validation dont 18 000 $ CR-04 sans approbation"
+  },
+  {
+    "id": "FACT-012",
+    "subject": "Données production",
+    "predicate": "hébergement",
+    "value": "Canada Central — Canada",
+    "topic": "Architecture",
+    "informationState": "implemented",
+    "validFrom": "2026-08-27",
+    "validUntil": null,
+    "sourceIds": [
+      "ARCH-001",
+      "EMAIL-003",
+      "MEETING-003",
+      "ARCH-003"
+    ],
+    "locators": [
+      "CIT-021",
+      "CIT-024",
+      "CIT-025",
+      "CIT-023"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": "FACT-013",
+    "supersededByFactId": null,
+    "contradictions": [
+      "CON-005"
+    ],
+    "relatedDecisionIds": [
+      "DEC-002"
+    ],
+    "relatedActionIds": [],
+    "relatedQuestionIds": [
+      "Q07"
+    ],
+    "baselineValue": "Canada Central — Canada"
+  },
+  {
+    "id": "FACT-013",
+    "subject": "Données production",
+    "predicate": "région initiale",
+    "value": "East US",
+    "topic": "Architecture",
+    "informationState": "historical",
+    "validFrom": "2026-07-18",
+    "validUntil": "2026-07-23",
+    "sourceIds": [
+      "ARCH-002"
+    ],
+    "locators": [
+      "CIT-022"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": "FACT-012",
+    "contradictions": [
+      "CON-005"
+    ],
+    "relatedDecisionIds": [
+      "DEC-002"
+    ],
+    "relatedActionIds": [],
+    "relatedQuestionIds": [
+      "Q07"
+    ],
+    "baselineValue": "East US"
+  },
+  {
+    "id": "FACT-014",
+    "subject": "SEC-210",
+    "predicate": "correctif",
+    "value": "Livré en environnement de validation le 19 septembre",
+    "topic": "Sécurité",
+    "informationState": "delivered",
+    "validFrom": "2026-09-19",
+    "validUntil": null,
+    "sourceIds": [
+      "EMAIL-008"
+    ],
+    "locators": [
+      "CIT-026"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": null,
+    "contradictions": [],
+    "relatedDecisionIds": [],
+    "relatedActionIds": [],
+    "relatedQuestionIds": [
+      "Q08"
+    ],
+    "baselineValue": "Livré en environnement de validation le 19 septembre"
+  },
+  {
+    "id": "FACT-015",
+    "subject": "NOVA",
+    "predicate": "go-live",
+    "value": "SEC-210 validé; ACC-303 fermé; runbook approuvé incluant rollback",
+    "topic": "Go-live",
+    "informationState": "pending",
+    "validFrom": "2026-09-26",
+    "validUntil": null,
+    "sourceIds": [
+      "MEETING-006"
+    ],
+    "locators": [
+      "CIT-006"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": null,
+    "contradictions": [],
+    "relatedDecisionIds": [
+      "DEC-001"
+    ],
+    "relatedActionIds": [],
+    "relatedQuestionIds": [
+      "Q01",
+      "Q10"
+    ],
+    "baselineValue": "SEC-210 validé; ACC-303 fermé; runbook approuvé incluant rollback"
+  },
+  {
+    "id": "FACT-016",
+    "subject": "SEC-210",
+    "predicate": "acceptation",
+    "value": "Non acceptée — re-test sécurité requis",
+    "topic": "Sécurité",
+    "informationState": "pending",
+    "validFrom": "2026-09-26",
+    "validUntil": null,
+    "sourceIds": [
+      "TICKET-017",
+      "MEETING-006"
+    ],
+    "locators": [
+      "CIT-027",
+      "CIT-006"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": null,
+    "contradictions": [
+      "CON-003"
+    ],
+    "relatedDecisionIds": [],
+    "relatedActionIds": [
+      "ACT-001"
+    ],
+    "relatedQuestionIds": [
+      "Q08",
+      "Q10"
+    ],
+    "baselineValue": "Non acceptée — re-test sécurité requis"
+  },
+  {
+    "id": "FACT-017",
+    "subject": "ACC-301",
+    "predicate": "labels",
+    "value": "Validés NVDA/VoiceOver; ticket fermé",
+    "topic": "Accessibilité",
+    "informationState": "validated",
+    "validFrom": "2026-08-15",
+    "validUntil": null,
+    "sourceIds": [
+      "TICKET-001"
+    ],
+    "locators": [
+      "CIT-029"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": null,
+    "contradictions": [],
+    "relatedDecisionIds": [],
+    "relatedActionIds": [],
+    "relatedQuestionIds": [
+      "Q09"
+    ],
+    "baselineValue": "Validés NVDA/VoiceOver; ticket fermé"
+  },
+  {
+    "id": "FACT-018",
+    "subject": "ACC-302",
+    "predicate": "contraste",
+    "value": "Validé 5,3:1; ticket fermé",
+    "topic": "Accessibilité",
+    "informationState": "validated",
+    "validFrom": "2026-08-20",
+    "validUntil": null,
+    "sourceIds": [
+      "TICKET-003"
+    ],
+    "locators": [
+      "CIT-030"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": null,
+    "contradictions": [],
+    "relatedDecisionIds": [],
+    "relatedActionIds": [],
+    "relatedQuestionIds": [
+      "Q09"
+    ],
+    "baselineValue": "Validé 5,3:1; ticket fermé"
+  },
+  {
+    "id": "FACT-019",
+    "subject": "ACC-303",
+    "predicate": "clavier",
+    "value": "Ouvert — Enregistrer inaccessible au clavier dans la modale",
+    "topic": "Accessibilité",
+    "informationState": "pending",
+    "validFrom": "2026-09-26",
+    "validUntil": null,
+    "sourceIds": [
+      "TICKET-005",
+      "MEETING-006"
+    ],
+    "locators": [
+      "CIT-031",
+      "CIT-006"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": null,
+    "contradictions": [
+      "CON-004"
+    ],
+    "relatedDecisionIds": [],
+    "relatedActionIds": [
+      "ACT-002"
+    ],
+    "relatedQuestionIds": [
+      "Q09",
+      "Q10"
+    ],
+    "baselineValue": "Ouvert — Enregistrer inaccessible au clavier dans la modale"
+  },
+  {
+    "id": "FACT-020",
+    "subject": "OPS-601",
+    "predicate": "runbook",
+    "value": "Incomplet : rollback + validation fonctionnelle post-déploiement",
+    "topic": "Exploitation",
+    "informationState": "pending",
+    "validFrom": "2026-09-29",
+    "validUntil": null,
+    "sourceIds": [
+      "TICKET-013",
+      "TICKET-014"
+    ],
+    "locators": [
+      "CIT-033",
+      "CIT-034"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": null,
+    "contradictions": [],
+    "relatedDecisionIds": [],
+    "relatedActionIds": [
+      "ACT-003"
+    ],
+    "relatedQuestionIds": [
+      "Q10"
+    ],
+    "baselineValue": "Incomplet : rollback + validation fonctionnelle post-déploiement"
+  },
+  {
+    "id": "FACT-021",
+    "subject": "INV-001 + INV-002",
+    "predicate": "payé",
+    "value": "132 000 $ = 60 000 $ + 72 000 $",
+    "topic": "Finances",
+    "informationState": "validated",
+    "validFrom": "2026-08-31",
+    "validUntil": null,
+    "sourceIds": [
+      "FIN-004",
+      "FIN-005"
+    ],
+    "locators": [
+      "CIT-015",
+      "CIT-016"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": null,
+    "contradictions": [],
+    "relatedDecisionIds": [],
+    "relatedActionIds": [],
+    "relatedQuestionIds": [],
+    "baselineValue": "132 000 $ = 60 000 $ + 72 000 $"
+  },
+  {
+    "id": "FACT-022",
+    "subject": "NOVA",
+    "predicate": "facturé",
+    "value": "186 000 $ = 60 000 $ + 72 000 $ + 54 000 $ (inclut 18 000 $ non autorisés)",
+    "topic": "Finances",
+    "informationState": "current",
+    "validFrom": "2026-09-22",
+    "validUntil": null,
+    "sourceIds": [
+      "FIN-004",
+      "FIN-005",
+      "FIN-006"
+    ],
+    "locators": [
+      "CIT-015",
+      "CIT-016",
+      "CIT-017"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": null,
+    "contradictions": [],
+    "relatedDecisionIds": [],
+    "relatedActionIds": [],
+    "relatedQuestionIds": [],
+    "baselineValue": "186 000 $ = 60 000 $ + 72 000 $ + 54 000 $ (inclut 18 000 $ non autorisés)"
+  },
+  {
+    "id": "FACT-023",
+    "subject": "DATA-401",
+    "predicate": "migration",
+    "value": "Idempotence corrigée; 15 000 événements sans doublon; fermé",
+    "topic": "Données",
+    "informationState": "validated",
+    "validFrom": "2026-09-09",
+    "validUntil": null,
+    "sourceIds": [
+      "TICKET-007"
+    ],
+    "locators": [
+      "CIT-039"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": null,
+    "contradictions": [],
+    "relatedDecisionIds": [],
+    "relatedActionIds": [],
+    "relatedQuestionIds": [],
+    "baselineValue": "Idempotence corrigée; 15 000 événements sans doublon; fermé"
+  },
+  {
+    "id": "FACT-024",
+    "subject": "PERF-501",
+    "predicate": "performance",
+    "value": "620 ms en moyenne sur 50 essais; fermé",
+    "topic": "Performance",
+    "informationState": "validated",
+    "validFrom": "2026-09-07",
+    "validUntil": null,
+    "sourceIds": [
+      "TICKET-015"
+    ],
+    "locators": [
+      "CIT-040"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": null,
+    "contradictions": [],
+    "relatedDecisionIds": [],
+    "relatedActionIds": [],
+    "relatedQuestionIds": [],
+    "baselineValue": "620 ms en moyenne sur 50 essais; fermé"
+  },
+  {
+    "id": "FACT-025",
+    "subject": "NOVA",
+    "predicate": "portée phase 1",
+    "value": "SSO, demandes, pièces jointes, workflow, tableau de suivi, rapports standards + rapports avancés CR-01",
+    "topic": "Portée",
+    "informationState": "approved",
+    "validFrom": "2026-08-14",
+    "validUntil": null,
+    "sourceIds": [
+      "DOC-001",
+      "FIN-001",
+      "FIN-002"
+    ],
+    "locators": [
+      "CIT-002",
+      "CIT-012",
+      "CIT-013"
+    ],
+    "authority": "Autorité explicite du contenu; voir preuves",
+    "confidence": "strong",
+    "confidenceReason": "Passage direct vérifié, état expliqué dans les sources.",
+    "supersedesFactId": null,
+    "supersededByFactId": null,
+    "contradictions": [],
+    "relatedDecisionIds": [],
+    "relatedActionIds": [],
+    "relatedQuestionIds": [],
+    "baselineValue": "SSO, demandes, pièces jointes, workflow, tableau de suivi, rapports standards + rapports avancés CR-01"
+  }
+]

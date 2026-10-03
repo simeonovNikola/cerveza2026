@@ -1,0 +1,10 @@
+import {mkdir,readFile,unlink} from 'node:fs/promises';
+import {DatabaseSync} from 'node:sqlite';
+import path from 'node:path';
+import {spawn} from 'node:child_process';
+const root=path.resolve('data/runtime');await mkdir(root,{recursive:true});const file=path.resolve(root,'e2e.db');if(!file.startsWith(root+path.sep))throw new Error('Test DB path outside runtime');
+await unlink(file).catch(e=>{if(e.code!=='ENOENT')throw e;});
+const sqlite=new DatabaseSync(file);sqlite.exec(await readFile('prisma/migrations/202610030001_initial/migration.sql','utf8'));sqlite.close();
+process.env.NOVA_DATABASE_URL='file:'+file.replaceAll('\\','/');const {seed,db}=await import('./db-seed.mjs');await seed();await db.$disconnect();
+const next=spawn(process.execPath,['node_modules/next/dist/bin/next','start','--hostname','127.0.0.1','--port','3001'],{stdio:'inherit',env:process.env,windowsHide:true});
+for(const signal of ['SIGTERM','SIGINT'])process.on(signal,()=>{next.kill();});next.on('exit',code=>process.exit(code??0));

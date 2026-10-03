@@ -1,0 +1,2 @@
+import {saveQuestion} from '@/lib/repositories/questions';
+export async function PUT(request:Request,{params}:{params:Promise<{id:string}>}){try{const {id}=await params;const text=await request.text();if(text.length>150000)throw new Error('invalid');return Response.json(await saveQuestion(JSON.parse(text),id));}catch(error){const code=error instanceof Error?error.message:'invalid';return Response.json({error:code},{status:code==='protected'?403:400});}}

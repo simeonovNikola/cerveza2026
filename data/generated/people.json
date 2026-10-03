@@ -1,0 +1,87 @@
+[
+  {
+    "id": "PERSON-001",
+    "name": "Nicolas Perron",
+    "role": "Chargé de projet depuis 16 septembre",
+    "evidence": [
+      "CIT-010"
+    ]
+  },
+  {
+    "id": "PERSON-002",
+    "name": "Élodie Caron",
+    "role": "Chargée de projet initiale; transition",
+    "evidence": [
+      "CIT-001",
+      "CIT-010"
+    ]
+  },
+  {
+    "id": "PERSON-003",
+    "name": "Julien Moreau",
+    "role": "Fournisseur Boréal Numérique",
+    "evidence": [
+      "CIT-003",
+      "CIT-026"
+    ]
+  },
+  {
+    "id": "PERSON-004",
+    "name": "Marc Gervais",
+    "role": "Architecture / intégration",
+    "evidence": [
+      "CIT-008"
+    ]
+  },
+  {
+    "id": "PERSON-005",
+    "name": "Sophie Lambert",
+    "role": "Validation sécurité",
+    "evidence": [
+      "CIT-027",
+      "CIT-006"
+    ]
+  },
+  {
+    "id": "PERSON-006",
+    "name": "Mélissa Gagnon",
+    "role": "Validation accessibilité",
+    "evidence": [
+      "CIT-031",
+      "CIT-006"
+    ]
+  },
+  {
+    "id": "PERSON-007",
+    "name": "Olivier Côté",
+    "role": "Approbation exploitation",
+    "evidence": [
+      "CIT-033",
+      "CIT-006"
+    ]
+  },
+  {
+    "id": "PERSON-008",
+    "name": "Amélie Fortin",
+    "role": "Finances",
+    "evidence": [
+      "CIT-018"
+    ]
+  },
+  {
+    "id": "PERSON-009",
+    "name": "Camille Beaulieu",
+    "role": "Migration données",
+    "evidence": [
+      "CIT-039"
+    ]
+  },
+  {
+    "id": "PERSON-010",
+    "name": "Alex Deschamps",
+    "role": "Communication de statut",
+    "evidence": [
+      "CIT-036"
+    ]
+  }
+]

@@ -1,0 +1,319 @@
+[
+  {
+    "id": "EVT-001",
+    "date": "2026-07-07",
+    "eventType": "decision",
+    "title": "Lancement de NOVA",
+    "description": "Élodie; cible 15 octobre; 180 000 $; phase 1.",
+    "evidence": [
+      "CIT-001"
+    ],
+    "relatedFactIds": [
+      "FACT-001",
+      "FACT-007"
+    ],
+    "relatedActionIds": [],
+    "people": []
+  },
+  {
+    "id": "EVT-002",
+    "date": "2026-07-23",
+    "eventType": "decision",
+    "title": "Canada Central retenu",
+    "description": "ADR-007 remplace la région East US.",
+    "evidence": [
+      "CIT-021"
+    ],
+    "relatedFactIds": [
+      "FACT-012",
+      "FACT-013"
+    ],
+    "relatedActionIds": [],
+    "people": []
+  },
+  {
+    "id": "EVT-003",
+    "date": "2026-08-14",
+    "eventType": "approval",
+    "title": "CR-01 approuvé",
+    "description": "24 000 $ supplémentaires; plafond 204 000 $.",
+    "evidence": [
+      "CIT-013"
+    ],
+    "relatedFactIds": [
+      "FACT-008",
+      "FACT-009"
+    ],
+    "relatedActionIds": [],
+    "people": []
+  },
+  {
+    "id": "EVT-004",
+    "date": "2026-08-15",
+    "eventType": "validation",
+    "title": "Labels validés",
+    "description": "ACC-301 fermé après re-test.",
+    "evidence": [
+      "CIT-029"
+    ],
+    "relatedFactIds": [
+      "FACT-017"
+    ],
+    "relatedActionIds": [],
+    "people": []
+  },
+  {
+    "id": "EVT-005",
+    "date": "2026-08-20",
+    "eventType": "validation",
+    "title": "Contraste validé",
+    "description": "ACC-302 fermé; ratio 5,3:1.",
+    "evidence": [
+      "CIT-030"
+    ],
+    "relatedFactIds": [
+      "FACT-018"
+    ],
+    "relatedActionIds": [],
+    "people": []
+  },
+  {
+    "id": "EVT-006",
+    "date": "2026-08-26",
+    "eventType": "implementation",
+    "title": "Migration Canada Central",
+    "description": "Migration terminée et connectivité testée.",
+    "evidence": [
+      "CIT-024"
+    ],
+    "relatedFactIds": [
+      "FACT-012"
+    ],
+    "relatedActionIds": [],
+    "people": [
+      "Julien Moreau <julien.moreau@boreal.example>"
+    ]
+  },
+  {
+    "id": "EVT-007",
+    "date": "2026-08-27",
+    "eventType": "validation",
+    "title": "Architecture vérifiée",
+    "description": "Équipe architecture confirme la migration.",
+    "evidence": [
+      "CIT-025"
+    ],
+    "relatedFactIds": [
+      "FACT-012"
+    ],
+    "relatedActionIds": [],
+    "people": []
+  },
+  {
+    "id": "EVT-008",
+    "date": "2026-09-05",
+    "eventType": "incident",
+    "title": "INT-101 menace l’échéancier",
+    "description": "401 et renouvellement de jeton; marge de stabilisation.",
+    "evidence": [
+      "CIT-008",
+      "CIT-005"
+    ],
+    "relatedFactIds": [
+      "FACT-004"
+    ],
+    "relatedActionIds": [],
+    "people": []
+  },
+  {
+    "id": "EVT-009",
+    "date": "2026-09-07",
+    "eventType": "validation",
+    "title": "Performance rétablie",
+    "description": "620 ms sur 50 essais, PERF-501 fermé.",
+    "evidence": [
+      "CIT-040"
+    ],
+    "relatedFactIds": [
+      "FACT-024"
+    ],
+    "relatedActionIds": [],
+    "people": []
+  },
+  {
+    "id": "EVT-010",
+    "date": "2026-09-08T11:16:00-04:00",
+    "eventType": "proposal",
+    "title": "Report proposé au 22 octobre",
+    "description": "Julien demande une décision de gouvernance.",
+    "evidence": [
+      "CIT-003"
+    ],
+    "relatedFactIds": [
+      "FACT-003"
+    ],
+    "relatedActionIds": [],
+    "people": [
+      "Julien Moreau <julien.moreau@boreal.example>"
+    ]
+  },
+  {
+    "id": "EVT-011",
+    "date": "2026-09-09",
+    "eventType": "validation",
+    "title": "DATA-401 fermé",
+    "description": "15 000 événements rejoués sans doublon.",
+    "evidence": [
+      "CIT-039"
+    ],
+    "relatedFactIds": [
+      "FACT-023"
+    ],
+    "relatedActionIds": [],
+    "people": []
+  },
+  {
+    "id": "EVT-012",
+    "date": "2026-09-10T15:25:00-04:00",
+    "eventType": "approval",
+    "title": "22 octobre officiellement approuvé",
+    "description": "Élodie prononce l’approbation du comité; critères conservés.",
+    "evidence": [
+      "CIT-004"
+    ],
+    "relatedFactIds": [
+      "FACT-002"
+    ],
+    "relatedActionIds": [],
+    "people": []
+  },
+  {
+    "id": "EVT-013",
+    "date": "2026-09-16",
+    "eventType": "status_change",
+    "title": "Nicolas reprend NOVA",
+    "description": "Transition officielle depuis Élodie.",
+    "evidence": [
+      "CIT-010"
+    ],
+    "relatedFactIds": [
+      "FACT-006",
+      "FACT-007"
+    ],
+    "relatedActionIds": [],
+    "people": [
+      "Élodie Caron <elodie.caron@demo.example>"
+    ]
+  },
+  {
+    "id": "EVT-014",
+    "date": "2026-09-17T16:10:00-04:00",
+    "eventType": "validation",
+    "title": "INT-101 validé et fermé",
+    "description": "120/120; Marc confirme. Le report reste en vigueur.",
+    "evidence": [
+      "CIT-008"
+    ],
+    "relatedFactIds": [
+      "FACT-005"
+    ],
+    "relatedActionIds": [],
+    "people": []
+  },
+  {
+    "id": "EVT-015",
+    "date": "2026-09-19",
+    "eventType": "delivery",
+    "title": "SEC-210 livré en validation",
+    "description": "Tests fournisseur passent; re-test Sophie encore requis.",
+    "evidence": [
+      "CIT-026",
+      "CIT-027"
+    ],
+    "relatedFactIds": [
+      "FACT-014",
+      "FACT-016"
+    ],
+    "relatedActionIds": [
+      "ACT-001"
+    ],
+    "people": [
+      "Julien Moreau <julien.moreau@boreal.example>"
+    ]
+  },
+  {
+    "id": "EVT-016",
+    "date": "2026-09-23",
+    "eventType": "incident",
+    "title": "INV-003 à clarifier",
+    "description": "Finances demande l’approbation des 18 000 $ CR-04.",
+    "evidence": [
+      "CIT-018",
+      "CIT-017"
+    ],
+    "relatedFactIds": [
+      "FACT-011"
+    ],
+    "relatedActionIds": [
+      "ACT-004"
+    ],
+    "people": [
+      "Amélie Fortin <amelie.fortin@demo.example>"
+    ]
+  },
+  {
+    "id": "EVT-017",
+    "date": "2026-09-24",
+    "eventType": "decision",
+    "title": "Mobile avancé en phase 2",
+    "description": "CR-04 non approuvé, aucune dépense autorisée.",
+    "evidence": [
+      "CIT-019",
+      "CIT-020"
+    ],
+    "relatedFactIds": [
+      "FACT-010"
+    ],
+    "relatedActionIds": [],
+    "people": [
+      "Nicolas Perron <nicolas.perron@demo.example>"
+    ]
+  },
+  {
+    "id": "EVT-018",
+    "date": "2026-09-26",
+    "eventType": "decision",
+    "title": "Trois conditions de go-live",
+    "description": "Sécurité, clavier ACC-303, runbook approuvé.",
+    "evidence": [
+      "CIT-006"
+    ],
+    "relatedFactIds": [
+      "FACT-015"
+    ],
+    "relatedActionIds": [
+      "ACT-001",
+      "ACT-002",
+      "ACT-003"
+    ],
+    "people": []
+  },
+  {
+    "id": "EVT-019",
+    "date": "2026-09-29",
+    "eventType": "status_change",
+    "title": "Runbook final non reçu",
+    "description": "Rollback et validation post-déploiement manquent.",
+    "evidence": [
+      "CIT-033",
+      "CIT-034"
+    ],
+    "relatedFactIds": [
+      "FACT-020"
+    ],
+    "relatedActionIds": [
+      "ACT-003"
+    ],
+    "people": []
+  }
+]

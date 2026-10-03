@@ -1,0 +1,145 @@
+[
+  {
+    "id": "ACT-001",
+    "title": "Re-tester et accepter SEC-210",
+    "description": "Rejouer le scénario export; vérifier objet et résultat; documenter l’acceptation sécurité.",
+    "owner": "Sophie Lambert",
+    "ownerType": "confirmed",
+    "dueDate": null,
+    "dueDateStatus": "to_confirm",
+    "deadlineConstraint": "Avant go-live",
+    "status": "validation_required",
+    "relatedGoLiveCondition": "security",
+    "sourceEvidence": [
+      "CIT-027",
+      "CIT-006"
+    ],
+    "relatedFactIds": [
+      "FACT-016"
+    ],
+    "recommendationOrCommitment": "documented_commitment"
+  },
+  {
+    "id": "ACT-002",
+    "title": "Corriger puis valider ACC-303",
+    "description": "Corriger la liste de focusables; atteindre Enregistrer au clavier sur Chrome/Edge; Mélissa confirme la fermeture.",
+    "owner": "Boréal (correctif) / Mélissa Gagnon (validation)",
+    "ownerType": "confirmed",
+    "dueDate": null,
+    "dueDateStatus": "to_confirm",
+    "deadlineConstraint": "Avant go-live",
+    "status": "open",
+    "relatedGoLiveCondition": "accessibility",
+    "sourceEvidence": [
+      "CIT-031",
+      "CIT-006"
+    ],
+    "relatedFactIds": [
+      "FACT-019"
+    ],
+    "recommendationOrCommitment": "documented_commitment"
+  },
+  {
+    "id": "ACT-003",
+    "title": "Finaliser et approuver le runbook",
+    "description": "Fournir rollback exécutable et validation fonctionnelle post-déploiement; obtenir le go exploitation.",
+    "owner": "Boréal (rédaction) / Olivier Côté (approbation)",
+    "ownerType": "confirmed",
+    "dueDate": null,
+    "dueDateStatus": "to_confirm",
+    "deadlineConstraint": "Avant go-live",
+    "status": "open",
+    "relatedGoLiveCondition": "operations",
+    "sourceEvidence": [
+      "CIT-033",
+      "CIT-034",
+      "CIT-006"
+    ],
+    "relatedFactIds": [
+      "FACT-020"
+    ],
+    "recommendationOrCommitment": "documented_commitment"
+  },
+  {
+    "id": "ACT-004",
+    "title": "Traiter la ligne CR-04 de INV-003",
+    "description": "Obtenir la justification demandée par Finances; ne pas libérer une dépense CR-04 sans approbation.",
+    "owner": "Nicolas Perron / Amélie Fortin",
+    "ownerType": "confirmed",
+    "dueDate": null,
+    "dueDateStatus": "to_confirm",
+    "deadlineConstraint": "À confirmer",
+    "status": "open",
+    "relatedGoLiveCondition": null,
+    "sourceEvidence": [
+      "CIT-018",
+      "CIT-020"
+    ],
+    "relatedFactIds": [
+      "FACT-011"
+    ],
+    "recommendationOrCommitment": "documented_commitment"
+  },
+  {
+    "id": "ACT-005",
+    "title": "Demander facture corrigée ou crédit",
+    "description": "Isoler/contester les 18 000 $ non approuvés; faire valider le reliquat de 36 000 $. Le corpus ne prescrit pas encore le mécanisme comptable.",
+    "owner": "Amélie Fortin / Nicolas Perron",
+    "ownerType": "proposed_by_team",
+    "dueDate": null,
+    "dueDateStatus": "to_confirm",
+    "deadlineConstraint": "À confirmer",
+    "status": "recommended",
+    "relatedGoLiveCondition": null,
+    "sourceEvidence": [
+      "CIT-017",
+      "CIT-018",
+      "CIT-019"
+    ],
+    "relatedFactIds": [
+      "FACT-011"
+    ],
+    "recommendationOrCommitment": "team_recommendation"
+  },
+  {
+    "id": "ACT-006",
+    "title": "Corriger les plans et communications",
+    "description": "Remplacer le 15 octobre par le 22 octobre conditionnel dans les plans.",
+    "owner": "Nicolas Perron",
+    "ownerType": "proposed_by_team",
+    "dueDate": null,
+    "dueDateStatus": "to_confirm",
+    "deadlineConstraint": "À confirmer",
+    "status": "recommended",
+    "relatedGoLiveCondition": null,
+    "sourceEvidence": [
+      "CIT-004",
+      "CIT-035",
+      "CIT-036"
+    ],
+    "relatedFactIds": [
+      "FACT-002"
+    ],
+    "recommendationOrCommitment": "team_recommendation"
+  },
+  {
+    "id": "ACT-007",
+    "title": "Actualiser R-01 dans le registre",
+    "description": "Conserver l’historique du retard mais refléter la validation INT-101 du 17 septembre.",
+    "owner": "Marc Gervais",
+    "ownerType": "proposed_by_team",
+    "dueDate": null,
+    "dueDateStatus": "to_confirm",
+    "deadlineConstraint": "À confirmer",
+    "status": "recommended",
+    "relatedGoLiveCondition": null,
+    "sourceEvidence": [
+      "CIT-037",
+      "CIT-008"
+    ],
+    "relatedFactIds": [
+      "FACT-005"
+    ],
+    "recommendationOrCommitment": "team_recommendation"
+  }
+]
