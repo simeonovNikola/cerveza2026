@@ -5,7 +5,7 @@ import {DatabaseSync} from 'node:sqlite';
 import path from 'node:path';
 async function register(){
 const root=path.resolve('data/runtime');await mkdir(root,{recursive:true});const file=path.join(root,'unit-test.db');await unlink(file).catch(e=>{if(e.code!=='ENOENT')throw e;});
-const sqlite=new DatabaseSync(file);sqlite.exec(await readFile('prisma/migrations/202610030001_initial/migration.sql','utf8'));sqlite.close();process.env.NOVA_DATABASE_URL='file:'+file.replaceAll('\\','/');
+const sqlite=new DatabaseSync(file);sqlite.exec(await readFile('prisma/migrations/202610030001_initial/migration.sql','utf8'));sqlite.exec(await readFile('prisma/migrations/202610040001_auth/migration.sql','utf8'));sqlite.close();process.env.NOVA_DATABASE_URL='file:'+file.replaceAll('\\','/');
 const {db}=await import('../src/lib/db');
 const {getProject,getCanonicalBaseline}=await import('../src/lib/repositories/project');
 const {saveQuestion}=await import('../src/lib/repositories/questions');

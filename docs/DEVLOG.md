@@ -382,3 +382,123 @@
 
 ### Next recommended step
 - Rehearse the bilingual demo using a separate simulation database; future assistant remains roadmap-only.
+
+## 2026-10-04 02:02 — Audit and additive auth schema
+
+### What changed
+- Audited actual routes/docs; backed up runtime DB; added User/Role/Session without altering project tables. Seed admin from env without resetting existing users.
+
+### Files changed
+- docs/ITERATION_3_PLAN.md, prisma/, scripts/password.mjs, scripts/db-seed.mjs, .env.example
+
+### Schema changes
+- Additive auth tables only; canonical project records unchanged.
+
+### Auth changes
+- Server-side DB sessions and role enforcement; see AUTH.md.
+
+### UI changes
+- Compact dashboard and localized account/support flows.
+
+### i18n changes
+- Matching auth/support/dashboard namespaces in FR and EN.
+
+### Validation
+- Initial typecheck passed; 24 unit tests passed. Browser/build QA ongoing.
+
+### Known limitations
+- Local mock only; role editing deferred.
+
+### Next
+- Complete browser/security/responsive regression and final documentation.
+
+## 2026-10-04 02:02 — Authentication and admin access
+
+### What changed
+- Added salted scrypt, DB sessions, server guards including query aliases, same-origin mutations, local attempt limit, bilingual auth and read-only-role user management with lockout guards.
+
+### Files changed
+- src/lib/auth/, src/app/api/auth/, src/app/api/admin/, src/components/auth-page.tsx, users-page.tsx
+
+### Schema changes
+- Additive auth tables only; canonical project records unchanged.
+
+### Auth changes
+- Server-side DB sessions and role enforcement; see AUTH.md.
+
+### UI changes
+- Compact dashboard and localized account/support flows.
+
+### i18n changes
+- Matching auth/support/dashboard namespaces in FR and EN.
+
+### Validation
+- Initial typecheck passed; 24 unit tests passed. Browser/build QA ongoing.
+
+### Known limitations
+- Local mock only; role editing deferred.
+
+### Next
+- Complete browser/security/responsive regression and final documentation.
+
+## 2026-10-04 02:02 — Dashboard and mock support
+
+### What changed
+- Added sidebar, six DB-derived cards, timeline/documents, removed About and module locale controls, simplified admin table; reused inspected mascot and added separate navigation mock API/native dialog.
+
+### Files changed
+- src/components/, src/lib/support-assistant/, messages/, src/styles/, public/nova-support-mascot.png
+
+### Schema changes
+- Additive auth tables only; canonical project records unchanged.
+
+### Auth changes
+- Server-side DB sessions and role enforcement; see AUTH.md.
+
+### UI changes
+- Compact dashboard and localized account/support flows.
+
+### i18n changes
+- Matching auth/support/dashboard namespaces in FR and EN.
+
+### Validation
+- Initial typecheck passed; 24 unit tests passed. Browser/build QA ongoing.
+
+### Known limitations
+- Local mock only; role editing deferred.
+
+### Next
+- Complete browser/security/responsive regression and final documentation.
+
+## 2026-10-04 02:31 — Iteration 3 responsive, security and final QA
+
+### What changed
+- Completed accessible chat focus wrapping/restoration, evidence metadata disclosure, real header question submission, mobile auth and visual spacing fixes.
+- Verified production auth/role behavior and original project truth; finished current documentation and handoff.
+
+### Files changed
+- src/components/, src/lib/auth/, src/lib/support-assistant/, src/app/api/, scripts/, messages/, tests/, docs/, README.md, next-env.d.ts (generated production type references).
+
+### Schema changes
+- Additive 202610040001_auth only; original data/triggers/Q01–Q10/baseline unchanged. Pre-change DB backup retained under ignored data/backups.
+
+### Auth changes
+- Seeded admin@example.com with random credentials in ignored local .env. Same-origin validation uses actual Host and protocol. API audits attribute the admin ID. Expired sessions show localized login guidance. Default-only reset path guarded.
+
+### UI changes
+- Sidebar/grid responsive spacing, six compact factual cards, advanced evidence on demand, clean Question Bank; auth card padding and separate support prompt chips. Missing asset fallback tested.
+
+### i18n changes
+- Auth/support/dashboard dictionaries match; UTF-8 normalized, FR accents and EN punctuation reviewed. Global locale retained; module switches removed.
+
+### Validation
+- npm run lint/typecheck/build pass; npm test 25 passed; full npm run test:e2e 18 passed and final focused Iteration 3 run 5 passed.
+- Repeated db:setup/db:verify and corpus audit pass; all 64 sources byte-identical, official answers/baseline unchanged. Desktop/mobile auth/dashboard/chat/admin screenshots reviewed.
+- git diff --check clean; no factual-data/main.py/QUESTION_ANSWERS diff; secrets/DB/backups ignored. No commit/push.
+
+### Known limitations
+- Normal judge project access remains public. Roles read-only; password recovery/email verification/MFA/session cleanup/distributed rate limiter deferred. Support uses mock only. SQLite persistence and production HTTPS required.
+- Windows Prisma generation requires stopped servers to avoid DLL lock; native tooling required sandbox approvals.
+
+### Next
+- Iteration 4: credential recovery/rotation, email verification, expired-session cleanup, production rate limiting/HTTPS and backup readiness; optional audited role editing afterward.

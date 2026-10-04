@@ -12,10 +12,16 @@ State engine: createImpactEngine(canonicalBaseline) injects the immutable snapsh
 
 Persistence moved from browser localStorage to server SQLite. Every browser sees the local database journal. Export/import remains available; imports merge exact duplicate IDs and refuse conflicting content atomically. Existing browser journals are detected and offered for explicit import into SQLite; the original browser journal remains untouched. No original document or baseline write route exists.
 
-Search uses deterministic normalized token matching across DB records, both languages, typed filters and snippets. A native-dialog command palette supplies keyboard entry. Ask NOVA remains a separate local factual question matcher; future navigation AI is roadmap-only. No external AI/API credentials.
+Search uses deterministic normalized token matching across DB records, both languages, typed filters and snippets. A native-dialog command palette supplies keyboard entry. Ask NOVA remains a separate local factual question matcher; navigation support uses a separate mock provider. No external AI/API credentials.
 
-Admin is a narrow local demo CMS for custom questions, bilingual validation, evidence links, ordering/deactivation and audit. Official questions are fully protected. No enterprise authentication, cloud or distributed infrastructure.
+Admin is a narrow local demo CMS for custom questions, bilingual validation, evidence links, ordering/deactivation and audit. Official questions are fully protected. Local DB-backed auth now protects admin; no external auth/cloud/distributed infrastructure.
 
 Deployment: local Node server with writable persistent SQLite file and corpus folder. Initialize with npm ci and npm run db:setup. Tests use independent databases and port 3001; production app uses 3000. SQLite portability excludes ephemeral filesystem hosting unless persistence is separately configured. See DATABASE.md, I18N.md and HANDOFF.md.
 
 Search uses the same canonical event replay as Impact to display current fact/action states; official question/decision/history records retain explicit Baseline scope. Received event evidence/timeline records are indexed, and changed facts open their event proof rather than an old citation.
+
+
+## Iteration 3
+Additive User/Role/Session models; Node scrypt password helpers shared with seed; HMAC-digested opaque DB sessions and Next httpOnly cookies. Server catch-all route guards admin children and query aliases; API guards verify session, ADMIN and same-origin mutation. No edge Prisma dependency added to locale proxy. Public judge project flow retained. User management is separate from Person (project responsible people).
+
+Hub retains the existing engine/context/modals with a sidebar/grid shell and server-passed safe user DTO. Header question form submits to existing Ask NOVA; Ctrl/Cmd K retains interactive search. Native support dialog calls POST /api/support-chat and lib/support-assistant provider. Navigation-only deterministic replies with localized route CTAs; no factual generation or external provider. Auth details in AUTH.md; no canonical schema/payload modifications.

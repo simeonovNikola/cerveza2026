@@ -1,3 +1,35 @@
+# Iteration 3 final QA — 2026-10-04
+
+The following is current; the Iteration 2 report below is historical.
+
+| Check | Result |
+|---|---|
+| npm run lint | Pass, no errors/warnings |
+| npm run typecheck | Pass |
+| npm test | 25 passed; all 18 existing tests plus auth/session/seed/support coverage |
+| npm run build | Pass, production dynamic localized pages and protected APIs |
+| npm run test:e2e | All 18 passed; final focused Iteration 3 run: 5 passed |
+| npm run db:setup | Pass; additive migration and repeat admin seed preserve canonical data/users |
+| npm run db:verify | Pass; original entities, official answers/evidence relationships, baseline and foreign keys identical |
+| python scripts/validate_data.py | Pass; 64 original hashes, Q01–Q10, baseline, citations, graph, conditions and arithmetic |
+| Auth | FR/EN login/register succeed; invalid/nonexistent/disabled login and duplicate email rejected; public role USER, salted hash verified |
+| Sessions | httpOnly/Lax/production Secure cookie verified; opaque digest storage, expiry and logout invalidation; deactivation revokes sessions |
+| Admin security | Anonymous redirect for children/aliases; USER denied; ADMIN allowed; APIs enforce role, reject hostile Origin, omit passwordHash from user responses |
+| Admin features | User search/deactivation/self-lockout; question create/edit/deactivate and official write denial; table uses global locale |
+| Support | FR/EN intents/unknown fallback/localized existing-route CTAs; mascot loads and fallback tested; Tab containment and Escape verified |
+| Existing behavior | Search typeahead/filter/keyboard/scopes, Ask NOVA sourced/uncertain responses, Impact independent conditions/new facts/history/persistence/imports, evidence source-byte hashes and brief PDF preserved |
+| UI | About absent, six concise cards, role-aware sidebar, one global evidence locale switch, precise locator remains visible, source metadata disclosed on demand |
+| Responsive/visual | 390px mobile, 820px tablet and desktop; auth mobile no horizontal overflow; screenshots reviewed for auth/dashboard/chat/admin |
+| Git/data | No generated factual data, QUESTION_ANSWERS.md or main.py diff; no commit/push; .env/DB/backup/artifacts ignored |
+
+Browser screenshots under ignored artifacts/: iteration3-home-fr/en-desktop.png, iteration3-fr/en-mobile.png, iteration3-login-fr/en.png, iteration3-register-fr/en.png, iteration3-chat-fr/en.png, iteration3-question-bank.png. Source originals and old PDFs remain unchanged; brief export regression still runs.
+
+Issues found and fixed: Windows PowerShell new-file encoding and lost new punctuation; Next internal hostname versus actual Origin/Host validation; HTTP API test clients omitting Secure cookies; ambiguous sidebar/route-announcer test selectors; tablet sidebar overlap; card/auth padding; missing-image test intercepted wrong optimized URL; send disabling dropped focus (explicit return to input plus Tab wrapping). Windows compiler/test runner required sandbox escalation. Running Prisma generation while a server held its DLL caused EPERM; repeat setup with servers stopped passed. Stop servers before db:setup on Windows.
+
+Security/product limits: public judge-friendly project tools, local process limiter only, no credential recovery/email verification/MFA/role editing, manual expired-session cleanup, deterministic support only. See AUTH.md/ROADMAP.md. No fabricated project status or live unresolved-risk count: contradictions explicitly historical.
+
+---
+
 # Iteration 2 final QA — 2026-10-03
 
 Validated with Node 24.21, Next.js 16.3.8, React 19.3, Prisma 6.19, next-intl 4.14.9 and installed Chrome. Existing features and official factual content are retained.

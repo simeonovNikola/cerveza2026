@@ -1,6 +1,8 @@
+import './env.mjs';
 import {copyFile,mkdir,unlink} from 'node:fs/promises';
 import {resolve,sep} from 'node:path';
 import {spawnSync} from 'node:child_process';
+if(process.env.DATABASE_URL!=='file:../data/runtime/nova.db'||process.env.NOVA_DATABASE_URL)throw new Error('Reset supports only the default runtime database; refusing an overridden path');
 const root=resolve('data/runtime');const file=resolve(root,'nova.db');
 if(!file.startsWith(root+sep))throw new Error('Reset path outside runtime directory');
 await mkdir('data/backups',{recursive:true});

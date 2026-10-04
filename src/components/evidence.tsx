@@ -26,7 +26,7 @@ function Preview({doc,citation}: {doc:Document;citation?:Citation}) {
   </div>;
 }
 export function EvidenceView({sourceId,citationId,onEvidence}: {sourceId:string;citationId?:string;onEvidence:EvidenceHandler}) {
- const t=useTranslations('ui');const {documents,citations,baseline}=useProject();
+ const t=useTranslations('ui');const detail=useTranslations('dashboard');const {documents,citations,baseline}=useProject();
 
   const doc=documents.find(d=>d.id===sourceId);
   const citation=citations.find(c=>c.id===citationId);
@@ -35,13 +35,13 @@ export function EvidenceView({sourceId,citationId,onEvidence}: {sourceId:string;
   const facts=baseline.facts.filter(f=>f.sourceIds.includes(doc.id));
   const questions=baseline.questions.filter(q=>q.evidence.some(id=>related.includes(id)));
   return <><div className="source-header"><div><Badge state={doc.type.toUpperCase()}/><span className="mono">{doc.id}</span><h2>{doc.title}</h2><p>{doc.path}</p></div><a className="button secondary" href={`/api/sources/${doc.id}`} target="_blank" rel="noreferrer">{t('text118')}<ArrowUpRight size={15}/></a></div>
-    <div className="evidence-layout"><Preview doc={doc} citation={citation}/><aside className="source-relations"><span className="eyebrow">{t('text119')}</span><dl><dt>{t('text120')}</dt><dd>{doc.date??t('text121')}</dd><dt>{t('text122')}</dt><dd>{doc.author??t('text123')}</dd><dt>{t('text124')}</dt><dd>{t('text125')}</dd></dl>
+    <div className="evidence-layout"><Preview doc={doc} citation={citation}/><aside className="source-relations"><details><summary>{detail('detail')}</summary><span className="eyebrow">{t('text119')}</span><dl><dt>{t('text120')}</dt><dd>{doc.date??t('text121')}</dd><dt>{t('text122')}</dt><dd>{doc.author??t('text123')}</dd><dt>{t('text124')}</dt><dd>{t('text125')}</dd></dl>
     {(doc.embeddedCopies.length>0||doc.duplicateSourceIds.length>0)&&<div className="notice">{t('text126')}</div>}
     <h3><Link2 size={15}/>{t('text127')}{facts.length}{t('text128')}</h3>{facts.map(f=><div className="relation" key={f.id}><span className="mono">{f.id}</span><strong>{f.subject}</strong><p>{f.value}</p><Badge state={f.informationState}/></div>)}
     <h3>{t('text129')}</h3><p>{questions.map(q=>q.id).join(t('text060'))||t('text130')}</p>
     <h3>{t('text131')}</h3><EvidenceLinks ids={related} onEvidence={onEvidence}/>
     <details><summary>{t('text132')}</summary><code className="hash">{doc.sha256}</code></details>
-    </aside></div></>;
+    </details></aside></div></>;
 }
 export function EvidenceExplorer({onEvidence}: {onEvidence:EvidenceHandler}) {
  const t=useTranslations('ui');const {documents}=useProject();
@@ -56,12 +56,12 @@ export function EvidenceExplorer({onEvidence}: {onEvidence:EvidenceHandler}) {
   return <><SectionHeading eyebrow={t('text133')} title={t('text134')} description={t('text135')}/>
   <div className="explorer"><aside className="document-list"><label className="search-field"><Search size={16}/><input aria-label={t('text136')} placeholder={t('text137')} value={query} onChange={e=>setQuery(e.target.value)}/></label><select aria-label={t('text138')} value={category} onChange={e=>setCategory(e.target.value)}><option value="Toutes">{t('text139')}</option>{categories.map((c,i)=><option key={c} value={c}>{categoryLabels[i]}</option>)}</select><div className="document-items">{filtered.map(d=><button key={d.id} className={selected===d.id?'selected':''} onClick={()=>select(d.id)}><FileSearch size={16}/><span><small>{d.id} · {d.type.toUpperCase()}</small>{d.title}</span></button>)}{!filtered.length&&<p>{t('text140')}</p>}</div></aside><section className="card document-preview"><EvidenceView sourceId={selected} onEvidence={onEvidence}/></section></div></>;
 }
-export function EvidenceModal({citationId,onClose,onEvidence,events,view}: {view:string;citationId:string|null;onClose:()=>void;onEvidence:EvidenceHandler;events:ProjectEvent[]}) {
- const t=useTranslations('ui');const n=useTranslations('nav');const locale=useLocale();const router=useRouter();const pathname=usePathname();const params=useSearchParams();const {citations}=useProject();
+export function EvidenceModal({citationId,onClose,onEvidence,events}: {view:string;citationId:string|null;onClose:()=>void;onEvidence:EvidenceHandler;events:ProjectEvent[]}) {
+ const t=useTranslations('ui');const {citations}=useProject();
 
   const ref=useRef<HTMLDialogElement>(null);
   useEffect(()=>{if(citationId&&!ref.current?.open)ref.current?.showModal();if(!citationId&&ref.current?.open)ref.current?.close();},[citationId]);
   const c=citations.find(c=>c.id===citationId);
   const event=events.find(e=>e.id===citationId);
-  return <dialog ref={ref} className="evidence-dialog" aria-label={t('text141')} onCancel={onClose} onClose={onClose}><div className="dialog-toolbar"><span><FileSearch size={18}/>{t('text142')}</span><div className="language-switch" aria-label={n('language')}>{['fr','en'].map(lang=><button key={lang} aria-pressed={locale===lang} lang={lang} onClick={()=>{const query=new URLSearchParams(params.toString());if(view==='baseline')query.set('view','baseline');else query.delete('view');if(citationId)query.set('citation',citationId);router.push(pathname.replace(/^\/(fr|en)(?=\/|$)/,'/'+lang)+'?'+query.toString());}}>{lang.toUpperCase()}</button>)}</div><button autoFocus className="icon-button" aria-label={t('text143')} onClick={onClose}><X size={20}/></button></div>{c?<EvidenceView sourceId={c.sourceId} citationId={c.id} onEvidence={onEvidence}/>:event?<div className="journal-entry"><span className="mono">{event.id}</span><h2>{event.source}</h2><p>{t('text144')}{event.author}</p><p>{t('text145')}{event.occurredAt}{t('text146')}{event.receivedAt}</p><div className="notice">{t('text147')}</div><h3>{t('text148')}</h3><pre>{event.text}</pre><h3>{t('text149')}</h3>{event.candidates.map((candidate,i)=><div className="relation" key={i}><Badge state={candidate.state}/><p>{candidate.excerpt}</p><p><strong>{t('text150')}</strong> {candidate.value}</p><small>{candidate.factId} · {candidate.confirmed?t('text151'):t('text152')}</small></div>)}</div>:<p>{t('text153')}</p>}</dialog>;
+  return <dialog ref={ref} className="evidence-dialog" aria-label={t('text141')} onCancel={onClose} onClose={onClose}><div className="dialog-toolbar"><span><FileSearch size={18}/>{t('text142')}</span><button autoFocus className="icon-button" aria-label={t('text143')} onClick={onClose}><X size={20}/></button></div>{c?<EvidenceView sourceId={c.sourceId} citationId={c.id} onEvidence={onEvidence}/>:event?<div className="journal-entry"><span className="mono">{event.id}</span><h2>{event.source}</h2><p>{t('text144')}{event.author}</p><p>{t('text145')}{event.occurredAt}{t('text146')}{event.receivedAt}</p><div className="notice">{t('text147')}</div><h3>{t('text148')}</h3><pre>{event.text}</pre><h3>{t('text149')}</h3>{event.candidates.map((candidate,i)=><div className="relation" key={i}><Badge state={candidate.state}/><p>{candidate.excerpt}</p><p><strong>{t('text150')}</strong> {candidate.value}</p><small>{candidate.factId} · {candidate.confirmed?t('text151'):t('text152')}</small></div>)}</div>:<p>{t('text153')}</p>}</dialog>;
 }

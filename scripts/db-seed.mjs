@@ -1,9 +1,11 @@
+import './env.mjs';
 import {PrismaClient} from '@prisma/client';
 import {readFile} from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
+import {hashPassword} from './password.mjs';
 import {englishOverlay} from './english-content.mjs';
-export const db=new PrismaClient(process.env.NOVA_DATABASE_URL?{datasources:{db:{url:process.env.NOVA_DATABASE_URL}}}:undefined);
+export const db=new PrismaClient({datasources:{db:{url:process.env.NOVA_DATABASE_URL??process.env.DATABASE_URL}}});
 const read=async name=>JSON.parse(await readFile(`data/generated/${name}.json`,'utf8'));
 export async function seed(){
  const snapshotText=await readFile('data/generated/baseline.json','utf8');const snapshot=JSON.parse(snapshotText);
@@ -35,6 +37,13 @@ export async function seed(){
   for(const citationId of q.evidence)await db.questionEvidence.upsert({where:{questionId_citationId:{questionId:q.id,citationId}},create:{questionId:q.id,citationId},update:{}});
   for(const factId of q.relatedFactIds)await db.questionFact.upsert({where:{questionId_factId:{questionId:q.id,factId}},create:{questionId:q.id,factId},update:{}});
  }
+ if(process.env.ADMIN_EMAIL || process.env.ADMIN_PASSWORD){
+  const email=process.env.ADMIN_EMAIL?.trim().toLowerCase();const password=process.env.ADMIN_PASSWORD;
+  if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !password || password.length<10 || password==='change-me')throw new Error('Set valid ADMIN_EMAIL and ADMIN_PASSWORD (10+ characters, not placeholder)');
+  const existingAdmin=await db.user.findUnique({where:{email}});
+  if(existingAdmin && existingAdmin.role!=='ADMIN')throw new Error('Admin email belongs to a USER; refusing automatic promotion');
+  if(!existingAdmin)await db.user.create({data:{email,name:'NOVA Admin',passwordHash:await hashPassword(password),role:'ADMIN'}});
+ }else console.log('Admin not seeded: set ADMIN_EMAIL and ADMIN_PASSWORD.');
  console.log('Seed verified: canonical payloads, baseline, English overlays and evidence relations; existing custom content/events retained.');
 }
 if(process.argv[1]?.endsWith('db-seed.mjs'))try{await seed();}finally{await db.$disconnect();}

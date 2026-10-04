@@ -1,3 +1,4 @@
+import './env.mjs';
 import {PrismaClient} from '@prisma/client';
 import {readFile} from 'node:fs/promises';
 import assert from 'node:assert/strict';

@@ -1,6 +1,6 @@
 # SQLite application store
 
-NOVA 360 uses SQLite through Prisma 6.19. SQLite is a local file at `data/runtime/nova.db`; it requires no account, Docker, server or credentials. `NOVA_DATABASE_URL` optionally overrides the runtime client path, chiefly for isolated tests.
+NOVA 360 uses SQLite through Prisma 6.19. SQLite is a local file at `data/runtime/nova.db`; it requires no account, Docker, server or credentials. `DATABASE_URL` configures Prisma migrations and runtime; defaults to file:../data/runtime/nova.db in setup scripts. `NOVA_DATABASE_URL` overrides runtime/seed clients for isolated tests.
 
 ## Sources of truth
 
@@ -29,3 +29,7 @@ Foreign keys protect QuestionEvidence, QuestionFact and FactEvidence. SQLite tri
 This is a single-process local hackathon database. Deployments need writable persistent disk; ephemeral serverless filesystems require a different hosting arrangement. No external database was added.
 
 The db:migrate wrapper explicitly creates the generated runtime directory before applying Prisma migrations, including a fresh checkout with ignored runtime files absent. Final repeat seed/verification passed with the existing user DB; test writes are isolated in separate files.
+
+
+## Iteration 3 additive migration
+202610040001_auth adds User and Session only. Role is ADMIN/USER; email unique; password hashes and opaque session digests are stored separately. Project Person remains the factual team model. Existing canonical triggers and project data were preserved and verified. Backup: data/backups/nova-before-iteration3.db. Run npm run db:migrate (Prisma migrate deploy), then db:seed/db:verify or db:setup. Scripts load ignored .env without overriding process environment. User seed only inserts absent env-admin; preserves all existing users/sessions/passwords. Explicit db:reset clears auth tables too. See AUTH.md.

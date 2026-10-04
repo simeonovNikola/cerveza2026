@@ -1,5 +1,6 @@
 'use client';
 import type {DerivedFact} from '@/lib/impact';
+import {useSearchParams} from 'next/navigation';
 import {useTranslations} from 'next-intl';
 import {useProject} from '@/lib/project-context';
 import { useState } from 'react';
@@ -12,7 +13,7 @@ import { SectionHeading, type EvidenceHandler } from './primitives';
 export function AskPage({facts,onEvidence,onNavigate}: {facts:DerivedFact[];onEvidence:EvidenceHandler;onNavigate:(p:string)=>void}) {
  const t=useTranslations('ui');const {baseline,documents}=useProject();
 
-  const [query,setQuery]=useState('');const [submitted,setSubmitted]=useState('');
+  const params=useSearchParams();const [query,setQuery]=useState(params.get('q')??'');const [submitted,setSubmitted]=useState(params.get('q')??'');
   const questions=submitted?matchQuestions(submitted,baseline.questions):[];
   const tokens=normalize(submitted).split(/\W+/).filter(t=>t.length>3);
   const sources=submitted?documents.filter(d=>tokens.some(t=>normalize(d.title+' '+d.sections.map(s=>s.text).join(' ')).includes(t))).slice(0,8):[];

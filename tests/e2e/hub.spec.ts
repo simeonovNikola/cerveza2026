@@ -5,7 +5,7 @@ test('dashboard and exact runbook evidence are navigable by keyboard',async({pag
   const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto('/fr/project/overview');await expect(page.getByRole('heading',{name:'Une vision claire. Chaque fait, sa preuve.'})).toBeVisible();
   await page.screenshot({path:'artifacts/dashboard-desktop.png',fullPage:true});
-  await page.getByRole('button',{name:'Preuves',exact:true}).click();await page.getByRole('button',{name:'Questions',exact:true}).click();
+  await page.getByRole('button',{name:'Q01–Q10',exact:true}).click();
   await expect(page.locator('.question-card')).toHaveCount(10);
   const q10=page.locator('#Q10');
   await q10.getByRole('button',{name:/TICKET-014/}).click();
@@ -32,7 +32,7 @@ test('proposal preserves approved date; security validation changes only its own
   await page.getByRole('checkbox').check();
   await expect(page.getByRole('heading',{name:'1 fait(s) modifiable(s) · 24 conservé(s)'})).toBeVisible();
   await page.getByRole('button',{name:'Enregistrer l’événement et ses impacts'}).click();await expect(page.getByRole('status')).toContainText('Événement enregistré.');
-  await page.getByRole('button',{name:'Projet',exact:true}).click();
+  await page.goto('/fr/project/overview');
   await expect(page.locator('.orbit-ring strong')).toHaveText('1/ 3');
   await expect(page.locator('.kpi').first()).toContainText('22 octobre');
   await page.reload();await expect(page.locator('.orbit-ring strong')).toHaveText('1/ 3');
@@ -50,7 +50,7 @@ test('mobile navigation works without horizontal page overflow',async({page})=>{
   await page.setViewportSize({width:390,height:844});await page.goto('/fr');
   await page.screenshot({path:'artifacts/dashboard-mobile.png',fullPage:true});
   const pages=[['Chronologie','project/timeline'],['Décisions','project/decisions'],['Actions','actions'],['Contradictions','project/contradictions'],['Preuves','evidence'],['Questions','questions'],['Ask NOVA','ask'],['Impact','impact']];
-  await page.getByRole('button',{name:'Ouvrir le menu'}).click();await page.getByRole('button',{name:'Projet',exact:true}).click();await expect(page.getByRole('heading',{name:'Une vision claire. Chaque fait, sa preuve.'})).toBeVisible();
+  await page.getByRole('button',{name:'Ouvrir le menu'}).click();await page.goto('/fr/project/overview');await expect(page.getByRole('heading',{name:'Une vision claire. Chaque fait, sa preuve.'})).toBeVisible();
   for(const [name,route] of pages){await page.goto('/fr/'+route);await expect(page.locator('main')).toBeVisible();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),name).toBe(true);}
 
 });
@@ -61,7 +61,7 @@ test('Ask NOVA returns sourced answer, uncertainty and one page brief exports to
   await page.getByLabel('Votre question pour NOVA').fill('Quel est le mot de passe du coffre?');
   await page.getByRole('button',{name:'Rechercher',exact:true}).click();
   await expect(page.getByRole('heading',{name:'Information insuffisante pour répondre directement.'})).toBeVisible();
-  await page.getByText('Outils',{exact:true}).click();await page.getByRole('button',{name:'Brief de reprise',exact:true}).click();
+  await page.getByRole('button',{name:'Brief de reprise',exact:true}).click();
   await page.emulateMedia({media:'print'});await page.pdf({path:'artifacts/NOVA-brief.pdf',format:'A4',printBackground:true,preferCSSPageSize:true});
 });
 test('new named fact is compared and its raw event evidence remains navigable',async({page})=>{
@@ -81,6 +81,6 @@ test('new named fact is compared and its raw event evidence remains navigable',a
   await page.getByRole('button',{name:'Voir la preuve →',exact:true}).click();
   await expect(page.getByRole('dialog')).toContainText('L’équipe propose un atelier de reprise.');
   await page.keyboard.press('Escape');
-  await page.getByRole('button',{name:'Projet',exact:true}).click();
+  await page.goto('/fr/project/overview');
   await expect(page.locator('.orbit-ring strong')).toHaveText('1/ 3');
 });

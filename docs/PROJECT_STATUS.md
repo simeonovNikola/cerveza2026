@@ -1,28 +1,24 @@
 # NOVA 360 — Project status
 
-Goal: bilingual, trustworthy operational memory with precise evidence and immutable September 30, 2026, 09:00 Montréal baseline.
+Current phase: Iteration 3 complete — 2026-10-04.
 
-Current phase: Iteration 2 complete — final QA passed.
+Preserved: SQLite/Prisma, FR/EN, official Q01–Q10, citations/original sources, sealed September 30 09:00 Montréal baseline, Impact, Ask NOVA, interactive search, custom-question controls and printable brief. No reviewed payload or official answer changed.
 
 Completed:
-- [x] Audit code/docs; ITERATION_2_PLAN and migration risks recorded.
-- [x] SQLite/Prisma schema, deterministic seed, repeat seed/equivalence and protected canonical records.
-- [x] DB runtime repositories and shared append-only Impact journal.
-- [x] next-intl FR/EN routes, dictionaries, reviewed derived English content and locale switch.
-- [x] Official site computed-style study, tokens, task-oriented homepage and grouped navigation.
-- [x] All-entity interactive search with keyboard palette/filters/snippets.
-- [x] Bilingual custom-question CRUD/deactivation/order/evidence and audit trail; official content protected.
-- [x] 18 unit tests, 13 browser tests, lint, strict types and production build passed.
-- [x] Source/DB/baseline equivalence, bilingual one-page briefs and final handoff verified.
+- Audited actual code/docs and recorded ITERATION_3_PLAN.md before changes.
+- Additive User/Role/Session migration with stopped-runtime backup; deterministic seed preserves users and project data, creates env-admin once.
+- Bilingual register/login/logout; salted scrypt hashes; opaque HMAC-digested seven-day sessions; httpOnly/Lax/production-Secure cookies, same-origin mutation protection and local attempt limiter.
+- Server admin child/query-alias guards and independent API role checks. Role-aware navigation and searchable user activation management, self/last-admin lockout protection, audit attribution. Roles read-only.
+- Simplified sidebar/blue header/question field/six-card dashboard/timeline/documents; removed About and duplicate evidence locale controls. Clean global-language admin table, bilingual forms, additional content spacing and evidence detail disclosure.
+- Mock bilingual navigation support API/provider, bottom-right mascot dialog, keyboard wrapping/focus restoration/Escape, responsive layout and missing-image fallback.
+- Updated auth/admin/database/architecture/i18n/UI/roadmap/handoff/devlog/QA documentation.
 
-In progress: none.
+Validation: lint, strict typecheck, 25 unit tests, production build, all 18 browser tests and final focused 5 browser checks pass. Repeat db:setup/db:verify and 64-source/baseline/Q01–Q10 corpus validation pass. Visually reviewed desktop/mobile FR/EN dashboard, auth pages, support and admin artifacts. Tests use separate SQLite databases.
 
-Next: rehearse docs/DEMO.md, back up the DB before simulations, and use ROADMAP.md for future work. Commit/push only when explicitly requested.
+Run: npm ci; configure ignored .env from .env.example; npm run db:setup; npm run dev. This workspace already contains generated ignored credentials for admin@example.com in .env. Never print/commit its password or SESSION_SECRET. Production: npm run build; npm run start. See AUTH.md/HANDOFF.md.
 
-Blockers: none. Native Node/Chrome/compiler access may require sandbox execution permission in this environment.
+In progress/blockers: none. No commit/push/deployment. Git contains the intended modified/new Iteration 3 files; original user mascot preserved. next-env.d.ts reflects Next's generated production type paths.
 
-Run: npm ci; npm run db:setup; npm run dev; open http://127.0.0.1:3000/fr or /en. Production: npm run build; npm run start.
+Known limits: normal project tools retain public judge access; only admin is gated. Roles read-only; no password reset/email verification/MFA/distributed limiter; expired rows need future cleanup. Support is deterministic navigation help, with no external AI. SQLite needs persistent disk and production HTTPS/proxy configuration. Existing project uncertainties remain in KNOWN_UNCERTAINTIES.md.
 
-Last major update: 2026-10-03 — complete database/bilingual UX iteration; QA_REPORT.md records final checks.
-
-Known issues: local demo admin has no authentication; keyword search and Impact parsing remain conservative, no external AI; event text keeps input language; deployment requires writable SQLite persistence. Project uncertainties remain in KNOWN_UNCERTAINTIES.md. No factual correction introduced; all originals and official answers preserved.
+Next iteration 4: authentication operations (recovery/rotation, email verification, session cleanup, production rate limiting and HTTPS/backup readiness), then optional audited role management. Real AI remains a later provider swap with route/evidence boundaries.

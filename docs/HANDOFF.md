@@ -1,41 +1,27 @@
-# Team handoff
+# NOVA 360 handoff — Iteration 3
 
-## Current architecture
+The existing Next/Prisma/next-intl app was extended. Q01–Q10, source originals, baseline protections, citations, search, Ask NOVA, Impact and printable brief remain intact.
 
-Existing Next.js/React components, Prisma SQLite repositories, next-intl /fr and /en routes, a grouped task navigation, interactive search and bilingual custom-question admin. Verified evidence, Q01–Q10 and baseline are unchanged. See ITERATION_2_PLAN.md for audit and risks.
+## Run
 
-## Install and run
+Node 24 recommended. npm ci; configure ignored .env using .env.example; npm run db:setup; npm run dev. Open http://127.0.0.1:3000/fr or /en. Production: npm run build then npm run start. Set DATABASE_URL, ADMIN_EMAIL, ADMIN_PASSWORD and SESSION_SECRET. This workspace already has ignored random local credentials in .env, admin email admin@example.com; read its password locally. Fresh checkout users choose their own credentials.
 
-Node 24 recommended (used for all tests; test fixtures use node:sqlite). npm ci, then npm run db:setup, then npm run dev. Open http://127.0.0.1:3000/fr or /en. Stable demo: npm run build, npm run start. No credentials/account/Docker required. Keep the original corpus alongside the app for original previews.
+## Database and admin
 
-## Database
+Stop server before migrations/backup; copy data/runtime/nova.db (plus any journal files if using a live backup; prefer stopped DB). This iteration backed it up at data/backups/nova-before-iteration3.db. db:setup generates Prisma, deploys additive migrations, seeds, verifies. Seeding preserves project records, custom questions, events and users. Admin inserted only if missing, hashed from env. Existing admin credentials are preserved. db:reset is explicitly destructive: backs up DB and recreates it, clearing users/sessions/custom questions/events; do not use for normal setup.
 
-Commands: db:generate, db:migrate, db:seed, db:verify; db:setup combines them. Canonical runtime file: data/runtime/nova.db, ignored by Git. Stop the app before db:reset: it backs up the generated DB under data/backups, then reconstructs the verified initial state, clearing runtime custom questions/events. Copy a stopped DB plus corpus to move the demo. Do not seed over mismatched original records: the import aborts deliberately.
+Login/register pages exist in both locales. Registration creates USER and signs in. Server sessions expire after seven days; logout revokes DB token. ADMIN gets Question Bank and Users navigation. USER gets normal project tools and access denied on admin routes. All admin APIs separately enforce ADMIN; no client-only protection. Users page /fr/admin/users or /en/admin/users searches name/email, shows role/active/created, activates/deactivates safely. Roles read-only; no deletion. See AUTH.md and ADMIN.md.
 
-## Localization
+## UI and support assistant
 
-messages/fr.json and en.json must have identical keys. Add both dictionary entries for every UI string. Existing UI catalog is ui.textNNN; new modules use semantic namespaces. Derived English narratives seed from scripts/english-content.mjs; there is one fact/question identity and evidence set. Source quotations and locators stay original; English summaries are labelled translations. Switch preserves route/query/hash. See I18N.md.
+Sidebar, strong blue bar, one natural-language header field routing to Ask NOVA (q parameter), Ctrl/Cmd K interactive search, six concise fact-derived cards, timeline and documents. About removed. Only global module locale switch retained; bilingual editor fields remain. Advanced existing screens remain a click deeper.
 
-## Admin and search
+POST /api/support-chat accepts {message,locale}, bounded to 1000 characters, returning reply and suggestedActions. lib/support-assistant/types.ts defines provider contract; mock.ts recognizes bilingual navigation/workflow/auth intents; index.ts selects mock. No paid/external AI. Chat is UI help, separate from factual Ask NOVA. Native dialog gives keyboard focus trapping/Escape and bottom-right responsive positioning. Messages stay client-local and are not persisted. Mascot is public/nova-support-mascot.png, copied unchanged from the inspected existing public/nova-support-mascot.png.png; fallback star if loading fails. No external image URL. No new generation prompt/tool was used.
 
-/fr/admin or /en/admin under Tools: create/edit/reorder/deactivate bilingual custom questions, link citations and tags. Q01–Q10, evidence and baseline are read-only in API and DB. Every custom write has an audit record. The CMS has no authentication and is intended for localhost. Details: ADMIN.md.
+Future AI: implement another provider behind this contract, make orchestration async if needed, preserve safe existing-route allowlist and navigation-only boundary, add privacy/rate-limit/provider tests. Do not let support overwrite factual answers or evidence. Current semantic search/synonyms, role editing, password recovery/email verification and public deployment remain future work; see ROADMAP.md.
 
-Search is primary navigation and Ctrl/Cmd K palette: typeahead, categories/status, highlighted snippets, arrows/Enter/Escape. Both-language narratives match shared entities. Original source text may remain French. Details: SEARCH.md.
+## Validation and paths
 
-## Existing features retained
+npm run lint; npm run typecheck; npm test; npm run build; npm run test:e2e; npm run db:verify; python scripts/validate_data.py. E2E uses isolated e2e.db and test-only credentials/secret, Chrome, port 3001. Unit DB/auth tests use separate unit-test.db/auth-test.db. Stop running servers before Prisma generation on Windows to avoid a locked native DLL. Managed Windows sandbox may require permission for native compiler/Chrome/test runner.
 
-Overview, precise evidence and all 64 originals, timeline/history, Decision DNA, commitments/recommendations, six contradictions, Q01–Q10, Ask NOVA, Impact candidate review/new named facts/baseline comparison/journal import-export and A4 brief. Events now persist in SQLite across browser sessions. Candidates still require explicit human confirmation and declared authority; new delivery cannot close a condition.
-
-## Test
-
-npm run lint; npm run typecheck; npm test; npm run db:verify; python scripts/validate_data.py; npm run build; npm run test:e2e. Chrome required for browser tests. E2E creates data/runtime/e2e.db and uses port 3001; unit DB tests use unit-test.db. Synthetic events never enter nova.db. Native compiler/test runners may require execution permission in this managed sandbox.
-
-## Important paths and safe next work
-
-src/lib/repositories: runtime DB access. src/lib/impact.ts: canonical semantics. src/lib/project-context.tsx: localized presentation adapter. prisma/: schema/migrations/protection. src/styles/: researched tokens and responsive design. data/generated/: reviewed seed fixtures only. docs/QUESTION_ANSWERS.md and baseline.sha256: factual reference. scripts/: ingestion/import/verification.
-
-Safe next tasks: richer query synonyms, event-journal search, audit-history display, scoped team-recommendation editing. Future navigation assistant remains separate from Ask NOVA, with no external API implemented. See ROADMAP.md. Broader admin/auth/cloud/file ingestion remain out of scope. Existing browser localStorage is detected; use the explicit import banner or journal export/import.
-
-Final regression and visual checks are recorded in PROJECT_STATUS.md / QA_REPORT.md. Never modify the original corpus, count copies as corroboration, rewrite Git history, automatically commit/push or silently revise official answers.
-
-Final QA: 18 unit tests and 13 browser tests pass, plus lint/typecheck/build, db:verify and the corpus audit. Bilingual one-page baseline exports: NOVA_BRIEF.pdf / NOVA_BRIEF_EN.pdf. QA_REPORT.md records exact checks; GIT_STATUS.txt records uncommitted work.
+src/lib/repositories holds project truth; src/lib/auth guards sessions; prisma migrations preserve canonical triggers. messages/fr.json and en.json must have matching keys and UTF-8 encoding. Evidence original language/locators remain unchanged. docs/QA_REPORT.md and PROJECT_STATUS.md record final results. Do not commit/push unless requested.

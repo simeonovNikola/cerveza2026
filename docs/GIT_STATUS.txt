@@ -1,22 +1,53 @@
-2026-10-03 — final uncommitted workspace status
-?? .env.example
-?? .gitignore
-?? README.md
-?? data/
-?? docs/
-?? eslint.config.mjs
-?? loto-quebec-nova-participants/
-?? messages/
-?? next-env.d.ts
-?? next.config.ts
-?? package-lock.json
-?? package.json
-?? playwright.config.ts
-?? prisma/
-?? requirements.txt
-?? scripts/
-?? src/
-?? tests/
-?? tsconfig.json
-
-Iteration 2 changed: src/, prisma/, messages/, scripts/, tests/, docs/, package.json/package-lock.json, Next/Playwright configuration and ignore/setup files. The pre-existing application and challenge package were already untracked; this status does not imply original evidence was modified. No commit/push performed.
+﻿ M .env.example
+ M README.md
+ M docs/ADMIN.md
+ M docs/ARCHITECTURE.md
+ M docs/DATABASE.md
+ M docs/DEVLOG.md
+ M docs/HANDOFF.md
+ M docs/I18N.md
+ M docs/PROJECT_STATUS.md
+ M docs/QA_REPORT.md
+ M docs/ROADMAP.md
+ M docs/UI_PLAN.md
+ M messages/en.json
+ M messages/fr.json
+ M next-env.d.ts
+ M prisma/schema.prisma
+ M scripts/db-migrate.mjs
+ M scripts/db-reset.mjs
+ M scripts/db-seed.mjs
+ M scripts/db-verify.mjs
+ M scripts/e2e-server.mjs
+ M src/app/[locale]/[[...route]]/page.tsx
+ M src/app/api/admin/questions/[id]/route.ts
+ M src/app/api/admin/questions/route.ts
+ M src/components/admin.tsx
+ M src/components/ask-page.tsx
+ M src/components/evidence.tsx
+ M src/components/home.tsx
+ M src/components/hub.tsx
+ M src/lib/db.ts
+ M src/lib/repositories/questions.ts
+ M src/styles/enterprise.css
+ M tests/database.test.ts
+ M tests/e2e/hub.spec.ts
+ M tests/e2e/iteration2.spec.ts
+?? docs/AUTH.md
+?? docs/ITERATION_3_PLAN.md
+?? prisma/migrations/202610040001_auth/
+?? public/
+?? scripts/env.mjs
+?? scripts/password.d.mts
+?? scripts/password.mjs
+?? src/app/api/admin/users/
+?? src/app/api/auth/
+?? src/app/api/support-chat/
+?? src/components/auth-page.tsx
+?? src/components/support-chat.tsx
+?? src/components/users-page.tsx
+?? src/lib/auth/
+?? src/lib/support-assistant/
+?? tests/auth.test.ts
+?? tests/e2e/iteration3.spec.ts
+?? tests/support.test.ts

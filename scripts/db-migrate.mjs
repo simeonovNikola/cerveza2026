@@ -1,3 +1,4 @@
+import './env.mjs';
 import {mkdir} from 'node:fs/promises';
 import {spawnSync} from 'node:child_process';
 await mkdir('data/runtime',{recursive:true});
