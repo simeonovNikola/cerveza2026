@@ -12,7 +12,7 @@ GEMINI_MODEL=gemini-3.5-flash-lite
 GEMINI_SUPPORT_ENABLED=true
 ```
 
-Put the real key after `GEMINI_API_KEY=` locally, never in Git, chat, client code or a `NEXT_PUBLIC_` variable. Restart the Node server after environment changes. Gemini is enabled by default when a key exists; set `GEMINI_SUPPORT_ENABLED=false` to force local assistance. Missing/blank keys use local assistance. `GOOGLE_API_KEY` is also accepted if `GEMINI_API_KEY` is unset/blank; the latter takes priority. An invalid key also falls back when Google rejects it. Old OPENAI_* settings no longer select the provider. The application does not validate keys by making a startup request.
+Put the real key after `GEMINI_API_KEY=` locally, never in Git, chat, client code or a `NEXT_PUBLIC_` variable. Restart the Node server after environment changes. The flag is trimmed and case-normalized: true enables, false disables; blank/unset retains enabled-by-default behavior, and unrecognized values disable. Set `GEMINI_SUPPORT_ENABLED=false` to force local assistance. Missing/blank keys use local assistance. `GOOGLE_API_KEY` is also accepted if `GEMINI_API_KEY` is unset/blank; the latter takes priority. An invalid key also falls back when Google rejects it. Old OPENAI_* settings no longer select the provider. The application does not validate keys by making a startup request.
 
 `GEMINI_MODEL` is read in one server-only client module; an unset/blank value falls back to `gemini-3.5-flash-lite`. Change the variable to another Gemini model supporting generateContent structured JSON outputs, then restart. No model-specific thinking setting is forced. The current SDK is Google’s official `@google/genai` 2.27.0, with `server-only` guards; the OpenAI dependency was removed. No external authentication provider is involved.
 
@@ -31,6 +31,8 @@ Files under `src/lib/support-ai/`:
 | index.ts | Server-only environment/provider selection |
 | client.ts | Single lazy SDK client; Gemini generateContent call and JSON schema |
 | types.ts, schema.ts | Request/context/response contracts |
+| config.ts | Pure flag/key-presence/model metadata resolver |
+| diagnostics.ts | Static safe provider errors and server log schema |
 | routes.ts | Bilingual product knowledge and localized route allowlist |
 | context.ts | Intent classification, current page and relevant role/page/feature context |
 | retrieval.ts | Read-only, explicit DB projections for official questions, linked facts and citations |
@@ -67,13 +69,13 @@ The key is server-only and never part of context/response/log metadata. Secret r
 
 There are no model tools, shell calls, arbitrary URL fetches, role changes, user actions or project writes. Database protections and admin checks remain unchanged. Same-origin POST plus existing SameSite cookies prevent cross-origin credentialed cost requests; no browser API key is used. Public judge access remains available.
 
-Logs contain only operational event/request ID, duration, HTTP status, selected model when used, classified intent and fallback flag. No prompt, message, full payload, key, password or session is logged. All responses have Cache-Control: no-store.
+Logs contain only safe operational metadata: support_config records configured provider/enabled/hasApiKey/model on first use or configuration changes; support_chat records request ID, duration, HTTP status, intent, selected provider, enabled/hasApiKey, resolved model, providerAttempted, fallback and fallbackReason. Provider failures add providerStatus/errorType/static errorMessage. SDK messages, stacks, payloads and credentials are never logged. Model remains resolved on fallback, so model:null is no longer used as an attempt signal. All responses have Cache-Control: no-store.
 
 ## Validation and live demo check
 
 Unit tests inject mock providers and replace the official SDK fetch transport; automated tests never call Gemini. Browser harness explicitly sets the flag false and clears the key before starting the production test server. Tests cover FR/EN, auth-derived roles versus forged fields, safe routes/sources, current page/view/history, fallback modes, timeout, injection, limits, loading/retry and existing data/UI regressions.
 
-Live verification remains pending because neither GEMINI_API_KEY nor GOOGLE_API_KEY is configured locally. The mocked SDK covers both aliases, default model, native user/model history, JSON schema, no key in body/URL, one-attempt provider error, safety block, incomplete output and abort. After adding a key and the true flag, restart and check:
+Live diagnostic on 2026-10-04: configuration resolved enabled=true, hasApiKey=true and model=gemini-3.5-flash. Exactly one controlled server-side request was attempted; Gemini returned HTTP 401 ApiError (credentials rejected). The original model:null/fallback log hid provider failures, not just selection bypass. Successful authenticated live output remains pending; verify/correct the credential in Google AI Studio, then restart. No key or raw SDK message was printed. The mocked SDK covers both aliases, default model, native user/model history, JSON schema, no key in body/URL, one-attempt provider error, safety block, incomplete output and abort. After adding a key and the true flag, restart and check:
 
 1. FR guest: “Où sont les preuves?”; EN guest: “How does Impact Mode work?”. Expect localized known-route CTAs and no local-mode indicator on successful Gemini replies.
 2. USER: “What can I do as a user?”; ADMIN: “Where is user management?”. Only ADMIN receives administration links.
@@ -88,3 +90,19 @@ Server context is in Gemini systemInstruction after the unchanged grounding/inje
 ## Next iteration
 
 Run the credentialed live bilingual grounding evaluation, improve follow-up/synonym retrieval and inspect quota/fallback operational metadata. For public deployment, add trusted proxy configuration, a shared limiter, operational auth recovery/rotation/session cleanup, HTTPS and persistent SQLite backups. A new provider/model must keep the same role, grounding, route/source validation and read-only boundaries. See ROADMAP.md.
+
+## Selection tracing and manual diagnostic
+
+Next.js loads the root environment at server startup; the support code uses process.env and does not read .env on every chat request. No .env.local/.env.development override was present during the investigation. Literal GEMINI_SUPPORT_ENABLED=true plus either nonempty accepted key selects Gemini; OPENAI_* values do not gate selection (an old key is retained only in the secret-scrub list). GEMINI_MODEL is trimmed and passed to the SDK, with the documented Flash-Lite fallback. The SDK client is recreated if its credential changes in process; restart npm run dev after editing .env to reload the environment and compiled client/server contract.
+
+Private fallback reasons: disabled, missing_key, provider_error, timeout, context_error, invalid_output, blocked_request. The public response exposes only fallback: true/false alongside existing mode/answer/actions/sources; private errors/reasons stay in server logs. The local assistance label is rendered only for fallback=true.
+
+A success log has provider=gemini, providerAttempted=true, enabled=true, hasApiKey=true, model=<resolved model>, fallback=false, fallbackReason=null. A credential failure retains those selection/attempt fields, with fallback=true, fallbackReason=provider_error, providerStatus=401, errorType=ApiError and static message “Gemini rejected the API credentials.” The endpoint can still return HTTP 200 for a valid local fallback; this is independent of the provider HTTP status.
+
+Explicit manual check (makes at most one live request, never part of automated tests), from the repository root:
+
+```powershell
+node --env-file=.env --conditions=react-server --import tsx scripts/support-check.ts
+```
+
+It prints only safe configuration/result metadata, sends a static navigation help question as GUEST, uses no project mutation and exits nonzero on fallback. Automated SDK/provider tests replace HTTP and cover model propagation, key aliases, OpenAI independence, changed credentials, private reason/status logs and public fallback flags. See Google’s [API-key setup](https://ai.google.dev/gemini-api/docs/api-key) to verify resource access and key configuration. The app cannot bypass a provider authentication rejection.

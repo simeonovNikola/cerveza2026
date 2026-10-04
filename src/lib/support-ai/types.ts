@@ -8,7 +8,9 @@ export type SupportRequest={message:string;locale:Locale;currentPath:string;view
 export type ProjectSummary={id:string;kind:string;scope:'baseline'|'current';title:string;summary:string;state?:string;sourceIds:string[]};
 export type EvidenceReference={id:string;label:string;routeKey:string;citationId?:string;anchor?:string};
 export type SupportContext={appContext:{name:string;purpose:string};locale:Locale;currentRoute:string;view:'baseline'|'current';intent:Intent;roleContext:{role:SupportRole;permissions:string[]};pageContext:{key:string;title:string;description:string}|null;relevantRoutes:{key:string;title:string;description:string}[];featureContext:string[];relevantProjectFacts:ProjectSummary[];sources:EvidenceReference[]};
-export type SupportResponse={reply:string;intent:Intent;mode:'gemini'|'local';suggestedActions:SupportAction[];sources:SupportAction[]};
+export type SupportResponse={reply:string;intent:Intent;mode:'gemini'|'local';fallback:boolean;suggestedActions:SupportAction[];sources:SupportAction[]};
+export type FallbackReason='disabled'|'missing_key'|'provider_error'|'timeout'|'context_error'|'invalid_output'|'blocked_request';
+export type SupportDiagnostics={provider:'gemini'|'local';enabled:boolean;hasApiKey:boolean;model:string;providerAttempted:boolean;fallback:boolean;fallbackReason:FallbackReason|null;providerStatus?:number|null;errorType?:string;errorMessage?:string};
 export type ProjectRetrieval={facts:ProjectSummary[];sources:EvidenceReference[]};
 export type ProjectReader=(request:SupportRequest)=>Promise<ProjectRetrieval>;
 export type ModelResult={reply:string;intent:Intent;routeKeys:string[];sourceIds:string[]};

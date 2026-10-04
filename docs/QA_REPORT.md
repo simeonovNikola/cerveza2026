@@ -1,3 +1,26 @@
+# Gemini live tracing fix — final QA 2026-10-04
+
+Current result: provider selection works. Exactly one authorized live diagnostic with root .env made a Gemini request and received HTTP 401 ApiError. Config resolved enabled=true, hasApiKey=true and model=gemini-3.5-flash. No key/raw error payload was logged. The prior model:null/fallback=true log masked all provider failures and was not evidence of a skipped call.
+
+| Check | Result |
+|---|---|
+| lint / typecheck / production build | Pass |
+| npm test | All 42 pass; provider transport mocked, never real API |
+| npm run test:e2e | All 22 pass; key aliases cleared and Gemini disabled in isolated harness |
+| Config | true/false parsing/whitespace/case, aliases, default/explicit model, OPENAI independence tested |
+| Trace | Selection bypass vs attempt/success/failure/timeout/context/guard/refusal reasons distinguished |
+| Credentials | SDK client refreshes when in-process key changes; actual key never in safe metadata |
+| Errors | Status/type/static message only; raw message/stack/payload excluded, HTTP 401 reproduced once |
+| UI | Explicit public fallback boolean controls local assistance label; simulated Gemini success has no indicator |
+| Preserved | No Q01–Q10/fact/baseline/evidence/corpus/auth/Impact/schema diff; original regressions pass |
+| Live success | Pending accepted Gemini credentials/resource access; current local key rejected by provider |
+
+Changed files: src/lib/support-ai/config.ts, diagnostics.ts, client.ts, index.ts, service.ts, types.ts; src/app/api/support-chat/route.ts; src/components/support-chat.tsx; scripts/support-check.ts; tests/support-ai.test.ts, tests/fixtures/support-sdk.ts, tests/e2e/iteration4.spec.ts; docs/AI_SUPPORT.md, ARCHITECTURE.md, HANDOFF.md, PROJECT_STATUS.md, DEVLOG.md, QA_REPORT.md. next-env.d.ts contains normal build-generated production type references. No commit/push; whitespace check clean.
+
+Restart npm run dev after environment changes; validate the key/resource in Google AI Studio before another explicit manual live check. scripts/support-check.ts is never run by automated tests. Exact log fields/reasons and command are documented in AI_SUPPORT.md. Historical reports follow.
+
+---
+
 # Iteration 4 Gemini correction — final QA 2026-10-04
 
 Current provider is Google Gemini, following the user’s resource correction. Earlier provider reports below are historical.

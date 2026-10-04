@@ -2,6 +2,27 @@ import {test,expect} from '@playwright/test';
 const origin='http://127.0.0.1:3001';
 const data=(message:string,locale='en',currentPath='/en')=>({message,locale,currentPath});
 
+test('documents library and evidence explorer have distinct localized routes',async({page})=>{
+ for(const locale of ['en','fr']){
+  await page.goto(`/${locale}/documents?view=baseline`);
+  await expect(page.getByRole('heading',{name:locale==='en'?'Documents and sources':'Documents et sources',exact:true})).toBeVisible();
+  await expect(page.locator('.dashboard-sidebar button.active')).toHaveCount(1);
+  const cards=page.locator('main .dashboard-grid article');await expect(cards).toHaveCount(64);
+  const source=await cards.first().locator('small').innerText();
+  await page.locator('main input').fill(source.split(' · ')[0]);await expect(cards).toHaveCount(1);
+  await cards.first().getByRole('link',{name:locale==='en'?'View evidence':'Voir les preuves'}).click();
+  await expect(page).toHaveURL(new RegExp(`/${locale}/evidence\\?source=.*view=baseline`));
+  await expect(page.locator('.explorer')).toBeVisible();await expect(page.locator('.dashboard-sidebar button.active')).toHaveCount(1);
+ }
+});
+
+test('support panel closes outside while clicks inside keep it open',async({page})=>{
+ await page.goto('/en');const launch=page.getByRole('button',{name:'AI Support',exact:true});const panel=page.getByRole('dialog',{name:'AI Support'});
+ await launch.click();await panel.getByRole('textbox').click();await expect(panel).toBeVisible();
+ await page.mouse.click(10,10);await expect(panel).not.toBeVisible();
+ await page.setViewportSize({width:390,height:844});await launch.click();await expect(panel).toBeVisible();await page.mouse.click(2,2);await expect(panel).not.toBeVisible();
+});
+
 test('support is page-aware, bilingual and local without configuration; secrets are refused',async({page})=>{
  await page.goto('/fr/evidence');await page.getByRole('button',{name:'Support IA',exact:true}).click();const fr=page.getByRole('dialog',{name:'Support IA'});
  await expect(fr).toContainText('Bonjour! Je suis NOVA Support');await fr.getByRole('button',{name:'Où voir les preuves?',exact:true}).click();await expect(fr.getByRole('log')).toContainText('Vous êtes déjà sur Preuves traçables');await expect(fr.getByRole('log')).toContainText('Mode assistance locale');await page.keyboard.press('Escape');
@@ -35,8 +56,8 @@ test('panel sends bounded history/page/view and handles loading, retry and safe 
   calls++;const body=route.request().postDataJSON();expect(body.currentPath).toBe('/en/evidence');expect(body.locale).toBe('en');expect(body.view).toBe('baseline');expect(body).not.toHaveProperty('role');expect(body.history.length).toBeLessThanOrEqual(12);
   if(calls===1)return route.fulfill({status:503,contentType:'application/json',body:'{}'});
   await new Promise(resolve=>setTimeout(resolve,250));
-  return route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({reply:'Review the provided evidence.',intent:'NAVIGATION',mode:'gemini',suggestedActions:[{label:'Open Traceable Evidence',href:'/en/evidence'}],sources:[{label:'EMAIL-004 · source locator',href:'/en/evidence?citation=CIT-004'}]})});
+  return route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({reply:'Review the provided evidence.',intent:'NAVIGATION',mode:'gemini',fallback:false,suggestedActions:[{label:'Open Traceable Evidence',href:'/en/evidence'}],sources:[{label:'EMAIL-004 · source locator',href:'/en/evidence?citation=CIT-004'}]})});
  });
- await page.getByRole('button',{name:'AI Support',exact:true}).click();const panel=page.getByRole('dialog',{name:'AI Support'});await panel.getByRole('textbox').fill('Where can I view evidence?');await panel.getByRole('button',{name:'Send',exact:true}).click();await expect(panel.getByRole('button',{name:'Retry',exact:true})).toBeVisible();await panel.getByRole('button',{name:'Retry',exact:true}).click();await expect(panel.getByRole('status')).toContainText('preparing');await expect(panel.getByRole('log')).toContainText('Review the provided evidence');await expect(panel.getByRole('link',{name:'EMAIL-004 · source locator'})).toHaveAttribute('href','/en/evidence?citation=CIT-004');await expect(panel.getByRole('button',{name:'Retry',exact:true})).toHaveCount(0);await expect(panel.getByRole('textbox')).toBeFocused();
+ await page.getByRole('button',{name:'AI Support',exact:true}).click();const panel=page.getByRole('dialog',{name:'AI Support'});await panel.getByRole('textbox').fill('Where can I view evidence?');await panel.getByRole('button',{name:'Send',exact:true}).click();await expect(panel.getByRole('button',{name:'Retry',exact:true})).toBeVisible();await panel.getByRole('button',{name:'Retry',exact:true}).click();await expect(panel.getByRole('status')).toContainText('preparing');await expect(panel.getByRole('log')).toContainText('Review the provided evidence');await expect(panel.getByRole('link',{name:'EMAIL-004 · source locator'})).toHaveAttribute('href','/en/evidence?citation=CIT-004');await expect(panel.locator('.support-mode')).toHaveCount(0);await expect(panel.getByRole('button',{name:'Retry',exact:true})).toHaveCount(0);await expect(panel.getByRole('textbox')).toBeFocused();
  await page.setViewportSize({width:390,height:844});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await page.screenshot({path:'artifacts/iteration4-chat-mobile.png'});await page.keyboard.press('Escape');await expect(panel).not.toBeVisible();
 });

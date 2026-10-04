@@ -550,6 +550,13 @@
     "retry": "Retry",
     "sources": "Sources"
   },
+  "documentLibrary": {
+    "title": "Documents and sources",
+    "intro": "Browse original files. Open a file or explore its detailed evidence.",
+    "search": "Search documents by title, source or author…",
+    "count": "{count} documents",
+    "evidence": "View evidence"
+  },
   "dashboard": {
     "title": "Overview",
     "subtitle": "The NOVA project, its decisions and next actions.",

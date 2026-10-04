@@ -3,8 +3,10 @@ import {buildSupportContext,classifyIntent} from './context';
 import {accessibleRoutes,preserveView,resolveRoute} from './routes';
 import {blockedRequest,redactSensitiveText,unsafeReply} from './security';
 import {boundedHistory} from './validation';
-import {intents,type GenerateSupport,type ModelResult,type ProjectReader,type SupportContext,type SupportRequest,type SupportResponse,type SupportRole} from './types';
-type Options={enabled:boolean;hasKey:boolean;secrets:readonly string[];timeoutMs?:number};
+import {defaultSupportModel} from './config';
+import {safeProviderError} from './diagnostics';
+import {intents,type FallbackReason,type GenerateSupport,type ModelResult,type ProjectReader,type SupportContext,type SupportDiagnostics,type SupportRequest,type SupportResponse,type SupportRole} from './types';
+type Options={enabled:boolean;hasKey:boolean;secrets:readonly string[];timeoutMs?:number;model?:string;onDiagnostic?:(diagnostics:SupportDiagnostics)=>void};
 export function validateModelResult(value:unknown):ModelResult|null{
  if(!value||typeof value!=='object')return null;const v=value as Record<string,unknown>;
  if(Object.keys(v).some(key=>!['reply','intent','routeKeys','sourceIds'].includes(key))||typeof v.reply!=='string'||!v.reply.trim()||v.reply.length>1500||!intents.includes(v.intent as ModelResult['intent']))return null;
@@ -16,7 +18,7 @@ export function guardModelResult(value:unknown,context:SupportContext,secrets:re
  const suggestedActions=[...new Set(result.routeKeys)].flatMap(key=>{const action=resolveRoute(key,context.locale,context.roleContext.role);return action?[action]:[];}).slice(0,3);
  const sources=[...new Set(result.sourceIds)].flatMap(id=>{const source=context.sources.find(s=>s.id===id);if(!source)return [];const action=resolveRoute(source.routeKey,context.locale,context.roleContext.role);if(!action)return [];return [{label:redactSensitiveText(source.label,secrets).slice(0,180),href:action.href+(source.citationId?'?citation='+encodeURIComponent(source.citationId):source.anchor?'#'+encodeURIComponent(source.anchor):'')}];}).slice(0,4);
  if(context.intent==='PROJECT_FACT'&&(!context.relevantProjectFacts.length||!sources.length))return null;
- return {reply:result.reply.trim(),intent:context.intent,mode:'gemini',suggestedActions:suggestedActions.map(a=>({...a,href:preserveView(a.href,context.view)})),sources:sources.map(a=>({...a,href:preserveView(a.href,context.view)}))};
+ return {reply:result.reply.trim(),intent:context.intent,mode:'gemini',fallback:false,suggestedActions:suggestedActions.map(a=>({...a,href:preserveView(a.href,context.view)})),sources:sources.map(a=>({...a,href:preserveView(a.href,context.view)}))};
 }
 export function localSupport(request:SupportRequest,role:SupportRole,context?:SupportContext):SupportResponse{
  const en=request.locale==='en';const result=mockSupport(request.message,request.locale,role==='ADMIN');let reply=result.reply;let suggestedActions=result.suggestedActions??[];const intent=context?.intent??classifyIntent(request.message);
@@ -27,13 +29,32 @@ export function localSupport(request:SupportRequest,role:SupportRole,context?:Su
  if(intent==='FEATURE_HELP'&&/ask nova|support ai|nova support/i.test(request.message)){reply=en?'Ask NOVA provides verified project answers with evidence and explicit uncertainty. NOVA Support helps you navigate and understand the application.':'Ask NOVA présente les réponses vérifiées du projet, leurs preuves et les incertitudes. NOVA Support vous aide à naviguer et à comprendre l’application.';suggestedActions=action('askNova');}
  if(intent==='NAVIGATION'&&context?.pageContext&&suggestedActions.some(a=>a.href.replace(/\/$/,'')===request.currentPath))reply=(en?'You are already on ':'Vous êtes déjà sur ')+context.pageContext.title+'. '+context.pageContext.description;
  const allowed=new Set(accessibleRoutes(role).flatMap(([key])=>{const a=resolveRoute(key,request.locale,role);return a?[a.href]:[];}));
- return {reply,intent,mode:'local',suggestedActions:suggestedActions.filter(a=>allowed.has(a.href)).map(a=>({...a,href:preserveView(a.href,request.view)})),sources:[]};
+ return {reply,intent,mode:'local',fallback:true,suggestedActions:suggestedActions.filter(a=>allowed.has(a.href)).map(a=>({...a,href:preserveView(a.href,request.view)})),sources:[]};
 }
 export async function answerSupport(request:SupportRequest,role:SupportRole,options:Options,readProject:ProjectReader,generate:GenerateSupport):Promise<SupportResponse>{
- if(blockedRequest(request.message))return {reply:request.locale==='fr'?'Je peux aider à utiliser NOVA 360, mais je ne peux pas divulguer des secrets, des instructions internes ni modifier les données.':'I can help you use NOVA 360, but I cannot disclose secrets or internal instructions, or modify data.',intent:'GENERAL_SUPPORT',mode:'local',suggestedActions:[],sources:[]};
+ let providerAttempted=false;
+ const report=(response:SupportResponse,reason:FallbackReason|null,error?:ReturnType<typeof safeProviderError>)=>{
+  options.onDiagnostic?.({provider:options.enabled&&options.hasKey?'gemini':'local',enabled:options.enabled,hasApiKey:options.hasKey,model:options.model??defaultSupportModel,providerAttempted,fallback:response.fallback,fallbackReason:reason,...error});
+  return response;
+ };
+ if(blockedRequest(request.message))return report({reply:request.locale==='fr'?'Je peux aider à utiliser NOVA 360, mais je ne peux pas divulguer des secrets, des instructions internes ni modifier les données.':'I can help you use NOVA 360, but I cannot disclose secrets or internal instructions, or modify data.',intent:'GENERAL_SUPPORT',mode:'local',fallback:true,suggestedActions:[],sources:[]},'blocked_request');
  const safeRequest={...request,message:redactSensitiveText(request.message,options.secrets),history:boundedHistory(request.history,options.secrets)};
- let context:SupportContext;try{context=await buildSupportContext(safeRequest,role,readProject);context=JSON.parse(redactSensitiveText(JSON.stringify(context),options.secrets)) as SupportContext;}catch{return localSupport(safeRequest,role);}
- const fallback=()=>localSupport(safeRequest,role,context);if(!options.enabled||!options.hasKey)return fallback();
- const controller=new AbortController();let timer:ReturnType<typeof setTimeout>|undefined;
- try{const timeout=new Promise<never>((_,reject)=>{timer=setTimeout(()=>{controller.abort();reject(new Error('timeout'));},options.timeoutMs??12_000);});const result=await Promise.race([generate(context,safeRequest,controller.signal),timeout]);return guardModelResult(result,context,options.secrets)??fallback();}catch{return fallback();}finally{clearTimeout(timer);}
+ let context:SupportContext;try{context=await buildSupportContext(safeRequest,role,readProject);context=JSON.parse(redactSensitiveText(JSON.stringify(context),options.secrets)) as SupportContext;}catch{return report(localSupport(safeRequest,role),'context_error');}
+ const fallback=(reason:FallbackReason,error?:ReturnType<typeof safeProviderError>)=>report(localSupport(safeRequest,role,context),reason,error);
+ if(!options.enabled)return fallback('disabled');
+ if(!options.hasKey)return fallback('missing_key');
+ const controller=new AbortController();let timer:ReturnType<typeof setTimeout>|undefined;let timedOut=false;
+ try{
+  const timeout=new Promise<never>((_,reject)=>{timer=setTimeout(()=>{timedOut=true;controller.abort();reject(new Error('support_timeout'));},options.timeoutMs??12_000);});
+  providerAttempted=true;
+  const result=await Promise.race([generate(context,safeRequest,controller.signal),timeout]);
+  const response=guardModelResult(result,context,options.secrets);
+  return response?report(response,null):fallback('invalid_output');
+ }catch(error){
+  const info=safeProviderError(error);const value=error as {name?:string;message?:string;code?:string}|null;
+  if(timedOut||['AbortError','TimeoutError'].includes(value?.name??'')||value?.code==='ETIMEDOUT'||info.providerStatus===408)return fallback('timeout',{...info,errorMessage:'The Gemini request timed out.'});
+  if(value?.message==='missing_key')return fallback('missing_key');
+  if(value?.message==='provider_response'||value?.name==='SyntaxError')return fallback('invalid_output',{...info,errorMessage:'Gemini returned a blocked, incomplete, empty or malformed response.'});
+  return fallback('provider_error',info);
+ }finally{clearTimeout(timer);}
 }

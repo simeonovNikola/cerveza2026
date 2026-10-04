@@ -37,3 +37,13 @@ h1{font-size:36px;letter-spacing:-1px}h2{font-size:24px}h3{font-size:18px}small{
 .support-mode{display:block;margin-top:8px;color:#526478}.support-sources{display:flex;flex-direction:column;gap:4px;margin-top:8px}.support-messages a{display:block;overflow-wrap:anywhere;margin-top:5px}.support-messages [role="status"]{font-size:13px;color:#526478}
 
 .support-dialog[open]{display:flex;flex-direction:column;overflow:hidden}.support-dialog>.support-heading,.support-dialog>p,.support-dialog>form,.support-dialog>.quick-prompts{flex-shrink:0}.support-dialog>.support-messages{min-height:0;flex:1 1 auto}.support-messages .chat-user p{color:inherit}
+
+/* Document library follows the shared dashboard card spacing and typography. */
+.document-card{display:flex;flex-direction:column;gap:12px;min-width:0}
+.document-card-heading{display:flex;align-items:center;gap:8px;color:var(--lq-muted)}
+.document-card-heading svg{color:var(--lq-blue);flex-shrink:0}
+.document-card h2{margin:0;line-height:1.5;overflow-wrap:anywhere}
+.document-card p{margin:0}
+.document-card-actions{margin-top:auto;padding-top:8px;align-items:center}
+.document-card-actions .text-button{display:inline-flex;align-items:center;text-decoration:none}
+.document-card-actions .text-button:hover{text-decoration:underline}

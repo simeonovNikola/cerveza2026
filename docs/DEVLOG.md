@@ -660,3 +660,149 @@
 
 ### Next
 - Add GEMINI_API_KEY (or GOOGLE_API_KEY) locally, optionally set GEMINI_MODEL/flag, restart and complete AI_SUPPORT.md live checklist. No commit/push.
+
+## 2026-10-04 04:28 — Gemini live selection and hidden error tracing
+
+### What changed
+- Traced root environment, flag/key/model resolution, selection, SDK and UI. Root metadata enabled/key presence true, model gemini-3.5-flash; no old OpenAI selection gate.
+- Old API logger set model=null for every local fallback, including real provider failures. Added pure config and private execution diagnostics; public fallback boolean drives the label.
+
+### OpenAI integration
+- No OpenAI provider/dependency introduced; old key referenced only for secret scrubbing, never activation.
+
+### Context/retrieval
+- Existing grounded read-only context, role derivation and allowlisted routes unchanged.
+
+### Security
+- Static safe provider error messages/status/type; no raw SDK message/stack/payload/key logging. Manual diagnostic makes at most one live request; client refreshes on in-process key changes.
+
+### UI
+- Local assistance label only for fallback=true; successful Gemini output has fallback=false and no local indicator.
+
+### Tests
+- Lint/typecheck, 42 deterministic unit tests and production build pass. Browser regression ongoing with Gemini disabled/keys cleared. Exactly one controlled live check: providerAttempted=true, provider_error, HTTP 401 ApiError. No secret output.
+
+### Limitations
+- Current credential rejected by Gemini; accepted live response cannot be verified until credential/resource configuration is corrected locally. Do not rerun live calls in automated tests.
+
+### Next
+- Finish browser regression/QA docs; user verifies or replaces key privately and restarts npm run dev.
+
+## 2026-10-04 04:32 — Gemini trace final validation
+
+### What changed
+- Completed private provider execution metadata and explicit public fallback contract; updated current handoff/architecture/status/QA and safe manual diagnostic instructions.
+
+### OpenAI integration
+- No OpenAI activation dependency; configured Gemini model persists in logs even when fallback is used.
+
+### Context/retrieval
+- No project/role/evidence semantics changed.
+
+### Security
+- Exactly one authorized live call returned HTTP 401; no credential/raw error logged. Automated tests remain fully mocked/disabled.
+
+### UI
+- Browser tests confirm fallback label appears only for fallback=true and is absent on simulated Gemini success.
+
+### Tests
+- Lint/typecheck, 42 unit tests, production build and all 22 browser tests pass. Protected factual/auth/Impact/schema paths have no diff; whitespace check clean.
+
+### Limitations
+- Gemini rejects the currently configured credential. This cannot be repaired by ignoring provider authentication or falsely reporting live success.
+
+### Next
+- Verify/correct local Gemini key/resource access, restart npm run dev, then explicitly rerun manual diagnostic. No commit/push.
+
+## 2026-10-04 — Support panel outside-click dismissal
+
+### What changed
+- Clicking or tapping anywhere outside the AI Support panel closes it; clicks inside keep it open. Close button and Escape remain available.
+### Files changed
+- src/components/support-chat.tsx; tests/e2e/iteration4.spec.ts; docs/DEVLOG.md.
+### UI changes
+- Added a temporary document pointer listener while the dialog is open, removed on close or unmount.
+### Validation
+- Lint, typecheck and production build passed. Targeted Playwright check passed on desktop and mobile viewport layouts.
+### Known limitations
+- No changes to support provider, auth, project data or evidence.
+### Next
+- None required for this interaction.
+
+## 2026-10-04 — Plain question numbers
+
+### What changed
+- Official question badges and jump links display 1 through 10 instead of Q01 through Q10 in both locales.
+### Files changed
+- src/components/project-pages.tsx; docs/DEVLOG.md.
+### UI changes
+- Presentation only; original question IDs and anchor destinations remain intact.
+### Validation
+- Lint and typecheck passed.
+### Known limitations
+- None for this display change.
+### Next
+- None required.
+
+## 2026-10-04 — Separate document library and evidence navigation
+
+### What changed
+- Removed the sidebar Documents alias to Evidence. Both tabs now have distinct routes and exactly one active sidebar item.
+- Added /fr/documents and /en/documents: searchable document cards, category filter, original-file links, and contextual View evidence links preserving baseline view.
+- Homepage document CTA and both support route registries now direct users to the library.
+### Files changed
+- src/components/documents-page.tsx; src/components/hub.tsx; src/components/home.tsx; src/lib/navigation.ts; src/lib/support-ai/routes.ts; src/lib/support-assistant/mock.ts; messages/fr.json; messages/en.json; tests/support.test.ts; tests/e2e/iteration4.spec.ts; docs/DEVLOG.md; docs/ARCHITECTURE.md.
+### Schema changes
+- None.
+### Auth changes
+- None.
+### UI changes
+- Documents provides the library; Traceable Evidence retains the existing source previews, locators, citation modal and deep links.
+### i18n changes
+- Added matching documentLibrary translations in both locales.
+### Validation
+- Lint, typecheck, all 42 unit tests and production build passed. Targeted browser test passed for FR/EN routes, all 64 documents, ID search, active sidebar and evidence links preserving baseline.
+### Known limitations
+- Library search matches metadata; full original-content search remains in Traceable Evidence.
+### Next
+- None required for this navigation fix.
+
+## 2026-10-04 — Consistent document cards
+
+### What changed
+- Document cards now reuse dashboard-card padding and title styling, with a compact file icon/metadata header, consistent content gaps, wrapped titles and bottom-aligned actions.
+### Files changed
+- src/components/documents-page.tsx; src/styles/enterprise.css; docs/DEVLOG.md.
+### Schema changes
+- None.
+### Auth changes
+- None.
+### UI changes
+- Scoped document-card styling inherits the existing responsive dashboard grid and card padding. Original-file and evidence links remain available.
+### i18n changes
+- None; existing bilingual labels retained.
+### Validation
+- Lint, typecheck, production build and existing FR/EN Documents-page browser test passed.
+### Known limitations
+- No functional changes.
+### Next
+- None required for this styling adjustment.
+
+## 2026-10-04 — Rechecked live Gemini fallback
+
+### What changed
+- Rechecked current root environment using the existing server-only manual diagnostic. No application/configuration changes made.
+### OpenAI integration
+- None; Gemini remains the configured provider.
+### Context/retrieval
+- One static navigation/admin-help request only; project corpus unchanged.
+### Security
+- Logged only enabled/key-presence/model and safe status metadata. No credentials or raw provider errors printed.
+### UI
+- Local assistance mode is correct for the observed fallback.
+### Tests
+- Controlled live result: Gemini enabled, key present, model gemini-3.5-flash, providerAttempted true, providerStatus 401, fallbackReason provider_error.
+### Limitations
+- Google rejected configured credentials. The live assistant requires an accepted Gemini API credential/resource access; restarting alone does not fix authentication rejection.
+### Next
+- Verify/correct local Gemini credential configuration, restart the dev server, then run the explicit diagnostic again.

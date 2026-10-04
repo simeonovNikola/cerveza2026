@@ -15,6 +15,15 @@ export function SupportChat({view='current'}:{view?:'baseline'|'current'}){
  const ref=useRef<HTMLDialogElement>(null);const inputRef=useRef<HTMLInputElement>(null);const endRef=useRef<HTMLDivElement>(null);const pending=useRef<AbortController|null>(null);
  const [open,setOpen]=useState(false);const [input,setInput]=useState('');const [messages,setMessages]=useState<ChatMessage[]>([]);const [busy,setBusy]=useState(false);const [retryMessage,setRetryMessage]=useState('');
  useEffect(()=>{if(open)ref.current?.showModal();else ref.current?.close();},[open]);
+ useEffect(()=>{
+  if(!open)return;
+  const dismissOutside=(event:PointerEvent)=>{
+   const bounds=ref.current?.getBoundingClientRect();
+   if(bounds&&(event.clientX<bounds.left||event.clientX>bounds.right||event.clientY<bounds.top||event.clientY>bounds.bottom))setOpen(false);
+  };
+  document.addEventListener('pointerdown',dismissOutside,true);
+  return()=>document.removeEventListener('pointerdown',dismissOutside,true);
+ },[open]);
  useEffect(()=>{endRef.current?.scrollIntoView({block:'nearest'});},[messages,busy]);
  useEffect(()=>()=>pending.current?.abort(),[]);
  const send=async(message:string,retry=false)=>{
@@ -27,7 +36,7 @@ export function SupportChat({view='current'}:{view?:'baseline'|'current'}){
    const response=await fetch('/api/support-chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message,locale,currentPath,view,history}),signal:controller.signal});
    const reply=await response.json();
    if(!response.ok){if(response.status===429&&typeof reply.reply==='string'){setMessages(m=>[...m,{reply:reply.reply,error:true}]);setRetryMessage(message);return;}throw new Error('support_request');}
-   if(typeof reply.reply!=='string'||!Array.isArray(reply.suggestedActions)||!Array.isArray(reply.sources))throw new Error('support_response');
+   if(typeof reply.fallback!=='boolean'||typeof reply.reply!=='string'||!Array.isArray(reply.suggestedActions)||!Array.isArray(reply.sources))throw new Error('support_response');
    setMessages(m=>[...m,reply as SupportResponse]);
   }catch{setMessages(m=>[...m,{reply:t('error'),error:true}]);setRetryMessage(message);}
   finally{clearTimeout(timer);pending.current=null;setBusy(false);requestAnimationFrame(()=>inputRef.current?.focus());}
@@ -46,7 +55,7 @@ export function SupportChat({view='current'}:{view?:'baseline'|'current'}){
      <small>{t(message.user?'you':'assistant')}</small><p>{message.reply}</p>
      {message.suggestedActions?.map(action=><a key={action.href} href={action.href} onClick={()=>setOpen(false)}>{action.label}</a>)}
      {!!message.sources?.length&&<div className="support-sources"><small>{t('sources')}</small>{message.sources.map(source=><a key={source.href} href={source.href} onClick={()=>setOpen(false)}>{source.label}</a>)}</div>}
-     {message.mode==='local'&&<small className="support-mode">{t('localMode')}</small>}
+     {message.fallback===true&&<small className="support-mode">{t('localMode')}</small>}
     </article>)}
     {busy&&<p role="status">{t('loading')}</p>}<div ref={endRef}/>
    </div>
