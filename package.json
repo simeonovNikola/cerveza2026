@@ -9,6 +9,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/*.test.ts",
+    "ai:smoke": "node --env-file=.env --import tsx scripts/ai-smoke.ts",
+    "ai:stages": "node --env-file=.env --conditions=react-server --import tsx scripts/ai-support-stages.ts",
     "data:validate": "python scripts/validate_data.py",
     "test:e2e": "playwright test",
     "db:generate": "prisma generate",

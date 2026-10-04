@@ -1,6 +1,6 @@
 # NOVA 360 — Project status
 
-Current phase: Iteration 4 implemented and locally validated — 2026-10-04. Credentialed live Gemini verification remains pending because the configured credential was rejected with HTTP 401 by the one controlled Gemini request.
+Current phase: Iteration 4 implemented and locally validated — 2026-10-04. Latest live Gemini diagnostics demonstrate accepted credentials, successful minimal text and a valid full context/schema response. Google DEADLINE_EXCEEDED/504 still occurs on other requests; live availability is intermittent. The earlier HTTP 401 result is historical.
 
 Preserved: local auth/roles/admin guards, SQLite/Prisma, FR/EN, official Q01–Q10, citations/original sources, sealed baseline, Impact, Ask NOVA, search, custom-question/user management, printable brief and the existing mascot/dialog. No schema, reviewed payload or official answer changed.
 
@@ -13,11 +13,11 @@ Completed:
 - Existing chat/mascot retained with loading/retry, local-mode indicator, source links, five quick prompts and stable accessible/mobile layout. History memory-only; no chat schema or streaming.
 - Updated AI_SUPPORT, architecture, handoff, roadmap, status, devlog, QA and env documentation.
 
-Validation: lint, strict typecheck, 42 unit tests, production build and all 22 browser tests pass. Official SDK uses fake HTTP in tests; browser harness disables AI and clears the key. DB verify, 64-source/Q01–Q10/baseline corpus audit and git diff whitespace check pass. Desktop/mobile support screenshots reviewed. Existing auth/admin/search/evidence/Impact/Ask NOVA/brief regressions remain green.
+Latest validation: lint, strict typecheck, all 45 unit tests, production build and six support/document browser regressions pass. Earlier full browser run passed all 22 tests. Official SDK uses fake HTTP in tests; browser harness disables AI and clears the key. Existing preservation tests for Q01–Q10/baseline/evidence/auth/Impact remain green. No protected schema/corpus changes.
 
 Run: npm ci; configure ignored .env from .env.example; npm run db:setup; npm run dev. Existing auth variables remain required. Add GEMINI_API_KEY manually, GEMINI_MODEL=gemini-3.5-flash-lite and GEMINI_SUPPORT_ENABLED=true to enable real support, then restart. Missing keys or GEMINI_SUPPORT_ENABLED=false keep local assistance; an unset flag allows a configured key. GOOGLE_API_KEY is an accepted alias. See HANDOFF.md/AI_SUPPORT.md for exact live QA steps. Existing local admin credentials remain in ignored .env; no password/secret is included in source/docs.
 
-Known limits: no credentialed live provider check yet; keyword retrieval and generative interpretation are intentionally bounded; memory-only history, no streaming, process-local quotas/trusted proxy requirement. Normal project tools remain public for judges; auth recovery/verification/MFA/role editing/session cleanup remain future work. SQLite requires persistent disk and production HTTPS. Existing project uncertainties remain in KNOWN_UNCERTAINTIES.md.
+Known limits: intermittent Google 504 deadlines even after successful credentialed/context/schema probes; keyword retrieval and generative interpretation are intentionally bounded; memory-only history, no streaming, process-local quotas/trusted proxy requirement. Normal project tools remain public for judges; auth recovery/verification/MFA/role editing/session cleanup remain future work. SQLite requires persistent disk and production HTTPS. Existing project uncertainties remain in KNOWN_UNCERTAINTIES.md.
 
 Git: intended Iteration 4 changes remain uncommitted; nothing pushed/deployed. Production build updates generated next-env.d.ts type references. No source corpus, mascot, Prisma schema/migration or canonical fixture diff.
 

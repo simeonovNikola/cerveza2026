@@ -5,7 +5,7 @@ export function classifyIntent(message:string):Intent{
  const text=message.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
  if(/admin|question bank|user management|gestion.*utilisateur/.test(text))return 'ADMIN_HELP';
  if(/impact|baseline|compar/.test(text))return 'IMPACT_HELP';
- if(/login|register|log.?out|log in|connexion|inscri|compte|auth|as a user|utilisateur|role/.test(text))return 'AUTH_HELP';
+ if(/login|register|log.?out|log in|connexion|se connect|deconnex|inscri|compte|auth|as a user|utilisateur|role/.test(text))return 'AUTH_HELP';
  if(/search|recherch|ctrl|cmd/.test(text))return 'SEARCH_HELP';
  if(/ask nova|support ai|nova support|language|langue/.test(text))return 'FEATURE_HELP';
  if(/^(what is|what does|is |has |who |when |how much|quel|quelle|quand|qui |est-ce|la securite)|inv-\d|sec-\d|acc-\d|approved.*(date|launch)|date.*approuve|project status|etat du projet|budget|facture|invoice/.test(text)&&!/where|ou (sont|trouver|voir)|how (do|does|to)|comment/.test(text))return 'PROJECT_FACT';

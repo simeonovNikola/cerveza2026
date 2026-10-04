@@ -1,3 +1,12 @@
+# Gemini request/deadline QA — 2026-10-04
+
+Latest results supersede the earlier HTTP 401 investigation. Official installed/npm-latest SDK is @google/genai 2.27.0. Minimal default-thinking request returned Google 504/DEADLINE_EXCEEDED ("Deadline expired before operation could complete."), without the local abort firing. MINIMAL thinking smoke succeeded and final npm run ai:smoke returned success=true/providerStatus=200. Staged system instruction, actual NOVA context and full production JSON client/guard passed. Simple normal-message probe and later complete ADMIN_HELP/NAVIGATION wrapper calls still received Google 504 around 29.6 seconds; timeoutOrigin=google and localTimeoutFired=false. Live service reliability remains limited, not a credential or demonstrated schema incompatibility.
+
+Validation: lint/typecheck/build pass, all 45 mocked/deterministic unit tests pass, all six support/document browser tests pass. New tests cover raw Google code/redacted message, Google versus SDK/application timeout, completed plain text and guarded JSON. No real provider calls in automated tests. No protected auth/DB/fact/Q01–Q10/baseline/evidence/Impact code changed.
+
+Changes: support-ai client/config/diagnostics/service/types and new response parser; support-chat browser timeout; package developer commands; scripts/ai-smoke.ts, ai-support-stages.ts, support-check.ts; SDK fixture/unit tests; AI_SUPPORT/architecture/handoff/status/roadmap/devlog/QA documentation. SDK/application/browser deadlines 30/32/40 seconds. Gemini 3 Flash-family models use MINIMAL thinking, no candidateCount, 2,048-token cap. No SDK upgrade, env key/model edit, commit or push. Restart npm run dev. Historical QA follows.
+
+---
 # Gemini live tracing fix — final QA 2026-10-04
 
 Current result: provider selection works. Exactly one authorized live diagnostic with root .env made a Gemini request and received HTTP 401 ApiError. Config resolved enabled=true, hasApiKey=true and model=gemini-3.5-flash. No key/raw error payload was logged. The prior model:null/fallback=true log masked all provider failures and was not evidence of a skipped call.

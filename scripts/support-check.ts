@@ -13,7 +13,7 @@ async function run(){
  if(!config.enabled||!config.hasApiKey){process.exitCode=1;return;}
  const start=Date.now();let diagnostics:SupportDiagnostics|undefined;
  try{
-  const response=await supportAssistant(parseSupportRequest({message:'What can an administrator do?',locale:'en',currentPath:'/en'}),'GUEST',value=>{diagnostics=value;});
+  const response=await supportAssistant(parseSupportRequest({message:process.argv[2]??'What can an administrator do?',locale:'en',currentPath:'/en'}),'GUEST',value=>{diagnostics=value;});
   if(diagnostics)console.info(JSON.stringify(supportLog(randomUUID(),Date.now()-start,response,diagnostics)));
   if(response.fallback)process.exitCode=1;
  }finally{await db.$disconnect();}

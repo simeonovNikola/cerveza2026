@@ -3,7 +3,7 @@ import {buildSupportContext,classifyIntent} from './context';
 import {accessibleRoutes,preserveView,resolveRoute} from './routes';
 import {blockedRequest,redactSensitiveText,unsafeReply} from './security';
 import {boundedHistory} from './validation';
-import {defaultSupportModel} from './config';
+import {defaultSupportModel,supportRequestTimeoutMs} from './config';
 import {safeProviderError} from './diagnostics';
 import {intents,type FallbackReason,type GenerateSupport,type ModelResult,type ProjectReader,type SupportContext,type SupportDiagnostics,type SupportRequest,type SupportResponse,type SupportRole} from './types';
 type Options={enabled:boolean;hasKey:boolean;secrets:readonly string[];timeoutMs?:number;model?:string;onDiagnostic?:(diagnostics:SupportDiagnostics)=>void};
@@ -32,27 +32,33 @@ export function localSupport(request:SupportRequest,role:SupportRole,context?:Su
  return {reply,intent,mode:'local',fallback:true,suggestedActions:suggestedActions.filter(a=>allowed.has(a.href)).map(a=>({...a,href:preserveView(a.href,request.view)})),sources:[]};
 }
 export async function answerSupport(request:SupportRequest,role:SupportRole,options:Options,readProject:ProjectReader,generate:GenerateSupport):Promise<SupportResponse>{
- let providerAttempted=false;
+ let providerAttempted=false;let timedOut=false;let timeoutOrigin:SupportDiagnostics['timeoutOrigin']=null;
  const report=(response:SupportResponse,reason:FallbackReason|null,error?:ReturnType<typeof safeProviderError>)=>{
-  options.onDiagnostic?.({provider:options.enabled&&options.hasKey?'gemini':'local',enabled:options.enabled,hasApiKey:options.hasKey,model:options.model??defaultSupportModel,providerAttempted,fallback:response.fallback,fallbackReason:reason,...error});
+  options.onDiagnostic?.({provider:reason==='known_intent'?'local':options.enabled&&options.hasKey?'gemini':'local',enabled:options.enabled,hasApiKey:options.hasKey,model:options.model??defaultSupportModel,providerAttempted,fallback:response.fallback,fallbackReason:reason,providerStatus:response.fallback?null:200,...error,localTimeoutFired:timedOut,timeoutOrigin});
   return response;
  };
  if(blockedRequest(request.message))return report({reply:request.locale==='fr'?'Je peux aider à utiliser NOVA 360, mais je ne peux pas divulguer des secrets, des instructions internes ni modifier les données.':'I can help you use NOVA 360, but I cannot disclose secrets or internal instructions, or modify data.',intent:'GENERAL_SUPPORT',mode:'local',fallback:true,suggestedActions:[],sources:[]},'blocked_request');
  const safeRequest={...request,message:redactSensitiveText(request.message,options.secrets),history:boundedHistory(request.history,options.secrets)};
+ const intent=classifyIntent(safeRequest.message);
+ // Factual analysis belongs to Ask NOVA; avoid DB retrieval or paid generation here.
+ if(intent==='PROJECT_FACT')return report(localSupport(safeRequest,role),'known_intent');
  let context:SupportContext;try{context=await buildSupportContext(safeRequest,role,readProject);context=JSON.parse(redactSensitiveText(JSON.stringify(context),options.secrets)) as SupportContext;}catch{return report(localSupport(safeRequest,role),'context_error');}
  const fallback=(reason:FallbackReason,error?:ReturnType<typeof safeProviderError>)=>report(localSupport(safeRequest,role,context),reason,error);
+ if(['NAVIGATION','ADMIN_HELP','AUTH_HELP','SEARCH_HELP','IMPACT_HELP'].includes(intent)||intent==='FEATURE_HELP'&&/ask nova|support ai|nova support|language|langue/i.test(safeRequest.message))return fallback('known_intent');
  if(!options.enabled)return fallback('disabled');
  if(!options.hasKey)return fallback('missing_key');
- const controller=new AbortController();let timer:ReturnType<typeof setTimeout>|undefined;let timedOut=false;
+ const controller=new AbortController();let timer:ReturnType<typeof setTimeout>|undefined;
  try{
-  const timeout=new Promise<never>((_,reject)=>{timer=setTimeout(()=>{timedOut=true;controller.abort();reject(new Error('support_timeout'));},options.timeoutMs??12_000);});
+  const timeout=new Promise<never>((_,reject)=>{timer=setTimeout(()=>{timedOut=true;controller.abort();reject(new Error('support_timeout'));},options.timeoutMs??supportRequestTimeoutMs);});
   providerAttempted=true;
   const result=await Promise.race([generate(context,safeRequest,controller.signal),timeout]);
   const response=guardModelResult(result,context,options.secrets);
   return response?report(response,null):fallback('invalid_output');
  }catch(error){
-  const info=safeProviderError(error);const value=error as {name?:string;message?:string;code?:string}|null;
-  if(timedOut||['AbortError','TimeoutError'].includes(value?.name??'')||value?.code==='ETIMEDOUT'||info.providerStatus===408)return fallback('timeout',{...info,errorMessage:'The Gemini request timed out.'});
+  const info=safeProviderError(error,options.secrets);const value=error as {name?:string;message?:string;code?:string}|null;
+  if(timedOut){timeoutOrigin='application';return fallback('timeout',{...info,errorMessage:'The NOVA support deadline expired.'});}
+  if(info.providerStatus===408||info.providerStatus===504||info.providerCode==='DEADLINE_EXCEEDED'){timeoutOrigin='google';return fallback('timeout',info);}
+  if(['AbortError','TimeoutError'].includes(value?.name??'')||value?.code==='ETIMEDOUT'){timeoutOrigin='sdk';return fallback('timeout',info);}
   if(value?.message==='missing_key')return fallback('missing_key');
   if(value?.message==='provider_response'||value?.name==='SyntaxError')return fallback('invalid_output',{...info,errorMessage:'Gemini returned a blocked, incomplete, empty or malformed response.'});
   return fallback('provider_error',info);

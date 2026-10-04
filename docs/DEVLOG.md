@@ -806,3 +806,48 @@
 - Google rejected configured credentials. The live assistant requires an accepted Gemini API credential/resource access; restarting alone does not fix authentication rejection.
 ### Next
 - Verify/correct local Gemini credential configuration, restart the dev server, then run the explicit diagnostic again.
+
+## 2026-10-04 08:35 — Gemini request/deadline diagnostics and compatibility
+
+### What changed
+- Inspected installed official @google/genai 2.27.0 and checked npm latest (also 2.27.0). No package upgrade required.
+- Added developer-only ai:smoke and ai:stages commands; both load .env, log only safe metadata/errors and never run in automated tests.
+- Preserved the server-only singleton, current user/model contents and systemInstruction/schema mechanisms; removed candidateCount per current Gemini 3.x docs.
+### OpenAI integration
+- None. Gemini model/key settings remain unchanged; no secrets printed or committed.
+### Context/retrieval
+- Staged system and actual full NOVA context/schema requests succeeded. Static navigation probes performed no project DB reads/writes.
+### Security
+- Extracted Google error code/status/message are now bounded and redacted; full SDK payload, details and stack stay unlogged. Error fields remain server-only.
+### UI
+- Google/SDK/app deadlines set to 30/32/40 seconds, preserving local fallback before browser abort. Gemini 3 Flash-family models use MINIMAL thinking; output capped at 2,048 tokens with existing reply/source/route guards.
+### Tests
+- Lint, typecheck, all 45 deterministic unit tests, production build and all six support/document browser tests passed.
+- Initial minimal default-thinking probe: Google 504 DEADLINE_EXCEEDED, local abort did not fire. MINIMAL smoke and final npm run ai:smoke succeeded with HTTP 200.
+- Staged simple system instruction, full NOVA context and actual structured client/guard succeeded with HTTP 200. Simple normal-message probe, later ADMIN_HELP and NAVIGATION orchestration checks still received Google 504 around 29.6 seconds; localTimeoutFired=false, timeoutOrigin=google.
+### Limitations
+- The original SDK sent X-Server-Timeout:12; a short server deadline plus default reasoning was a latency risk, not a provider-selection problem. Extending to 30 seconds helps but does not eliminate upstream deadlines. No request field was proven to be the sole cause; Google remains intermittently/request-dependently unavailable within the demo budget.
+- Full structured success demonstrates credential and request compatibility, but does not guarantee all prompts succeed. No automatic retries or hidden model switching added.
+### Next
+- Restart npm run dev for new code, smoke-test and monitor timeoutOrigin/providerCode during broader bilingual live evaluation. Keep local fallback for Google deadline failures.
+
+## 2026-10-04 08:49 — Fast local support and bounded Flash-Lite requests
+
+### What changed
+- Updated ignored local GEMINI_MODEL to gemini-3.5-flash-lite; existing default/example already used Flash-Lite. No credentials printed or changed.
+- NAVIGATION, ADMIN_HELP, AUTH_HELP, SEARCH_HELP and IMPACT_HELP now return deterministic local responses without attempting Gemini. Added French se connecter/deconnexion recognition.
+- Known Ask NOVA/language explanations and project-fact redirects also stay local; GENERAL_SUPPORT, UNKNOWN and open-ended feature help remain eligible for Gemini.
+### OpenAI integration
+- None; existing Gemini provider and secure key handling retained.
+### Context/retrieval
+- Local answers retain page awareness, locale, role-authorized links and baseline view. Project facts redirect to Ask NOVA without DB retrieval or provider calls.
+### Security
+- Existing refusal/redaction, server-derived roles, safe links, bounded output/history and fallback remain unchanged. known_intent is a private diagnostic reason with provider=local/providerAttempted=false.
+### UI
+- Gemini SDK and app deadlines are both 10 seconds; browser deadline 15 seconds leaves time for fallback. Mascot/panel untouched. Existing local-mode label also represents intentional deterministic answers.
+### Tests
+- Lint, typecheck, all 46 deterministic unit tests and production build passed. Tests verify bilingual known-intent bypass with a configured key, role-restricted CTAs, no project retrieval, allowed open-ended calls, abort fallback and SDK 10-second header. Automated tests used fake Gemini HTTP only.
+### Limitations
+- Gemini can still fail upstream; eligible open-ended replies fall back after at most approximately 10 seconds of provider waiting. No live call was necessary for this routing/deadline fix.
+### Next
+- Restart npm run dev to load the local Flash-Lite setting and changed routing/deadlines.

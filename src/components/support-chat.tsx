@@ -4,6 +4,7 @@ import Image from 'next/image';
 import {usePathname} from 'next/navigation';
 import {useLocale,useTranslations} from 'next-intl';
 import type {SupportResponse} from '@/lib/support-ai/types';
+import {supportBrowserTimeoutMs} from '@/lib/support-ai/config';
 
 type ChatMessage=Partial<SupportResponse>&{reply:string;user?:boolean;error?:boolean};
 export function Mascot(){
@@ -31,7 +32,7 @@ export function SupportChat({view='current'}:{view?:'baseline'|'current'}){
   const history=messages.filter(m=>!m.error).slice(-12).map(m=>({role:m.user?'user':'assistant',content:m.reply.slice(0,1000)}));
   if(retry&&history.at(-1)?.role==='user'&&history.at(-1)?.content===message)history.pop();
   setInput('');setRetryMessage('');if(!retry)setMessages(m=>[...m,{reply:message,user:true}]);setBusy(true);
-  const controller=new AbortController();pending.current=controller;const timer=setTimeout(()=>controller.abort(),18_000);
+  const controller=new AbortController();pending.current=controller;const timer=setTimeout(()=>controller.abort(),supportBrowserTimeoutMs);
   try{
    const response=await fetch('/api/support-chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message,locale,currentPath,view,history}),signal:controller.signal});
    const reply=await response.json();
