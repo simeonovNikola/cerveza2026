@@ -1,0 +1,35 @@
+[
+  {
+    "id": "security",
+    "title": "Acceptation sécurité SEC-210",
+    "owner": "Sophie Lambert",
+    "status": "pending",
+    "factId": "FACT-016",
+    "actionId": "ACT-001",
+    "evidence": [
+      "CIT-006"
+    ]
+  },
+  {
+    "id": "accessibility",
+    "title": "Fermeture accessibilité ACC-303",
+    "owner": "Mélissa Gagnon",
+    "status": "pending",
+    "factId": "FACT-019",
+    "actionId": "ACT-002",
+    "evidence": [
+      "CIT-006"
+    ]
+  },
+  {
+    "id": "operations",
+    "title": "Approbation runbook + rollback",
+    "owner": "Olivier Côté",
+    "status": "pending",
+    "factId": "FACT-020",
+    "actionId": "ACT-003",
+    "evidence": [
+      "CIT-006"
+    ]
+  }
+]

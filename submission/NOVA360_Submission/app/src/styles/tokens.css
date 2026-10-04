@@ -1,0 +1,19 @@
+/* Measured reference values: docs/LOTOQUEBEC_DESIGN_SYSTEM.md.
+   Background, border and semantic colors are NOVA adaptations. */
+:root {
+  --lq-navy: #0b3056;
+  --lq-blue: #073f78;
+  --lq-blue-secondary: #073f78;
+  --lq-blue-light: #eef2ff;
+  --lq-pill-border: #999cff;
+  --lq-red-accent: #a43636;
+  --lq-surface: #ffffff;
+  --lq-background: #f7f8fc;
+  --lq-text: #0b3056;
+  --lq-muted: #535353;
+  --lq-border: #dce0eb;
+  --lq-font: Arial, Helvetica, system-ui, sans-serif;
+  --lq-radius: 16px;
+  --lq-pill: 9999px;
+  --lq-space: 8px;
+}

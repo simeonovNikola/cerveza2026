@@ -1,0 +1,213 @@
+[
+  {
+    "id": "Q01",
+    "question": "Quelle est la date de mise en production approuvée, et avec quelle réserve?",
+    "answer": "22 octobre 2026, sous réserve des trois conditions de go-live.",
+    "nuance": "Validation sécurité de SEC-210, fermeture de ACC-303 et approbation du runbook incluant rollback. La date est approuvée; le lancement n’est pas garanti.",
+    "status": "approved",
+    "confidence": "strong",
+    "confidenceReason": "Preuves directes et repères examinés; distinction entre autorité, livraison et validation.",
+    "evidence": [
+      "CIT-004",
+      "CIT-006",
+      "CIT-007"
+    ],
+    "relatedFactIds": [
+      "FACT-002",
+      "FACT-015"
+    ],
+    "crossSourceConfirmation": "Sources distinctes; copies MIME et archive exclues du décompte indépendant.",
+    "uncertainty": "Aucune incertitude sur la réponse; état établi au baseline."
+  },
+  {
+    "id": "Q02",
+    "question": "Pourquoi la date a-t-elle changé, et quel est l’état de la cause initiale?",
+    "answer": "Le retard du connecteur interne a motivé le report; INT-101 est validé et fermé depuis le 17 septembre.",
+    "nuance": "Rotation du secret et correction du renouvellement du jeton; 120/120 recherches conformes. Sa résolution ne rétablit pas le 15 octobre. Le registre R-01 conserve un suivi ancien.",
+    "status": "validated",
+    "confidence": "strong",
+    "confidenceReason": "Preuves directes et repères examinés; distinction entre autorité, livraison et validation.",
+    "evidence": [
+      "CIT-005",
+      "CIT-008",
+      "CIT-009",
+      "CIT-037"
+    ],
+    "relatedFactIds": [
+      "FACT-004",
+      "FACT-005"
+    ],
+    "crossSourceConfirmation": "Sources distinctes; copies MIME et archive exclues du décompte indépendant.",
+    "uncertainty": "Aucune incertitude sur la réponse; état établi au baseline."
+  },
+  {
+    "id": "Q03",
+    "question": "Qui a approuvé le changement et quand?",
+    "answer": "Le comité de direction du 10 septembre 2026; Élodie Caron prononce l’approbation à 15:25.",
+    "nuance": "Julien Moreau / Boréal avait proposé le 22 octobre le 8 septembre à 11:16. Le comité approuve après formulation à 15:22 et absence d’opposition; Nicolas accepte à 15:24. Proposition ≠ approbation.",
+    "status": "approved",
+    "confidence": "strong",
+    "confidenceReason": "Preuves directes et repères examinés; distinction entre autorité, livraison et validation.",
+    "evidence": [
+      "CIT-003",
+      "CIT-004"
+    ],
+    "relatedFactIds": [
+      "FACT-003",
+      "FACT-002"
+    ],
+    "crossSourceConfirmation": "Sources distinctes; copies MIME et archive exclues du décompte indépendant.",
+    "uncertainty": "Aucune incertitude sur la réponse; état établi au baseline."
+  },
+  {
+    "id": "Q04",
+    "question": "Qui est responsable du projet et depuis quand?",
+    "answer": "Nicolas Perron, officiellement depuis le 16 septembre 2026.",
+    "nuance": "Il succède à Élodie Caron; sa disponibilité pendant le transfert ne maintient pas son ancien rôle de responsable.",
+    "status": "current",
+    "confidence": "strong",
+    "confidenceReason": "Preuves directes et repères examinés; distinction entre autorité, livraison et validation.",
+    "evidence": [
+      "CIT-010",
+      "CIT-011",
+      "CIT-001"
+    ],
+    "relatedFactIds": [
+      "FACT-006",
+      "FACT-007"
+    ],
+    "crossSourceConfirmation": "Sources distinctes; copies MIME et archive exclues du décompte indépendant.",
+    "uncertainty": "Aucune incertitude sur la réponse; état établi au baseline."
+  },
+  {
+    "id": "Q05",
+    "question": "Quel est le montant contractuel autorisé et comment se calcule-t-il?",
+    "answer": "204 000 $ CAD hors taxes = 180 000 $ initiaux + 24 000 $ de CR-01 approuvé.",
+    "nuance": "CR-01 approuvé le 14 août par le comité de projet. Exclure les 18 000 $ de CR-04, encore brouillon et reporté à la phase 2. Autorisé, facturé et payé sont des montants différents.",
+    "status": "approved",
+    "confidence": "strong",
+    "confidenceReason": "Preuves directes et repères examinés; distinction entre autorité, livraison et validation.",
+    "evidence": [
+      "CIT-012",
+      "CIT-013",
+      "CIT-014",
+      "CIT-019"
+    ],
+    "relatedFactIds": [
+      "FACT-008",
+      "FACT-009",
+      "FACT-010"
+    ],
+    "crossSourceConfirmation": "Sources distinctes; copies MIME et archive exclues du décompte indépendant.",
+    "uncertainty": "Aucune incertitude sur la réponse; état établi au baseline."
+  },
+  {
+    "id": "Q06",
+    "question": "Quel problème présente INV-003 et quel traitement prévoir?",
+    "answer": "INV-003 inclut 18 000 $ pour CR-04 non approuvé; la facture totale de 54 000 $ reste en validation.",
+    "nuance": "36 000 $ concernent le jalon 3; 18 000 $ l’optimisation mobile. Finances demande une approbation avant libération. Recommandation NOVA 360 : contester/isoler la ligne et demander une facture corrigée ou un crédit, puis faire valider le reliquat. Aucun paiement ni crédit émis n’est établi.",
+    "status": "pending",
+    "confidence": "strong",
+    "confidenceReason": "Preuves directes et repères examinés; distinction entre autorité, livraison et validation.",
+    "evidence": [
+      "CIT-017",
+      "CIT-018",
+      "CIT-014",
+      "CIT-020"
+    ],
+    "relatedFactIds": [
+      "FACT-011",
+      "FACT-010"
+    ],
+    "crossSourceConfirmation": "Sources distinctes; copies MIME et archive exclues du décompte indépendant.",
+    "uncertainty": "Le traitement comptable final et le paiement du reliquat ne sont pas documentés."
+  },
+  {
+    "id": "Q07",
+    "question": "Où héberger les données et quelle preuve confirme la mise en œuvre?",
+    "answer": "Au Canada, dans Canada Central. Migration déclarée terminée le 26 août et vérifiée par l’équipe architecture au comité du 27 août.",
+    "nuance": "ADR-007 accepté le 23 juillet remplace East US. Le schéma v2, le courriel de migration avec test de déploiement/connectivité et la vérification architecture établissent la mise en œuvre. Le schéma joint et le PDF séparé sont une même preuve.",
+    "status": "implemented",
+    "confidence": "strong",
+    "confidenceReason": "Preuves directes et repères examinés; distinction entre autorité, livraison et validation.",
+    "evidence": [
+      "CIT-021",
+      "CIT-024",
+      "CIT-025",
+      "CIT-023",
+      "CIT-022"
+    ],
+    "relatedFactIds": [
+      "FACT-012",
+      "FACT-013"
+    ],
+    "crossSourceConfirmation": "Sources distinctes; copies MIME et archive exclues du décompte indépendant.",
+    "uncertainty": "Aucune incertitude sur la réponse; état établi au baseline."
+  },
+  {
+    "id": "Q08",
+    "question": "La sécurité est-elle acceptée?",
+    "answer": "Non : SEC-210 demeure EN VALIDATION; acceptation sécurité non donnée.",
+    "nuance": "Correctif livré le 19 septembre dans l’environnement de validation et tests fournisseur réussis. Sophie exige son propre re-test, maintient le statut le 26 septembre. Le défaut est un EXPORT_CSV incomplet (objet/résultat manquants), pas l’absence totale d’une ligne d’export.",
+    "status": "pending",
+    "confidence": "strong",
+    "confidenceReason": "Preuves directes et repères examinés; distinction entre autorité, livraison et validation.",
+    "evidence": [
+      "CIT-026",
+      "CIT-027",
+      "CIT-006",
+      "CIT-028"
+    ],
+    "relatedFactIds": [
+      "FACT-014",
+      "FACT-016"
+    ],
+    "crossSourceConfirmation": "Sources distinctes; copies MIME et archive exclues du décompte indépendant.",
+    "uncertainty": "Date du re-test et acceptation finale à confirmer."
+  },
+  {
+    "id": "Q09",
+    "question": "L’accessibilité est-elle complétée et que reste-t-il?",
+    "answer": "Non : ACC-303 reste ouvert; le bouton Enregistrer de la modale est inaccessible au clavier.",
+    "nuance": "ACC-301 labels validé le 15 août et ACC-302 contraste validé le 20 août sont fermés; leurs captures sont historiques. ACC-303 est reproduit Chrome/Edge; liste de focus incomplète; correctif seulement annoncé pour une prochaine build.",
+    "status": "pending",
+    "confidence": "strong",
+    "confidenceReason": "Preuves directes et repères examinés; distinction entre autorité, livraison et validation.",
+    "evidence": [
+      "CIT-029",
+      "CIT-030",
+      "CIT-031",
+      "CIT-032",
+      "CIT-006"
+    ],
+    "relatedFactIds": [
+      "FACT-017",
+      "FACT-018",
+      "FACT-019"
+    ],
+    "crossSourceConfirmation": "Sources distinctes; copies MIME et archive exclues du décompte indépendant.",
+    "uncertainty": "Date de livraison et validation ACC-303 à confirmer."
+  },
+  {
+    "id": "Q10",
+    "question": "Quelles sont les trois conditions de go-live et les travaux du runbook?",
+    "answer": "1. Validation sécurité SEC-210. 2. Fermeture ACC-303. 3. Approbation du runbook incluant rollback.",
+    "nuance": "Capture du 25 septembre : étape 4 « Procédure de retour arrière » TODO; étape 5 « Validation fonctionnelle post-déploiement » À compléter. Le runbook final n’est toujours pas reçu le 29 septembre. Sophie, Mélissa et Olivier portent les validations; échéances précises à confirmer, avant go-live.",
+    "status": "pending",
+    "confidence": "strong",
+    "confidenceReason": "Preuves directes et repères examinés; distinction entre autorité, livraison et validation.",
+    "evidence": [
+      "CIT-006",
+      "CIT-033",
+      "CIT-034",
+      "CIT-027",
+      "CIT-031"
+    ],
+    "relatedFactIds": [
+      "FACT-015",
+      "FACT-020"
+    ],
+    "crossSourceConfirmation": "Sources distinctes; copies MIME et archive exclues du décompte indépendant.",
+    "uncertainty": "Échéances exactes et date d’approbation exploitation à confirmer."
+  }
+]

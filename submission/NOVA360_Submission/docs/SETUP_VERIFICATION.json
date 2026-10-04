@@ -1,0 +1,163 @@
+{
+  "install": "npm ci passed",
+  "routes": [
+    {
+      "route": "/fr",
+      "status": 200
+    },
+    {
+      "route": "/fr/login",
+      "status": 200
+    },
+    {
+      "route": "/fr/register",
+      "status": 200
+    },
+    {
+      "route": "/fr/questions",
+      "status": 200
+    },
+    {
+      "route": "/fr/evidence",
+      "status": 200
+    },
+    {
+      "route": "/fr/documents",
+      "status": 200
+    },
+    {
+      "route": "/fr/project/overview",
+      "status": 200
+    },
+    {
+      "route": "/fr/project/timeline",
+      "status": 200
+    },
+    {
+      "route": "/fr/project/decisions",
+      "status": 200
+    },
+    {
+      "route": "/fr/project/contradictions",
+      "status": 200
+    },
+    {
+      "route": "/fr/actions",
+      "status": 200
+    },
+    {
+      "route": "/fr/impact",
+      "status": 200
+    },
+    {
+      "route": "/fr/ask",
+      "status": 200
+    },
+    {
+      "route": "/fr/brief",
+      "status": 200
+    },
+    {
+      "route": "/fr/team",
+      "status": 200
+    },
+    {
+      "route": "/fr/search",
+      "status": 200
+    },
+    {
+      "route": "/en",
+      "status": 200
+    },
+    {
+      "route": "/en/login",
+      "status": 200
+    },
+    {
+      "route": "/en/register",
+      "status": 200
+    },
+    {
+      "route": "/en/questions",
+      "status": 200
+    },
+    {
+      "route": "/en/evidence",
+      "status": 200
+    },
+    {
+      "route": "/en/documents",
+      "status": 200
+    },
+    {
+      "route": "/en/project/overview",
+      "status": 200
+    },
+    {
+      "route": "/en/project/timeline",
+      "status": 200
+    },
+    {
+      "route": "/en/project/decisions",
+      "status": 200
+    },
+    {
+      "route": "/en/project/contradictions",
+      "status": 200
+    },
+    {
+      "route": "/en/actions",
+      "status": 200
+    },
+    {
+      "route": "/en/impact",
+      "status": 200
+    },
+    {
+      "route": "/en/ask",
+      "status": 200
+    },
+    {
+      "route": "/en/brief",
+      "status": 200
+    },
+    {
+      "route": "/en/team",
+      "status": 200
+    },
+    {
+      "route": "/en/search",
+      "status": 200
+    },
+    {
+      "route": "/fr/admin (guest)",
+      "status": 307
+    },
+    {
+      "route": "/en/admin (guest)",
+      "status": 307
+    }
+  ],
+  "auth": {
+    "publicRegistration": "USER despite supplied ADMIN; user API denied 403; guest denied 401",
+    "admin": "Fresh seeded ADMIN login and both locales of Question Bank/User Management passed"
+  },
+  "support": {
+    "fr": "Local response with safe navigation passed",
+    "en": "Local response with safe navigation passed",
+    "disabled": "Open-ended question falls back without live API"
+  },
+  "screenshots": [
+    "01-overview-fr.png",
+    "02-overview-en.png",
+    "03-questions.png",
+    "04-documents.png",
+    "05-impact.png"
+  ],
+  "database": "Fresh migration, seed and exact fixture verification passed",
+  "seedRerun": "Passed without duplicating admin or changing fixtures",
+  "mascot": "Local image HTTP 200",
+  "dev": "npm run dev equivalent (Next dev) on isolated port 3002 passed",
+  "freshBuild": "Passed from clean packaged source/dependencies/database",
+  "mainDatabaseUnchanged": true
+}
