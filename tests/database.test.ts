@@ -45,5 +45,28 @@ test('database events are append-only; proposal and delivery preserve decisions;
  await appendEvents([{...event,id:'TEST-security',text:'Security accepted',candidates:[{factId:'FACT-016',value:'Security accepted',state:'validated',excerpt:'Security accepted',confirmed:true}]}],'en');const facts=engine.deriveCurrent(await getEvents());assert.equal(engine.actionState('ACT-001',facts),'closed');assert.equal(engine.actionState('ACT-002',facts),'open');assert.equal(engine.actionState('ACT-003',facts),'open');assert.deepEqual(await getCanonicalBaseline(),baseline);
  const match=(await searchProject('Security accepted','en','facts')).results.find(r=>r.id==='FACT-016')!;assert.equal(match.state,'validated');assert.equal(match.citationId,'TEST-security');assert.equal(match.scope,'current');assert.ok((await searchProject('Synthetic unit fixture','en','evidence')).results.some(r=>r.id==='TEST-security'));
 });
+
+test('support retrieval projects only targeted official answers/facts and source locators',async()=>{
+ const {retrieveProjectContext,questionIdsFor}=await import('../src/lib/support-ai/retrieval');
+ assert.deepEqual(questionIdsFor('What is INV-003?'),['Q06']);
+ assert.deepEqual(questionIdsFor('What is invoice INV-999?'),[]);assert.deepEqual(questionIdsFor('What is INV003?'),['Q06']);
+ const context=await retrieveProjectContext({message:'What is INV-003?',locale:'en',currentPath:'/en',view:'current',history:[]});
+ const official=await db.question.findUniqueOrThrow({where:{id:'Q06'}});
+ assert.equal(context.facts.find(f=>f.id==='Q06')!.summary,official.answerEn+' '+official.nuanceEn);
+ assert.ok(context.facts.length<=6&&context.sources.length<=6);assert.ok(context.sources.some(s=>s.id==='Q06'));assert.ok(context.sources.some(s=>s.citationId));
+ assert.ok(!JSON.stringify(context).match(/passwordHash|expiresAt|extractedText|SESSION_SECRET/));
+ assert.deepEqual(await retrieveProjectContext({message:'What is INV-999?',locale:'en',currentPath:'/en',view:'current',history:[]}),{facts:[],sources:[]});
+});
+test('support context keeps official baseline answers separate from accepted current events',async()=>{
+ const {retrieveProjectContext}=await import('../src/lib/support-ai/retrieval');
+ const request={message:'Is security validated?',locale:'en' as const,currentPath:'/en',view:'current' as const,history:[]};
+ const before=await getCanonicalBaseline();const current=await retrieveProjectContext(request);const baseline=await retrieveProjectContext({...request,view:'baseline'});
+ assert.equal(current.facts.find(f=>f.id==='FACT-016')!.state,'validated');assert.equal(current.facts.find(f=>f.id==='FACT-016')!.summary,'acceptance: Security accepted');
+ assert.equal(current.facts.find(f=>f.id==='Q08')!.scope,'baseline');assert.equal(current.facts.find(f=>f.id==='Q08')!.summary,baseline.facts.find(f=>f.id==='Q08')!.summary);
+ assert.notEqual(baseline.facts.find(f=>f.id==='FACT-016')!.state,'validated');assert.ok(current.sources.some(s=>s.citationId==='TEST-security'));
+ const status=await retrieveProjectContext({...request,message:'What is project status?'});for(const id of ['FACT-016','FACT-019','FACT-020'])assert.ok(status.facts.some(f=>f.id===id));assert.equal(status.facts.find(f=>f.id==='FACT-016')!.state,'validated');assert.notEqual(status.facts.find(f=>f.id==='FACT-019')!.state,'validated');
+ assert.deepEqual(await getCanonicalBaseline(),before);
+});
+
 }
 void register().catch(error=>{console.error(error);process.exitCode=1;});

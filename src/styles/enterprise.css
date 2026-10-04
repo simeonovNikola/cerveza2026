@@ -33,3 +33,7 @@ h1{font-size:36px;letter-spacing:-1px}h2{font-size:24px}h3{font-size:18px}small{
 @media print{.dashboard-layout{display:block}}
 .auth-card{padding:28px}.quick-prompts button{background:#edf4ff;border-radius:8px;padding:8px 10px;text-align:left;font-size:12px;line-height:1.4}.auth-card #auth-error:empty{display:none}
 @media(max-width:700px){.auth-card{padding:22px}}
+
+.support-mode{display:block;margin-top:8px;color:#526478}.support-sources{display:flex;flex-direction:column;gap:4px;margin-top:8px}.support-messages a{display:block;overflow-wrap:anywhere;margin-top:5px}.support-messages [role="status"]{font-size:13px;color:#526478}
+
+.support-dialog[open]{display:flex;flex-direction:column;overflow:hidden}.support-dialog>.support-heading,.support-dialog>p,.support-dialog>form,.support-dialog>.quick-prompts{flex-shrink:0}.support-dialog>.support-messages{min-height:0;flex:1 1 auto}.support-messages .chat-user p{color:inherit}

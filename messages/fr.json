@@ -534,16 +534,21 @@
   "support": {
     "title": "Support IA",
     "close": "Fermer le support",
-    "welcome": "Je vous aide à trouver les pages et à utiliser NOVA 360. Pour les faits du projet, utilisez Ask NOVA.",
+    "welcome": "Bonjour! Je suis NOVA Support. Je peux vous aider à naviguer dans NOVA 360, trouver une preuve, comprendre une fonctionnalité ou vous diriger vers la bonne page.",
     "input": "Votre question de navigation",
     "send": "Envoyer",
     "error": "Le support est indisponible. Réessayez.",
     "you": "Vous",
     "assistant": "NOVA Support",
     "risks": "Où sont les risques?",
-    "questions": "Voir les Q01–Q10",
-    "impact": "Comment utiliser Impact?",
-    "evidence": "Où trouver les preuves?"
+    "questions": "Où trouver les réponses Q01–Q10?",
+    "impact": "Comment fonctionne le mode Impact?",
+    "evidence": "Où voir les preuves?",
+    "admin": "Que peut faire un administrateur?",
+    "loading": "NOVA Support prépare une réponse…",
+    "localMode": "Mode assistance locale",
+    "retry": "Réessayer",
+    "sources": "Sources"
   },
   "dashboard": {
     "title": "Vue d’ensemble",

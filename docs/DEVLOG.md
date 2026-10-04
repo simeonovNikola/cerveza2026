@@ -502,3 +502,161 @@
 
 ### Next
 - Iteration 4: credential recovery/rotation, email verification, expired-session cleanup, production rate limiting/HTTPS and backup readiness; optional audited role editing afterward.
+
+## 2026-10-04 03:03 — Iteration 4 audit, SDK and grounded provider
+
+### What changed
+- Audited the existing support dialog/mock, auth, roles, route map, repositories, tests and current documentation; created ITERATION_4_PLAN.md before implementation.
+- Added the official OpenAI SDK and server-only markers, shared navigation paths, compact bilingual support knowledge and read-only targeted question/fact retrieval.
+
+### OpenAI integration
+- Responses API with strict JSON schema, configurable gpt-6-luna fallback, store=false, no tools, output cap, no automatic retries and 12-second deadline.
+
+### Context/retrieval
+- Server-derived role, normalized page, locale and Baseline/Current; at most two official questions, four associated facts and six evidence references. No full documents or account records.
+
+### Security
+- Same-origin POST, session/IP quotas, secret redaction/refusal, allowlisted route keys, validated output and grounded-source guards. Missing/disabled/error/timeout modes retain local assistance.
+
+### UI
+- Preserved support dialog/mascot; added bounded memory-only history, loading/retry, localized local-mode indicator and sources. Global navigation now shares canonical paths with support.
+
+### Tests
+- Initial lint and typecheck pass. Deterministic provider, retrieval, API and browser regression coverage in progress.
+
+### Limitations
+- No live API call yet; key remains user-managed in ignored .env. Process-local quotas and short client history are intentional hackathon choices.
+
+### Next
+- Complete mocked SDK/security tests, browser regression, documentation and final QA.
+
+## 2026-10-04 03:12 — Iteration 4 provider/security and browser validation
+
+### What changed
+- Completed provider abstraction, official SDK mocked transport, API role/origin/quotas and bilingual support state regression tests.
+- Current project status retrieves all three independent launch conditions; unsupported named IDs do not substitute a known invoice. Baseline links preserve view and anchors.
+
+### OpenAI integration
+- Official SDK request verified with fake HTTP only; real API disabled during automated browser runs. Local .env presence check confirms no API key configured.
+
+### Context/retrieval
+- Current events remain separate from official baseline prose; source references resolve to questions, originals or event evidence. Feature classification handles “What is Impact Mode/Ask NOVA?”.
+
+### Security
+- Forged client roles/system history cannot grant admin support actions. Refusal, redaction, unknown links/sources, provider failure and timeout tested. Session/IP quota and hostile Origin tested against production route.
+
+### UI
+- Existing mascot/native dialog preserved. Loading/retry/source/local states work; visual review prompted fixed heading/layout and user-message contrast polish.
+
+### Tests
+- Initial full suite: 37 unit tests, production build and 22 browser tests passed; DB verify and original 64-source corpus validation passed. Final expanded unit/browser checks follow visual polish.
+
+### Limitations
+- Live Responses check awaits user-provided key and true flag; no streaming, chat persistence or distributed limiter. Model prose is bounded interpretation, not approval or evidence.
+
+### Next
+- Finish final checks and current handoff/status/QA documentation. No commit or push.
+
+## 2026-10-04 03:22 — Iteration 4 final QA and handoff
+
+### What changed
+- Completed AI_SUPPORT.md, architecture/handoff/status/roadmap/QA/env docs and README/i18n/UI notes; preserved all existing factual data and auth behavior.
+
+### OpenAI integration
+- Official Responses SDK, strict schema, configurable model, server-only key, bounded request/output and zero automatic retries. Mocked transport verifies actual SDK calls and env bypass/error behavior.
+
+### Context/retrieval
+- Read-only targeted official answers, facts/independent conditions and original/event references; current page/view and trusted role. Known internal route/source resolution and Baseline context preserved.
+
+### Security
+- Secret refusal/redaction/output guard, role-aware actions, same-origin check, session/IP quotas and no-store responses. No secret/prompt payload logs, tools, writes or new schema.
+
+### UI
+- Mascot/button/dialog retained; localized loading/retry/local indicator/source CTAs and quick prompts, stable heading, readable user messages and mobile keyboard behavior verified.
+
+### Tests
+- Final lint/typecheck pass; 38 unit tests, production build and all 22 browser tests pass. DB verify and 64-source/Q01–Q10/baseline corpus validation pass; whitespace check clean. Official SDK fetch is mocked; automated browser AI disabled.
+
+### Limitations
+- No local OpenAI key; credentialed live QA remains pending. No streaming/chat DB, keyword retrieval, memory history and process-local quotas. Test transport failure simulation corrected before final pass. No commit/push.
+
+### Next
+- User adds OPENAI_API_KEY and true flag locally, restarts and completes AI_SUPPORT.md live checklist. Iteration 5: evaluation/follow-up retrieval and production auth/proxy/limiter/HTTPS/backup readiness.
+
+## 2026-10-04 03:38 — Retrieval-error guard and final production check
+
+### What changed
+- Local fallback retains classified factual intent even when DB context retrieval fails, directing to Ask NOVA without substituting an invoice.
+
+### OpenAI integration
+- No provider call on unavailable context; model configuration and server-only boundary unchanged.
+
+### Context/retrieval
+- Added deterministic unavailable-context regression to existing grounded-fact test.
+
+### Security
+- No DB/provider error details or unsupported invoice claims reach the user.
+
+### UI
+- Preserved final chat layout, mascot and navigation states.
+
+### Tests
+- Final lint/typecheck, all 38 unit tests and production build pass; final focused browser run 4/4 passes after full 22/22 pass. Git: 22 modified, 18 new, zero staged; no commit/push.
+
+### Limitations
+- Credentialed live OpenAI check remains pending; local key absent at verification.
+
+### Next
+- Configure local key and true flag, restart and run AI_SUPPORT.md live checklist.
+
+## 2026-10-04 03:45 — Gemini resource correction
+
+### What changed
+- Replaced the OpenAI provider/dependency with Google’s official @google/genai 2.27.0 after the user identified a Gemini API key as the available resource. Preserved context, roles, routes, evidence guards, fallback and chat/mascot.
+
+### OpenAI integration
+- Original OpenAI integration superseded by server-only Gemini Developer API generateContent; no Vertex/OAuth. GEMINI_API_KEY with GOOGLE_API_KEY alias, GEMINI_MODEL default gemini-3.5-flash-lite, GEMINI_SUPPORT_ENABLED=false forces local mode. Configured key enables Gemini by default.
+
+### Context/retrieval
+- Existing compact read-only retrieval unchanged; trusted role/page context in systemInstruction, bounded history maps to Gemini user/model roles, same JSON schema and server validation.
+
+### Security
+- Google key patterns/aliases scrubbed; no key in body/URL/client/logs. One SDK attempt, 12-second timeout and abort; only completed STOP text accepted, blocks/partial/error responses fall back.
+
+### UI
+- Successful response mode changed to gemini; existing local indicator, loading/retry, sources, bilingual prompts and mascot unchanged.
+
+### Tests
+- Lint/typecheck, 39 unit tests and production build pass; mocked official SDK covers aliases, schema, secret isolation, default model, errors, safety blocks, incomplete output and cancellation. Full browser regression ongoing with Gemini disabled and both keys cleared.
+
+### Limitations
+- No local Gemini/Google key configured; credentialed live check pending. Provider abort does not guarantee cancellation of remote processing/charges.
+
+### Next
+- Complete browser QA and updated Gemini handoff; user adds key locally and restarts. No commit/push.
+
+## 2026-10-04 03:48 — Gemini final regression and handoff
+
+### What changed
+- Current AI_SUPPORT/HANDOFF/ARCHITECTURE/STATUS/ROADMAP/QA/README and env example now describe Gemini; original provider history retained in DEVLOG/QA/plan.
+
+### OpenAI integration
+- OpenAI SDK removed. Google GenAI generateContent is the only live provider; GEMINI/GOOGLE key aliases accepted server-side.
+
+### Context/retrieval
+- Existing role-aware grounded context and read-only project summaries unchanged.
+
+### Security
+- Both Gemini key aliases cleared and Gemini disabled in automated browser harness; provider tests fully mocked. Real secrets remain user-managed in ignored .env.
+
+### UI
+- Existing bilingual support panel, mascot, retry/fallback/sources and accessibility pass.
+
+### Tests
+- All 39 unit tests, production build and all 22 browser tests pass; lint/typecheck and DB/corpus/whitespace verification pass.
+
+### Limitations
+- No local Gemini/Google key configured; live provider check pending. Existing process-local quota/history/keyword retrieval limits retained.
+
+### Next
+- Add GEMINI_API_KEY (or GOOGLE_API_KEY) locally, optionally set GEMINI_MODEL/flag, restart and complete AI_SUPPORT.md live checklist. No commit/push.

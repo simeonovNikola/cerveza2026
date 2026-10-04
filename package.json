@@ -19,13 +19,15 @@
     "db:setup": "npm run db:generate && npm run db:migrate && npm run db:seed && npm run db:verify"
   },
   "dependencies": {
+    "@google/genai": "^2.27.0",
     "@prisma/client": "^6.19.0",
     "lucide-react": "^0.468.0",
     "next": "^16.0.0",
     "next-intl": "^4.14.9",
     "prisma": "^6.19.0",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.0",

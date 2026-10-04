@@ -1,0 +1,15 @@
+import type {SupportAction} from '../support-assistant/types';
+export type Locale='fr'|'en';
+export type SupportRole='GUEST'|'USER'|'ADMIN';
+export const intents=['NAVIGATION','FEATURE_HELP','AUTH_HELP','ADMIN_HELP','SEARCH_HELP','IMPACT_HELP','PROJECT_FACT','GENERAL_SUPPORT','UNKNOWN'] as const;
+export type Intent=typeof intents[number];
+export type HistoryMessage={role:'user'|'assistant';content:string};
+export type SupportRequest={message:string;locale:Locale;currentPath:string;view:'baseline'|'current';history:HistoryMessage[]};
+export type ProjectSummary={id:string;kind:string;scope:'baseline'|'current';title:string;summary:string;state?:string;sourceIds:string[]};
+export type EvidenceReference={id:string;label:string;routeKey:string;citationId?:string;anchor?:string};
+export type SupportContext={appContext:{name:string;purpose:string};locale:Locale;currentRoute:string;view:'baseline'|'current';intent:Intent;roleContext:{role:SupportRole;permissions:string[]};pageContext:{key:string;title:string;description:string}|null;relevantRoutes:{key:string;title:string;description:string}[];featureContext:string[];relevantProjectFacts:ProjectSummary[];sources:EvidenceReference[]};
+export type SupportResponse={reply:string;intent:Intent;mode:'gemini'|'local';suggestedActions:SupportAction[];sources:SupportAction[]};
+export type ProjectRetrieval={facts:ProjectSummary[];sources:EvidenceReference[]};
+export type ProjectReader=(request:SupportRequest)=>Promise<ProjectRetrieval>;
+export type ModelResult={reply:string;intent:Intent;routeKeys:string[];sourceIds:string[]};
+export type GenerateSupport=(context:SupportContext,request:SupportRequest,signal:AbortSignal)=>Promise<unknown>;

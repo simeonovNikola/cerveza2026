@@ -12,7 +12,7 @@ State engine: createImpactEngine(canonicalBaseline) injects the immutable snapsh
 
 Persistence moved from browser localStorage to server SQLite. Every browser sees the local database journal. Export/import remains available; imports merge exact duplicate IDs and refuse conflicting content atomically. Existing browser journals are detected and offered for explicit import into SQLite; the original browser journal remains untouched. No original document or baseline write route exists.
 
-Search uses deterministic normalized token matching across DB records, both languages, typed filters and snippets. A native-dialog command palette supplies keyboard entry. Ask NOVA remains a separate local factual question matcher; navigation support uses a separate mock provider. No external AI/API credentials.
+Search uses deterministic normalized token matching across DB records, both languages, typed filters and snippets. A native-dialog command palette supplies keyboard entry. Ask NOVA remains a separate local factual question matcher; navigation support uses a separate grounded provider with a preserved local fallback. Gemini credentials are server-only; Ask NOVA remains local.
 
 Admin is a narrow local demo CMS for custom questions, bilingual validation, evidence links, ordering/deactivation and audit. Official questions are fully protected. Local DB-backed auth now protects admin; no external auth/cloud/distributed infrastructure.
 
@@ -25,3 +25,13 @@ Search uses the same canonical event replay as Impact to display current fact/ac
 Additive User/Role/Session models; Node scrypt password helpers shared with seed; HMAC-digested opaque DB sessions and Next httpOnly cookies. Server catch-all route guards admin children and query aliases; API guards verify session, ADMIN and same-origin mutation. No edge Prisma dependency added to locale proxy. Public judge project flow retained. User management is separate from Person (project responsible people).
 
 Hub retains the existing engine/context/modals with a sidebar/grid shell and server-passed safe user DTO. Header question form submits to existing Ask NOVA; Ctrl/Cmd K retains interactive search. Native support dialog calls POST /api/support-chat and lib/support-assistant provider. Navigation-only deterministic replies with localized route CTAs; no factual generation or external provider. Auth details in AUTH.md; no canonical schema/payload modifications.
+
+## Iteration 4
+
+`src/lib/navigation.ts` supplies canonical path slugs to Hub/mock/support. `src/lib/support-ai/routes.ts` supplies bilingual product knowledge and role-aware route allowlist. The support POST resolves the existing session server-side, validates locale/page/history/view and applies same-origin/session-IP cost controls.
+
+A bounded intent retriever selects relevant product sections and, only for factual questions, official DB question/fact/citation projections. Current values use the unchanged canonical Impact replay; Baseline answers stay explicitly separate. No user/session rows, full documents or source corpus enter provider context. No schema migration or write tools were added.
+
+One lazy server-only official Google GenAI SDK client calls Gemini generateContent with strict JSON schema, output cap and deadline. Environment controls provider/model; service validates output and resolves only known authorized route/source IDs. Disabled/missing/error/unsafe modes use the retained mock. Client receives plaintext, safe localized actions/sources and mode; current page and bounded memory history improve help without client role authority.
+
+Native chat/mascot remains; loading/retry/local-mode/source states added. No streaming or persisted chat logs this iteration. Automated provider/SDK tests use injected/fake transports; browser server forces local mode. See AI_SUPPORT.md and QA_REPORT.md. The original Iteration 3 description above records the pre-AI support architecture.

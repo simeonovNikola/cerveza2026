@@ -534,16 +534,21 @@
   "support": {
     "title": "AI Support",
     "close": "Close support",
-    "welcome": "I help you use NOVA 360. For project facts, use Ask NOVA.",
+    "welcome": "Hi! I’m NOVA Support. I can help you navigate NOVA 360, find evidence, understand a feature, or take you to the right page.",
     "input": "Your navigation question",
     "send": "Send",
     "error": "Support unavailable. Please retry.",
     "you": "You",
     "assistant": "NOVA Support",
     "risks": "Where are the risks?",
-    "questions": "View Q01–Q10",
-    "impact": "How do I use Impact?",
-    "evidence": "Where can I find evidence?"
+    "questions": "Where can I find Q01–Q10?",
+    "impact": "How does Impact Mode work?",
+    "evidence": "Where can I view evidence?",
+    "admin": "What can an administrator do?",
+    "loading": "NOVA Support is preparing a reply…",
+    "localMode": "Local assistance mode",
+    "retry": "Retry",
+    "sources": "Sources"
   },
   "dashboard": {
     "title": "Overview",

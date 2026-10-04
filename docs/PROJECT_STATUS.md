@@ -1,24 +1,24 @@
 # NOVA 360 — Project status
 
-Current phase: Iteration 3 complete — 2026-10-04.
+Current phase: Iteration 4 implemented and locally validated — 2026-10-04. Credentialed live Gemini verification remains pending because no local API key is configured.
 
-Preserved: SQLite/Prisma, FR/EN, official Q01–Q10, citations/original sources, sealed September 30 09:00 Montréal baseline, Impact, Ask NOVA, interactive search, custom-question controls and printable brief. No reviewed payload or official answer changed.
+Preserved: local auth/roles/admin guards, SQLite/Prisma, FR/EN, official Q01–Q10, citations/original sources, sealed baseline, Impact, Ask NOVA, search, custom-question/user management, printable brief and the existing mascot/dialog. No schema, reviewed payload or official answer changed.
 
 Completed:
-- Audited actual code/docs and recorded ITERATION_3_PLAN.md before changes.
-- Additive User/Role/Session migration with stopped-runtime backup; deterministic seed preserves users and project data, creates env-admin once.
-- Bilingual register/login/logout; salted scrypt hashes; opaque HMAC-digested seven-day sessions; httpOnly/Lax/production-Secure cookies, same-origin mutation protection and local attempt limiter.
-- Server admin child/query-alias guards and independent API role checks. Role-aware navigation and searchable user activation management, self/last-admin lockout protection, audit attribution. Roles read-only.
-- Simplified sidebar/blue header/question field/six-card dashboard/timeline/documents; removed About and duplicate evidence locale controls. Clean global-language admin table, bilingual forms, additional content spacing and evidence detail disclosure.
-- Mock bilingual navigation support API/provider, bottom-right mascot dialog, keyboard wrapping/focus restoration/Escape, responsive layout and missing-image fallback.
-- Updated auth/admin/database/architecture/i18n/UI/roadmap/handoff/devlog/QA documentation.
+- Audited the existing mock/UI/routes/auth/repositories/docs and recorded ITERATION_4_PLAN.md; checked current official provider/structured-output/model docs.
+- Official Google GenAI SDK 2.27.0 and server-only client, configurable gemini-3.5-flash-lite default and env feature flag.
+- Compact bilingual product/page/role context; intent-first read-only official question/fact/condition/citation retrieval, preserving Baseline/Current and event proof.
+- Strict structured output with server-resolved known routes/sources; no arbitrary model URLs or inaccessible admin CTAs. Client roles/history never grant authority.
+- Mock retained for disabled/missing/error/timeout/malformed/unsafe output; secret refusal/redaction, same-origin POST, session/IP quotas, deadlines, output/history caps and metadata-only logging.
+- Existing chat/mascot retained with loading/retry, local-mode indicator, source links, five quick prompts and stable accessible/mobile layout. History memory-only; no chat schema or streaming.
+- Updated AI_SUPPORT, architecture, handoff, roadmap, status, devlog, QA and env documentation.
 
-Validation: lint, strict typecheck, 25 unit tests, production build, all 18 browser tests and final focused 5 browser checks pass. Repeat db:setup/db:verify and 64-source/baseline/Q01–Q10 corpus validation pass. Visually reviewed desktop/mobile FR/EN dashboard, auth pages, support and admin artifacts. Tests use separate SQLite databases.
+Validation: lint, strict typecheck, 39 unit tests, production build and all 22 browser tests pass. Official SDK uses fake HTTP in tests; browser harness disables AI and clears the key. DB verify, 64-source/Q01–Q10/baseline corpus audit and git diff whitespace check pass. Desktop/mobile support screenshots reviewed. Existing auth/admin/search/evidence/Impact/Ask NOVA/brief regressions remain green.
 
-Run: npm ci; configure ignored .env from .env.example; npm run db:setup; npm run dev. This workspace already contains generated ignored credentials for admin@example.com in .env. Never print/commit its password or SESSION_SECRET. Production: npm run build; npm run start. See AUTH.md/HANDOFF.md.
+Run: npm ci; configure ignored .env from .env.example; npm run db:setup; npm run dev. Existing auth variables remain required. Add GEMINI_API_KEY manually, GEMINI_MODEL=gemini-3.5-flash-lite and GEMINI_SUPPORT_ENABLED=true to enable real support, then restart. Missing keys or GEMINI_SUPPORT_ENABLED=false keep local assistance; an unset flag allows a configured key. GOOGLE_API_KEY is an accepted alias. See HANDOFF.md/AI_SUPPORT.md for exact live QA steps. Existing local admin credentials remain in ignored .env; no password/secret is included in source/docs.
 
-In progress/blockers: none. No commit/push/deployment. Git contains the intended modified/new Iteration 3 files; original user mascot preserved. next-env.d.ts reflects Next's generated production type paths.
+Known limits: no credentialed live provider check yet; keyword retrieval and generative interpretation are intentionally bounded; memory-only history, no streaming, process-local quotas/trusted proxy requirement. Normal project tools remain public for judges; auth recovery/verification/MFA/role editing/session cleanup remain future work. SQLite requires persistent disk and production HTTPS. Existing project uncertainties remain in KNOWN_UNCERTAINTIES.md.
 
-Known limits: normal project tools retain public judge access; only admin is gated. Roles read-only; no password reset/email verification/MFA/distributed limiter; expired rows need future cleanup. Support is deterministic navigation help, with no external AI. SQLite needs persistent disk and production HTTPS/proxy configuration. Existing project uncertainties remain in KNOWN_UNCERTAINTIES.md.
+Git: intended Iteration 4 changes remain uncommitted; nothing pushed/deployed. Production build updates generated next-env.d.ts type references. No source corpus, mascot, Prisma schema/migration or canonical fixture diff.
 
-Next iteration 4: authentication operations (recovery/rotation, email verification, session cleanup, production rate limiting and HTTPS/backup readiness), then optional audited role management. Real AI remains a later provider swap with route/evidence boundaries.
+Next recommended iteration (5): credentialed bilingual support evaluation and improved follow-up retrieval, then trusted proxy/shared rate limiting, operational auth recovery/rotation/verification/session cleanup and production HTTPS/backup readiness.

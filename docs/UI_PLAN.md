@@ -15,3 +15,5 @@ Accessibility: locale html.lang, semantic headings, labelled controls, native-di
 Custom questions follow the protected official bank in a separate team section. Navigation uses human labels; full IDs remain in link targets. Active custom content is tested at mobile width. Baseline/current/original/event/team scopes are explicit in search.
 
 Iteration 3 final accessibility: support explicitly wraps Tab and returns focus to the input after sending; Escape closes. Auth labels/autocomplete/error association and mobile registration verified. Advanced source relationships/metadata are inside View details; original source/locator remain visible.
+
+Iteration 4 retains the support mascot/native dialog and adds bounded conversational context, loading/retry, subtle local-mode indication and validated CTA/source links. Heading/compose controls remain visible while messages scroll; user message contrast is explicit. No dashboard redesign or streaming.

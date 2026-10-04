@@ -40,7 +40,7 @@ No API key, account or paid service is required. Generated data is included; Pyt
 
 Events and custom questions persist in SQLite at data/runtime/nova.db across browser sessions. Use **Impact → Journal → Exporter** to move events between machines; import validates and merges without deleting events or changing conflicting IDs. Original evidence and the baseline remain immutable. Reset/migrations/backup: [DATABASE](docs/DATABASE.md).
 
-Iteration 3 adds a sidebar, six concise dashboard cards, a header question field, role-aware admin and a bottom-right navigation support assistant. Ctrl/Cmd K retains interactive search. FR/EN is global. [Authentication](docs/AUTH.md) documents local registration/login, env-admin creation and sessions; [Admin](docs/ADMIN.md) covers protected custom questions and user activation. The assistant uses a local mock API, separate from factual Ask NOVA.
+Iteration 3 adds a sidebar, six concise dashboard cards, a header question field, role-aware admin and a bottom-right navigation support assistant. Ctrl/Cmd K retains interactive search. FR/EN is global. [Authentication](docs/AUTH.md) documents local registration/login, env-admin creation and sessions; [Admin](docs/ADMIN.md) covers protected custom questions and user activation. Iteration 4 adds server-only Gemini generateContent support with compact page/role/project context and safe navigation/evidence links; the local mock remains the fallback. Ask NOVA stays separate. Configure GEMINI_API_KEY, GEMINI_MODEL and GEMINI_SUPPORT_ENABLED in ignored .env; see [AI Support](docs/AI_SUPPORT.md) for setup, boundaries and pending credentialed live QA.
 
 ## Validation
 

@@ -1,0 +1,2 @@
+// Shared by the existing app shell and the support route registry. No secrets.
+export const appRoutes:Record<string,string>={home:'',overview:'project/overview',timeline:'project/timeline',decisions:'project/decisions',contradictions:'project/contradictions',actions:'actions',evidence:'evidence',questions:'questions',search:'search',ask:'ask',impact:'impact',brief:'brief',admin:'admin',users:'admin/users',team:'team',login:'login',register:'register'};

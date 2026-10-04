@@ -1,0 +1,5 @@
+import {normalizeCurrentPath} from './routes';
+import {redactSensitiveText} from './security';
+import type {HistoryMessage,SupportRequest} from './types';
+export function boundedHistory(input:unknown,secrets:readonly string[]=[]):HistoryMessage[]{if(!Array.isArray(input))return [];let budget=6000;const result:HistoryMessage[]=[];for(const row of input.slice(-12).reverse()){if(!row||!['user','assistant'].includes(row.role)||typeof row.content!=='string')continue;const content=redactSensitiveText(row.content,secrets).slice(0,1000);if(content.length>budget)break;budget-=content.length;result.unshift({role:row.role,content});}return result;}
+export function parseSupportRequest(input:unknown):SupportRequest{if(!input||typeof input!=='object')throw new Error('validation');const v=input as Record<string,unknown>;if(typeof v.message!=='string'||!v.message.trim()||v.message.length>1000||!['fr','en'].includes(v.locale as string))throw new Error('validation');const locale=v.locale as 'fr'|'en';return {message:v.message.trim(),locale,currentPath:normalizeCurrentPath(v.currentPath,locale),view:v.view==='baseline'?'baseline':'current',history:boundedHistory(v.history)};}

@@ -1,6 +1,61 @@
+# Iteration 4 Gemini correction — final QA 2026-10-04
+
+Current provider is Google Gemini, following the user’s resource correction. Earlier provider reports below are historical.
+
+| Check | Result |
+|---|---|
+| lint / typecheck | Pass |
+| npm test | 39 passed; official @google/genai uses mocked HTTP only |
+| npm run build | Pass with server-only Gemini SDK |
+| npm run test:e2e | Full 22 passed; Gemini disabled and both accepted keys cleared by harness |
+| Provider | Native generateContent, system context, user/model history, JSON schema, completed STOP requirement, no tools |
+| Configuration | GEMINI_API_KEY preferred; GOOGLE_API_KEY alias; GEMINI_MODEL default gemini-3.5-flash-lite; false flag forces local, otherwise key enables provider |
+| Reliability | One HTTP attempt, 12-second timeout/abort; errors, safety blocks, incomplete or invalid text fall back |
+| Security | Server-only import guard; key not in request body/URL/client; Google key patterns scrubbed, role/action/source guards retained |
+| Data | db:verify and corpus audit pass; baseline/Q01–Q10/64 originals unchanged; no schema migration |
+| Existing app | FR/EN, auth/admin, search, Ask NOVA, Impact, evidence, brief, chat/mascot and responsive regressions pass |
+| Live Gemini | Pending: neither accepted key variable configured locally; no real API call made |
+| Git | Changes uncommitted/unstaged; no push; local secrets/DB/artifacts ignored |
+
+The official SDK test verifies the actual Google endpoint, header-only fake API key, native request/response format, model default and aliases, no retries on 503, blocked/incomplete fallback and abort. Real key permissions/model availability/quota must still be checked locally after configuration and restart. Current architecture/setup is AI_SUPPORT.md.
+
+---
+
+# Original Iteration 4 OpenAI QA — historical 2026-10-04
+
+| Check | Result |
+|---|---|
+| npm run lint | Pass, no errors/warnings |
+| npm run typecheck | Pass |
+| npm test | 38 passed, including existing regressions and mocked SDK/provider/retrieval/security tests |
+| npm run build | Pass, production server-only Responses route and localized app |
+| npm run test:e2e | All 22 passed; final focused support run 4 passed after retrieval-error refinement; no paid API requests |
+| npm run db:verify | Pass; original records, official answers/relations, sealed baseline and foreign keys unchanged |
+| python scripts/validate_data.py | Pass; all 64 original hashes, Q01–Q10, baseline, graph, evidence and arithmetic |
+| Provider configuration | Disabled flag/missing key bypass provider; env adapter tested using official SDK fake transport |
+| Provider reliability | Strict schema request, store=false, output cap, zero retries; error/malformed/unsafe/incomplete output and deadline use local fallback |
+| Grounding | Only targeted official questions/linked facts and evidence; unknown entity ID not substituted; current accepted security closes its condition only, baseline answers unchanged |
+| Role/security | API derives GUEST/USER/ADMIN from DB session; forged client ADMIN/system history cannot grant admin CTA; actual ADMIN gets Users/Question Bank |
+| Navigation | Known localized keys only; arbitrary URLs/unknown keys dropped, sources must be retrieved; Baseline query/anchors preserved |
+| Secret handling | Server-only import guard; prompt/body excludes key/session/user secrets; generated known secret rejected; injection refuses before provider |
+| Cost controls | Same-origin hostile POST rejected, 15/min session and 30/min IP quota, bounded map/history/context/output, localized 429 and Retry-After |
+| FR/EN | Local/current-page/Impact/auth/admin/support replies, welcome/quick prompts/loading/retry/local-mode/source labels verified |
+| UI | Existing mascot/button/native dialog/fallback, Tab/Escape, loading/retry/source links; 390px no page overflow; heading retained and user text contrast fixed |
+| Existing flows | Auth/register/login/logout/admin protection, user activation, custom questions, Q01–Q10, evidence hashes/locators, search, Impact, Ask NOVA and brief PDF pass |
+| Live OpenAI | Pending: local key presence check false. No live call attempted; exact manual steps in AI_SUPPORT.md |
+| Git/data | Uncommitted intended changes only; no push; env/DB/artifacts ignored; no schema/migration/corpus/mascot/canonical-fixture changes |
+
+The official SDK is exercised with replaced HTTP transport, never a real key or network API. Browser harness explicitly clears the key and sets OPENAI_SUPPORT_ENABLED=false. Real provider behavior/cost/latency must still be checked after the user configures a key and true flag, then restarts.
+
+Screenshots reviewed: ignored artifacts/iteration4-chat-en.png and iteration4-chat-mobile.png, plus existing dashboard/auth/admin/mascot artifacts from regression runs. Initial 37-unit/22-browser pass was followed by final 38-unit/22-browser pass after view/classification/condition and visual refinements. A test double originally replaced global fetch after SDK initialization; it was corrected to change the captured mock transport behavior, then the full suite passed. No production workaround or real API request was involved.
+
+Current limits: bounded keyword retrieval and model interpretation, memory-only history, no streaming, no chat persistence, process-local quotas and trusted forwarded IP requirement. This is not a distributed production abuse system or a factual approval engine. See AI_SUPPORT.md/ROADMAP.md.
+
+---
+
 # Iteration 3 final QA — 2026-10-04
 
-The following is current; the Iteration 2 report below is historical.
+Historical Iteration 3 results; current Iteration 4 results are above.
 
 | Check | Result |
 |---|---|
